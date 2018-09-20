@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>rabbitmq01 简单的hello world！ | 大树的博客</title>
+  <title>Tomcat监控之probe3.0的安装与使用 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="课前准备：https://www.jianshu.com/p/d6e9309535b7（单节点安装部分）  简单的hello world！1.发送消息 安装pika包1pip install pika==0.9.5">
-<meta name="keywords" content="python,rabbitmq">
+  <meta name="description" content="提前准备 文件下载地址：https://pan.baidu.com/s/1kVqweAr  安装 将probe.war文件上传至tomcat/webapps文件目录下  重启tomcat时war包会自动解压  将messages_cn.properties文件上传至webapps/probe/WEB-INF下">
+<meta name="keywords" content="tomcat,监控">
 <meta property="og:type" content="article">
-<meta property="og:title" content="rabbitmq01 简单的hello world！">
-<meta property="og:url" content="http://gengzongyuan.github.io/2018/09/19/rabbitmq01-简单的hello-world！/index.html">
+<meta property="og:title" content="Tomcat监控之probe3.0的安装与使用">
+<meta property="og:url" content="http://gengzongyuan.github.io/2018/09/20/Tomcat监控之probe3-0的安装与使用/index.html">
 <meta property="og:site_name" content="大树的博客">
-<meta property="og:description" content="课前准备：https://www.jianshu.com/p/d6e9309535b7（单节点安装部分）  简单的hello world！1.发送消息 安装pika包1pip install pika==0.9.5">
+<meta property="og:description" content="提前准备 文件下载地址：https://pan.baidu.com/s/1kVqweAr  安装 将probe.war文件上传至tomcat/webapps文件目录下  重启tomcat时war包会自动解压  将messages_cn.properties文件上传至webapps/probe/WEB-INF下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-20T03:51:47.000Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-63d0e2e8983c7aee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-20T04:57:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="rabbitmq01 简单的hello world！">
-<meta name="twitter:description" content="课前准备：https://www.jianshu.com/p/d6e9309535b7（单节点安装部分）  简单的hello world！1.发送消息 安装pika包1pip install pika==0.9.5">
+<meta name="twitter:title" content="Tomcat监控之probe3.0的安装与使用">
+<meta name="twitter:description" content="提前准备 文件下载地址：https://pan.baidu.com/s/1kVqweAr  安装 将probe.war文件上传至tomcat/webapps文件目录下  重启tomcat时war包会自动解压  将messages_cn.properties文件上传至webapps/probe/WEB-INF下">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2572206-63d0e2e8983c7aee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -169,20 +171,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-rabbitmq01-简单的hello-world！" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Tomcat监控之probe3-0的安装与使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      rabbitmq01 简单的hello world！
+      Tomcat监控之probe3.0的安装与使用
     </h1>
   
 
         
-        <a href="/2018/09/19/rabbitmq01-简单的hello-world！/" class="archive-article-date">
-  	<time datetime="2018-09-19T09:40:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
+        <a href="/2018/09/20/Tomcat监控之probe3-0的安装与使用/" class="archive-article-date">
+  	<time datetime="2018-09-20T04:56:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
 </a>
         
       </header>
@@ -197,7 +199,7 @@
                 <div id="toc-article" class="toc-article">
                     <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
                         <strong class="toc-title">文章目录</strong>
-                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的hello-world！"><span class="toc-number">1.</span> <span class="toc-text">简单的hello world！</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-发送消息"><span class="toc-number">1.1.</span> <span class="toc-text">1.发送消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-获取消息"><span class="toc-number">1.2.</span> <span class="toc-text">2.获取消息</span></a></li></ol></li></ol>
+                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#提前准备"><span class="toc-number">1.</span> <span class="toc-text">提前准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a></li></ol>
                  </div>
            <script type="text/javascript"> 
  		function showToc(){
@@ -219,39 +221,29 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>课前准备：<a href="https://www.jianshu.com/p/d6e9309535b7（单节点安装部分）" target="_blank" rel="noopener">https://www.jianshu.com/p/d6e9309535b7（单节点安装部分）</a></p>
+        <h4 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h4><blockquote>
+<p>文件下载地址：<a href="https://pan.baidu.com/s/1kVqweAr" target="_blank" rel="noopener">https://pan.baidu.com/s/1kVqweAr</a></p>
 </blockquote>
-<h4 id="简单的hello-world！"><a href="#简单的hello-world！" class="headerlink" title="简单的hello world！"></a>简单的hello world！</h4><h5 id="1-发送消息"><a href="#1-发送消息" class="headerlink" title="1.发送消息"></a>1.发送消息</h5><ul>
-<li>安装pika包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pika==0.9.5</span><br></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ol>
+<li><p>将probe.war文件上传至tomcat/webapps文件目录下</p>
 </li>
-</ul>
-<a id="more"></a> 
-<ul>
-<li><p>创建一个连接（BlockingConnection、ConnectionParameters）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pika</span><br><span class="line"># 创建一个连接器</span><br><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(&apos;localhost&apos;))</span><br><span class="line"># 建立一个channel</span><br><span class="line">channel = connection.channel()</span><br></pre></td></tr></table></figure>
+<li><p>重启tomcat时war包会自动解压</p>
 </li>
-<li><p>使用queue_declare创建一个队列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.queue_declare(queue=&apos;hello&apos;)</span><br></pre></td></tr></table></figure>
+<li><p>将messages_cn.properties文件上传至webapps/probe/WEB-INF下</p>
+<a id="more"></a>
 </li>
-<li><p>使用basic_publish发送消息到队列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">channel.basic_publish(exchange=&apos;&apos;, # 交换机</span><br><span class="line">                      routing_key=&apos;hello&apos;,  # 队列</span><br><span class="line">                      body=&apos;Hello World!&apos;)  # 消息</span><br><span class="line">print &quot; [x] Sent &apos;Hello World!&apos;&quot;</span><br></pre></td></tr></table></figure>
+<li><p>在tomcat安装目录下修改conf/tomcat-users.xml文件，添加</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version='1.0' encoding='utf-8'?&gt;</span><br><span class="line">&lt;tomcat-users&gt;</span><br><span class="line">  &lt;role rolename="tomcat"/&gt;</span><br><span class="line">  &lt;role rolename="role1"/&gt;</span><br><span class="line">  &lt;role rolename="manager-gui"/&gt; </span><br><span class="line">  &lt;role rolename="manager-script"/&gt;</span><br><span class="line">  &lt;role rolename="manager-jmx"/&gt;</span><br><span class="line">  &lt;role rolename="manager-status"/&gt;</span><br><span class="line">  &lt;user username="test1" password="1" roles="manager-gui"/&gt;</span><br><span class="line">  &lt;user username="test2" password="2" roles="manager-script,manager-jmx,manager-status,poweruser,probeuser"/&gt;</span><br><span class="line">&lt;/tomcat-users&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>关闭连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.close()</span><br></pre></td></tr></table></figure>
+<li><p>修改bin/catalina.bat文件，添加</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set JAVA_OPTS=%JAVA_OPTS% -Dcom.sun.management.jmxremote</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>到服务器上查看队列是否都有了</p>
+<li><p>重启tomcat</p>
 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl list_queues name messages_ready messages_unacknowledged</span><br></pre></td></tr></table></figure>
-<h5 id="2-获取消息"><a href="#2-获取消息" class="headerlink" title="2.获取消息"></a>2.获取消息</h5><ul>
-<li><p>保险起见先声明一个队列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.queue_declare(queue=&apos;hello&apos;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用basic_consume接收消息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def callback(ch, method, properties, body):</span><br><span class="line">    print &quot; [x] Received %r&quot; % (body,)</span><br><span class="line"></span><br><span class="line">channel.basic_consume(callback,</span><br><span class="line">                      queue=&apos;hello&apos;,</span><br><span class="line">                      no_ack=True) # 暂时先不用管</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+</ol>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ol>
+<li>访问<a href="http://localhost:8080/probe/" target="_blank" rel="noopener">http://localhost:8080/probe/</a><br><img src="http://upload-images.jianshu.io/upload_images/2572206-63d0e2e8983c7aee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+</ol>
 
       
 
@@ -263,11 +255,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">监控</a>
         		</li>
       		
 		</ul>
@@ -279,7 +271,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
         		</li>
       		
 		</ul>
@@ -334,7 +326,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2018/09/19/rabbitmq01-简单的hello-world！/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2018/09/20/Tomcat监控之probe3-0的安装与使用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -348,15 +340,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/20/HEXO博客搭建（含免密传输）-md/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/09/20/Nginx负载调优总结/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          HEXO博客搭建（含免密传输）.md
+          Nginx负载调优总结
         
       </div>
     </a>
   
+  
+    <a href="/2018/09/20/MySQL之提示mysql-deamon-failed-to-start错误的解决方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL之提示mysql deamon failed to start错误的解决方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -381,7 +378,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的hello-world！"><span class="toc-number">1.</span> <span class="toc-text">简单的hello world！</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-发送消息"><span class="toc-number">1.1.</span> <span class="toc-text">1.发送消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-获取消息"><span class="toc-number">1.2.</span> <span class="toc-text">2.获取消息</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#提前准备"><span class="toc-number">1.</span> <span class="toc-text">提前准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a></li></ol>
                     </div>
                 </span>
             </div>
