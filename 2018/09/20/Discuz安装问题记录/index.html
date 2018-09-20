@@ -17,7 +17,7 @@
 <meta property="og:description" content="问题112数据库连接错误No such file or directory">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-501571a26d2f97c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-20T08:52:59.000Z">
+<meta property="og:updated_time" content="2018-09-20T08:55:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Discuz安装问题记录">
 <meta name="twitter:description" content="问题112数据库连接错误No such file or directory">
@@ -227,23 +227,14 @@
       
         <h5 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数据库连接错误</span><br><span class="line">No such file or directory</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h5 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h5><ol>
-<li><p>确认数据库用户名和密码正确（笔者懒得查，直接改了）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root</span><br><span class="line">use mysql;</span><br><span class="line">update user set host = &apos;123456&apos; where user = &apos;root&apos;;</span><br><span class="line">select host, user from user;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>确认php和mysql的sock配置是否正确</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root</span><br><span class="line">status</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<h5 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h5><p>确认数据库用户名和密码正确（笔者懒得查，直接改了）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root</span><br><span class="line">use mysql;</span><br><span class="line">update user set host = &apos;123456&apos; where user = &apos;root&apos;;</span><br><span class="line">select host, user from user;</span><br></pre></td></tr></table></figure></p>
+<p>确认php和mysql的sock配置是否正确<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root</span><br><span class="line">status</span><br></pre></td></tr></table></figure></p>
 <p>记录UNIX socket的值/phpstudy/data/mysql.sock<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UNIX socket:		/phpstudy/data/mysql.sock</span><br></pre></td></tr></table></figure></p>
 <p>新建一个phpinfo.php文件，扔到www目录下，浏览器访问之<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php   </span><br><span class="line">phpinfo();   </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/2572206-501571a26d2f97c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="phpinfo"><br>记录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Configuration File (php.ini) Path:/phpstudy/server/php/etc</span><br></pre></td></tr></table></figure></p>
 <p>到/phpstudy/server/php/etc下查看php.ini文件<br>将以下参数值填为我们status时候保存的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql.default_socket = /phpstudy/data/mysql.sock</span><br><span class="line">mysqli.default_socket = /phpstudy/data/mysql.sock</span><br><span class="line">pdo_mysql.default_socket = /phpstudy/data/mysql.sock</span><br></pre></td></tr></table></figure></p>
 <h5 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR 1044 (42000): Access denied for user &apos;&apos;@&apos;localhost&apos; to database &apos;mysql&apos;</span><br></pre></td></tr></table></figure>
-<h5 id="解决方式-1"><a href="#解决方式-1" class="headerlink" title="解决方式"></a>解决方式</h5><ol>
-<li>确认是否打开允许远程连接，访问/etc/my.cnf文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">···</span><br><span class="line">skip-grant-tables</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<h5 id="解决方式-1"><a href="#解决方式-1" class="headerlink" title="解决方式"></a>解决方式</h5><p>确认是否打开允许远程连接，访问/etc/my.cnf文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">···</span><br><span class="line">skip-grant-tables</span><br><span class="line">···</span><br></pre></td></tr></table></figure></p>
 <p>添加skip-grant-tables配置</p>
 
       
