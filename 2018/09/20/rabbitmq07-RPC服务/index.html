@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>Archives | 大树的博客</title>
+  <title>rabbitmq07 RPC服务 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大树的博客">
-<meta property="og:url" content="http://gengzongyuan.github.io/archives/index.html">
+  <meta name="description" content="RPC服务 RPC（Remote Procedure Call）远程服务调用，区别在于worker处理完成之后，会将处理的结果通过队列传递给client端。">
+<meta name="keywords" content="rabbitmq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rabbitmq07 RPC服务">
+<meta property="og:url" content="http://gengzongyuan.github.io/2018/09/20/rabbitmq07-RPC服务/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="RPC服务 RPC（Remote Procedure Call）远程服务调用，区别在于worker处理完成之后，会将处理的结果通过队列传递给client端。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-26b2dcb6b6cbf150.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-20T06:59:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大树的博客">
+<meta name="twitter:title" content="rabbitmq07 RPC服务">
+<meta name="twitter:description" content="RPC服务 RPC（Remote Procedure Call）远程服务调用，区别在于worker处理完成之后，会将处理的结果通过队列传递给client端。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-26b2dcb6b6cbf150.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -164,36 +171,98 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-rabbitmq07-RPC服务" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      rabbitmq07 RPC服务
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq07-RPC服务/" class="archive-article-date">
+
+        
+        <a href="/2018/09/20/rabbitmq07-RPC服务/" class="archive-article-date">
   	<time datetime="2018-09-20T06:58:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq07-RPC服务/">rabbitmq07 RPC服务</a>
-    </h1>
-  
+        
+      </header>
+    
 
-        <div class="article-info info-on-right">
-          
+        <!-- 目录内容 -->
+        
+            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+             <span class="btn-bg"></span>
+                 <span class="btn-text">文章导航</span>
+                  </p>
+                <div id="toc-article" class="toc-article">
+                    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                        <strong class="toc-title">文章目录</strong>
+                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#RPC服务"><span class="toc-number">1.</span> <span class="toc-text">RPC服务</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-client端"><span class="toc-number">1.1.</span> <span class="toc-text">1.client端</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-server端"><span class="toc-number">1.2.</span> <span class="toc-text">2.server端</span></a></li></ol></li></ol>
+                 </div>
+           <script type="text/javascript"> 
+ 		function showToc(){
+                        var toc_article = document.getElementById("toc-article");
+                        var show_toc_btn = document.getElementById("show-toc-btn");
+                        toc_article.setAttribute("style","display:block");
+                        show_toc_btn.setAttribute("style","display:none");
+                        };
+                function showBtn(){
+                        var toc_article = document.getElementById("toc-article");
+                        var show_toc_btn = document.getElementById("show-toc-btn");
+                        toc_article.setAttribute("style","display:none");
+                        show_toc_btn.setAttribute("style","display:block");
+                        };
+           </script>
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="RPC服务"><a href="#RPC服务" class="headerlink" title="RPC服务"></a>RPC服务</h4><blockquote>
+<p>RPC（Remote Procedure Call）远程服务调用，区别在于worker处理完成之后，会将处理的结果通过队列传递给client端。</p>
+</blockquote>
+<a id="more"></a>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-26b2dcb6b6cbf150.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="服务过程"></p>
+<h5 id="1-client端"><a href="#1-client端" class="headerlink" title="1.client端"></a>1.client端</h5><ul>
+<li><p>新建一个连接类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import pika</span><br><span class="line">import uuid</span><br><span class="line"></span><br><span class="line">class FibonacciRpcClient(object):</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在init中建立连接通道，并且回复replies声明独享的回调队列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def __init__(self):</span><br><span class="line">    self.connection = pika.BlockingConnection(pika.ConnectionParameters(&apos;123.207.154.169&apos;))</span><br><span class="line">    self.channel = self.connection.channel()</span><br><span class="line">    result = self.channel.queue_declare(exclusive=True)# 断开连接时自动删除队列</span><br><span class="line">    self.callback_queue = result.method.queue</span><br><span class="line">    self.channel.basic_consume(self.on_response,# rensponse回调方法</span><br><span class="line">                               no_ack=True,</span><br><span class="line">                               queue=self.callback_queue)# 订阅这个消息队列，以便接收RPC的响应</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>书写一个on_response函数，来接收server服务器返回的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># on_response回调函数对每一个响应执行一个非常简单的操作，检查每一个响应的corrrlation_id属性是否与我们期待的一致</span><br><span class="line"># 如果一致，将响应结果赋给response，然后跳出consuming循环</span><br><span class="line">def on_response(self,ch,method,props,body):</span><br><span class="line">    if self.corr_id == props.correlation_id:</span><br><span class="line">        self.response = body</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>书写call方法，用来发送消息，并通过properties的reply_to和correlation_id将回调队列和消息标记传给server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 接下来，我们定义我们的主要方法call方法，它执行真正的RPC请求</span><br><span class="line"># 在这个方法中，首先我们生成一个唯一的correlation_id，值并且保存起来，on_response回调函数会用它来回去符合要求的响应</span><br><span class="line"># 接下来，我们将带有reply_to和correlation_id属性的消息发布出去</span><br><span class="line">def call(self,n):</span><br><span class="line">    self.response = None</span><br><span class="line">    self.corr_id = str(uuid.uuid4())</span><br><span class="line">    self.channel.basic_publish(exchange=&apos;&apos;,</span><br><span class="line">                               routing_key=&apos;rpc_queue&apos;,</span><br><span class="line">                               properties=pika.BasicProperties(</span><br><span class="line">                                   reply_to=self.callback_queue,</span><br><span class="line">                                   correlation_id = self.corr_id</span><br><span class="line">                               ),</span><br><span class="line">                               body=str(n))</span><br><span class="line">    while self.response is None:</span><br><span class="line">        self.connection.process_data_events()# 是一个等待消息的阻塞过程，连接的任何消息都可以使它脱离阻塞状态（有点像Ajax的事件等待机制）</span><br><span class="line">    return int(self.response)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fibonacci_rpc = FibonacciRpcClient()</span><br><span class="line">print(&apos;[x] requesting fib(30) &apos;)</span><br><span class="line">response = fibonacci_rpc.call(100)</span><br><span class="line">print(&apos;[.] Got %r&apos;%(response,))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-server端"><a href="#2-server端" class="headerlink" title="2.server端"></a>2.server端</h5><ul>
+<li><p>像往常一样，我们建立队列，声明队列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(&apos;123.207.154.169&apos;))</span><br><span class="line">channel = connection.channel()</span><br><span class="line">channel.queue_declare(queue=&apos;rpc_queue&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明我们的fibonacci函数，它假设只有合法的正整数当做输入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def fib(n):</span><br><span class="line">    if n == 0:</span><br><span class="line">        return 0</span><br><span class="line">    elif n == 1:</span><br><span class="line">        return 1</span><br><span class="line">    else:</span><br><span class="line">        return fib(n-1) + fib(n-2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为basic_consume声明一个回调函数，这是RPC服务器端的核心。它执行实际的操作并且做出响应</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def on_request(ch,method,props,body):</span><br><span class="line">    n = int(body)</span><br><span class="line">    print(&apos;[.] fib(%s)&apos;%(n,))</span><br><span class="line">    response = fib(n)</span><br><span class="line"></span><br><span class="line">    ch.basic_publish(exchange=&apos;&apos;,</span><br><span class="line">                          routing_key=props.reply_to,</span><br><span class="line">                          properties=pika.BasicProperties(</span><br><span class="line">                              correlation_id= \</span><br><span class="line">                                  props.correlation_id</span><br><span class="line">                          ),</span><br><span class="line">                          body=str(response))</span><br><span class="line">    ch.basic_ack(delivery_tag=method.delivery_tag)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>或许我们希望能再服务器上多开几个线程。为了能将负载平均的分配到多个服务器，我们需要将prefetch_count设置好</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">channel.basic_qos(prefetch_count=1)</span><br><span class="line">channel.basic_consume(on_request,queue=&apos;rpc_queue&apos;)</span><br><span class="line">print(&apos;[x] Awaiting RPC requests&apos;)</span><br><span class="line">channel.start_consuming()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -205,7 +274,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -218,469 +287,119 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2018/09/20/rabbitmq07-RPC服务/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq06-交换机/" class="archive-article-date">
-  	<time datetime="2018-09-20T06:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/20/rabbitmq06-交换机/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">rabbitmq06 交换机</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq06-交换机/">rabbitmq06 交换机</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#RPC服务"><span class="toc-number">1.</span> <span class="toc-text">RPC服务</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-client端"><span class="toc-number">1.1.</span> <span class="toc-text">1.client端</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-server端"><span class="toc-number">1.2.</span> <span class="toc-text">2.server端</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq05-公平调度/" class="archive-article-date">
-  	<time datetime="2018-09-20T06:56:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq05-公平调度/">rabbitmq05 公平调度</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq04-消息持久化/" class="archive-article-date">
-  	<time datetime="2018-09-20T06:56:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq04-消息持久化/">rabbitmq04 消息持久化</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq03-ack消息确认/" class="archive-article-date">
-  	<time datetime="2018-09-20T05:22:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq03-ack消息确认/">rabbitmq03 ack消息确认</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq02-模拟工作请求/" class="archive-article-date">
-  	<time datetime="2018-09-20T05:19:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq02-模拟工作请求/">rabbitmq02 模拟工作请求</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/Nginx负载调优总结/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:58:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/Nginx负载调优总结/">Nginx负载调优总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">调优</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/Tomcat监控之probe3-0的安装与使用/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:56:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/Tomcat监控之probe3-0的安装与使用/">Tomcat监控之probe3.0的安装与使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">监控</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/MySQL之提示mysql-deamon-failed-to-start错误的解决方法/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:53:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/MySQL之提示mysql-deamon-failed-to-start错误的解决方法/">MySQL之提示mysql deamon failed to start错误的解决方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/mysql数据同步报错Incorrect-table-definition-there-can-be-only-one-TIMESTAMP-column-with-CURRENT-TIMESTAMP-in-DEFAULT-or-ON-UPDATE-clause/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:52:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/mysql数据同步报错Incorrect-table-definition-there-can-be-only-one-TIMESTAMP-column-with-CURRENT-TIMESTAMP-in-DEFAULT-or-ON-UPDATE-clause/">mysql数据同步报错Incorrect table definition;there can be only one TIMESTAMP column with CURRENT_TIMESTAMP in DEFAULT or ON UPDATE clause</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+<script type="text/javascript">
+document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
+</script>
+
   
 
 
@@ -705,8 +424,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

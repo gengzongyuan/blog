@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>Archives | 大树的博客</title>
+  <title>rabbitmq06 交换机 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大树的博客">
-<meta property="og:url" content="http://gengzongyuan.github.io/archives/index.html">
+  <meta name="description" content="交换机 direct（直连交换机） topic（主题交换机） headers（头部交换机） fanout（扇形交换机）">
+<meta name="keywords" content="rabbitmq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rabbitmq06 交换机">
+<meta property="og:url" content="http://gengzongyuan.github.io/2018/09/20/rabbitmq06-交换机/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="交换机 direct（直连交换机） topic（主题交换机） headers（头部交换机） fanout（扇形交换机）">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-20T06:58:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大树的博客">
+<meta name="twitter:title" content="rabbitmq06 交换机">
+<meta name="twitter:description" content="交换机 direct（直连交换机） topic（主题交换机） headers（头部交换机） fanout（扇形交换机）">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -164,85 +169,117 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-rabbitmq06-交换机" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq07-RPC服务/" class="archive-article-date">
-  	<time datetime="2018-09-20T06:58:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq07-RPC服务/">rabbitmq07 RPC服务</a>
+    <h1 class="article-title" itemprop="name">
+      rabbitmq06 交换机
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq06-交换机/" class="archive-article-date">
+        
+        <a href="/2018/09/20/rabbitmq06-交换机/" class="archive-article-date">
   	<time datetime="2018-09-20T06:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq06-交换机/">rabbitmq06 交换机</a>
-    </h1>
-  
+        
+      </header>
+    
 
-        <div class="article-info info-on-right">
-          
+        <!-- 目录内容 -->
+        
+            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+             <span class="btn-bg"></span>
+                 <span class="btn-text">文章导航</span>
+                  </p>
+                <div id="toc-article" class="toc-article">
+                    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                        <strong class="toc-title">文章目录</strong>
+                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#交换机"><span class="toc-number">1.</span> <span class="toc-text">交换机</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#扇形交换机"><span class="toc-number">1.1.</span> <span class="toc-text">扇形交换机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#direct直连交换机"><span class="toc-number">1.2.</span> <span class="toc-text">direct直连交换机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#topic交换机"><span class="toc-number">1.3.</span> <span class="toc-text">topic交换机</span></a></li></ol></li></ol>
+                 </div>
+           <script type="text/javascript"> 
+ 		function showToc(){
+                        var toc_article = document.getElementById("toc-article");
+                        var show_toc_btn = document.getElementById("show-toc-btn");
+                        toc_article.setAttribute("style","display:block");
+                        show_toc_btn.setAttribute("style","display:none");
+                        };
+                function showBtn(){
+                        var toc_article = document.getElementById("toc-article");
+                        var show_toc_btn = document.getElementById("show-toc-btn");
+                        toc_article.setAttribute("style","display:none");
+                        show_toc_btn.setAttribute("style","display:block");
+                        };
+           </script>
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h4><ul>
+<li>direct（直连交换机）</li>
+<li>topic（主题交换机）</li>
+<li>headers（头部交换机）</li>
+<li>fanout（扇形交换机）</li>
+</ul>
+<a id="more"></a>
+<h5 id="扇形交换机"><a href="#扇形交换机" class="headerlink" title="扇形交换机"></a>扇形交换机</h5><ul>
+<li><p>声明一个扇形交换机<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"> channel.exchange_declare(exchange=&apos;logs&apos;,</span><br><span class="line">                         type=&apos;fanout&apos;)</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>查看声明是否成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 sbin]# ./rabbitmqctl list_exchanges</span><br><span class="line">Listing exchanges ...</span><br><span class="line">fanout_exchange	fanout</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送消息时指定对应的exchange</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">channel.basic_publish(exchange=&apos;fanout_exchange&apos;,</span><br><span class="line">                      routing_key=&quot;&quot;,</span><br><span class="line">                      body=&quot;message&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明两个队列并使用channel.queue_bind进行绑定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">channel.queue_declare(&quot;queue1&quot;)</span><br><span class="line">channel.queue_declare(&quot;queue2&quot;)</span><br><span class="line">channel.queue_bind(exchange=&quot;fanout_exchange&quot;,queue=&quot;queue1&quot;)</span><br><span class="line">channel.queue_bind(exchange=&quot;fanout_exchange&quot;,queue=&apos;queue2&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看绑定情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl list_bindings</span><br><span class="line">Listing bindings ...</span><br><span class="line">fanout_exchange	exchange	queue1	queue	queue1	[]</span><br><span class="line">fanout_exchange	exchange	queue2	queue	queue2	[]</span><br><span class="line">...done.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>仅仅往exchange中发送消息(需要注意的是，扇形交换机会忽略routing_key值)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">channel.basic_publish(exchange=&apos;fanout_exchange&apos;,</span><br><span class="line">                      routing_key=&quot;&quot;, </span><br><span class="line">                      body=&quot;message&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看队列中的消息状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 sbin]# ./rabbitmqctl list_queues name messages_ready messages_unacknowledged </span><br><span class="line">Listing queues ...</span><br><span class="line">queue1	1	0</span><br><span class="line">queue2	1	0</span><br><span class="line">...done.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="direct直连交换机"><a href="#direct直连交换机" class="headerlink" title="direct直连交换机"></a>direct直连交换机</h5><ul>
+<li><p>声明direct交换机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.exchange_declare(exchange=&quot;direct_exchange&quot;,exchange_type=&quot;direct&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明三个队列，并设置不同的两个routing_key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">channel.queue_declare(queue=&quot;direct_queue1&quot;)</span><br><span class="line">channel.queue_declare(queue=&quot;direct_queue2&quot;)</span><br><span class="line">channel.queue_declare(queue=&quot;direct_queue3&quot;)</span><br><span class="line">channel.queue_bind(exchange=&quot;direct_exchange&quot;,queue=&quot;direct_queue1&quot;,routing_key=&quot;red&quot;)</span><br><span class="line">channel.queue_bind(exchange=&quot;direct_exchange&quot;,queue=&quot;direct_queue2&quot;,routing_key=&quot;red&quot;)</span><br><span class="line">channel.queue_bind(exchange=&quot;direct_exchange&quot;,queue=&quot;direct_queue2&quot;,routing_key=&quot;blue&quot;)</span><br><span class="line">channel.queue_bind(exchange=&quot;direct_exchange&quot;,queue=&quot;direct_queue3&quot;,routing_key=&quot;blue&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">channel.basic_publish(exchange=&quot;direct_exchange&quot;,</span><br><span class="line">                      routing_key=&quot;red&quot;,</span><br><span class="line">                      body=&quot;red_message&quot;)</span><br><span class="line"></span><br><span class="line">channel.basic_publish(exchange=&quot;direct_exchange&quot;,</span><br><span class="line">                      routing_key=&quot;blue&quot;,</span><br><span class="line">                      body=&quot;blue_message&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 sbin]# ./rabbitmqctl list_queues name messages_ready messages_unacknowledged </span><br><span class="line">Listing queues ...</span><br><span class="line">direct_queue1	1	0</span><br><span class="line">direct_queue2	2	0</span><br><span class="line">direct_queue3	1	0</span><br><span class="line">...done.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="topic交换机"><a href="#topic交换机" class="headerlink" title="topic交换机"></a>topic交换机</h5><ul>
+<li>topic交换机能够涵盖扇形交换机和直连交换机的功能。主要是通过灵活的定义routing_key进行实现</li>
+<li><p>定义一个topic交换机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.exchange_declare(exchange=&quot;topic_exchange&quot;,exchange_type=&quot;topic&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明三个队列，并灵活使用routing_key和交换机进行绑定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">channel.queue_declare(queue=&quot;topic_queue1&quot;)</span><br><span class="line">channel.queue_declare(queue=&quot;topic_queue2&quot;)</span><br><span class="line">channel.queue_declare(queue=&quot;topic_queue3&quot;)</span><br><span class="line"></span><br><span class="line"># 当routing_key=“一个任意单词.orange.一个任意单词”</span><br><span class="line">channel.queue_bind(exchange=&quot;topic_exchange&quot;,queue=&quot;topic_queue1&quot;,routing_key=&quot;*.red.*&quot;)</span><br><span class="line"># 当routing_key=“任意值”</span><br><span class="line">channel.queue_bind(exchange=&quot;topic_exchange&quot;,queue=&quot;topic_queue2&quot;,routing_key=&quot;#&quot;)</span><br><span class="line"># 当routing_key=“一个任意单词.orange.0个或1一个任意单词”</span><br><span class="line">channel.queue_bind(exchange=&quot;topic_exchange&quot;,queue=&quot;topic_queue3&quot;,routing_key=&quot;*.red.#&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 三个队列都会接收到消息</span><br><span class="line">channel.basic_publish(exchange=&quot;topic_exchange&quot;,</span><br><span class="line">                      routing_key=&quot;n1.red.n3&quot;,</span><br><span class="line">                      body=&quot;topic_message&quot;)</span><br><span class="line"></span><br><span class="line"># 只有queue2和queue3能够接受到消息</span><br><span class="line">channel.basic_publish(exchange=&quot;topic_exchange&quot;,</span><br><span class="line">                      routing_key=&quot;n1.red&quot;,</span><br><span class="line">                      body=&quot;topic_message&quot;)</span><br><span class="line"># 只有queue2能够接受到消息</span><br><span class="line">channel.basic_publish(exchange=&quot;topic_exchange&quot;,</span><br><span class="line">                      routing_key=&quot;hjdasoij&quot;,</span><br><span class="line">                      body=&quot;topic_message&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -254,7 +291,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -267,420 +304,128 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2018/09/20/rabbitmq06-交换机/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq05-公平调度/" class="archive-article-date">
-  	<time datetime="2018-09-20T06:56:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/09/20/rabbitmq07-RPC服务/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          rabbitmq07 RPC服务
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/20/rabbitmq05-公平调度/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">rabbitmq05 公平调度</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq05-公平调度/">rabbitmq05 公平调度</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#交换机"><span class="toc-number">1.</span> <span class="toc-text">交换机</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#扇形交换机"><span class="toc-number">1.1.</span> <span class="toc-text">扇形交换机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#direct直连交换机"><span class="toc-number">1.2.</span> <span class="toc-text">direct直连交换机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#topic交换机"><span class="toc-number">1.3.</span> <span class="toc-text">topic交换机</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq04-消息持久化/" class="archive-article-date">
-  	<time datetime="2018-09-20T06:56:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq04-消息持久化/">rabbitmq04 消息持久化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq03-ack消息确认/" class="archive-article-date">
-  	<time datetime="2018-09-20T05:22:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq03-ack消息确认/">rabbitmq03 ack消息确认</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq02-模拟工作请求/" class="archive-article-date">
-  	<time datetime="2018-09-20T05:19:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq02-模拟工作请求/">rabbitmq02 模拟工作请求</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/Nginx负载调优总结/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:58:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/Nginx负载调优总结/">Nginx负载调优总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">调优</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/Tomcat监控之probe3-0的安装与使用/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:56:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/Tomcat监控之probe3-0的安装与使用/">Tomcat监控之probe3.0的安装与使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">监控</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/MySQL之提示mysql-deamon-failed-to-start错误的解决方法/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:53:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/MySQL之提示mysql-deamon-failed-to-start错误的解决方法/">MySQL之提示mysql deamon failed to start错误的解决方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/mysql数据同步报错Incorrect-table-definition-there-can-be-only-one-TIMESTAMP-column-with-CURRENT-TIMESTAMP-in-DEFAULT-or-ON-UPDATE-clause/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:52:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/mysql数据同步报错Incorrect-table-definition-there-can-be-only-one-TIMESTAMP-column-with-CURRENT-TIMESTAMP-in-DEFAULT-or-ON-UPDATE-clause/">mysql数据同步报错Incorrect table definition;there can be only one TIMESTAMP column with CURRENT_TIMESTAMP in DEFAULT or ON UPDATE clause</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+<script type="text/javascript">
+document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
+</script>
+
   
 
 
@@ -705,8 +450,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
