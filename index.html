@@ -170,6 +170,520 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python爬虫CCTV2《环球财经连线》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/20/python爬虫CCTV2《环球财经连线》/">python爬虫CCTV2《环球财经连线》</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/python爬虫CCTV2《环球财经连线》/" class="archive-article-date">
+  	<time datetime="2018-09-20T09:35:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>　笔者前言：平时比较喜欢看CCTV2的《国际财经报道》（原环球财经连线），但是央视的app没有提供缓存功能，笔者又想上下班和跑步的时候看或者听。于是花了大概一天时间写了python脚本爬取了央视的视频并转为音频。<br>相关文件下载地址：</p>
+</blockquote>
+<h4 id="一、爬取视频"><a href="#一、爬取视频" class="headerlink" title="一、爬取视频"></a>一、爬取视频</h4><h5 id="1-分析视频链接"><a href="#1-分析视频链接" class="headerlink" title="1. 分析视频链接"></a>1. 分析视频链接</h5><p>通过对央视的cctv2直播和国际财经报道专题页面视频流的传递分析，最终选择了专题页面的视频接口，作为视频下载的爬虫接口。<br><img src="http://upload-images.jianshu.io/upload_images/2572206-ae7fdc4ba60291f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.CCTV2直播页面"><br><img src="http://upload-images.jianshu.io/upload_images/2572206-74b6b7d2eec3a513.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.2国际财经报道专题页面"><br><img src="http://upload-images.jianshu.io/upload_images/2572206-d8f39e483bb285cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.2.1国际财经报道专题-详细播放页面"></p>
+<p>直播视频接口的分析不作介绍，感兴趣的读者可以自行分析。详细讲解专题页面的视频接口分析</p>
+<ul>
+<li>通过谷歌浏览器的网络查看器，可以观察到视频接口为<code>http://cntv.hls.cdn.myqcloud.com/asp/hls/850/0303000a/3/default/9f1152607b444e62969618bd2b18b871/4.ts</code><br>可以分析到：整期视频被分成了一个又一个.ts视频，每个.ts视频文件里有10-15秒的节目内容。关键参数为<code>9f1152607b444e62969618bd2b18b871 #每期节目都会有一个对应的节目码</code><br><code>1.ts #用于控制播放时间的.ts文件名</code><br>这样我们只要可以拿到节目码然后依序下载.ts文件就可以了</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2572206-16541c8f611a424f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li><p>获取节目码<br>翻看之前的请求，在当前页面的请求：<code>http://tv.cctv.com/2018/02/28/VIDEKrNvEp5ead7SdmFq0fxe180228.shtml</code>中，找到了我们需要的节目码（由于笔者是性能测试工程师，所以借用Loadrunner的关联技术很快就找到了节目码所在的位置，算是野路子；正经的情况可能要一个一个请求的翻查，是一个需要经验和耐心的过程。）<br><code>fo.addVariable(&quot;videoCenterId&quot;,&quot;9f1152607b444e62969618bd2b18b871&quot;); #保存关键字</code><br><img src="http://upload-images.jianshu.io/upload_images/2572206-ec217990c42e0e74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="节目码"></p>
+</li>
+<li><p>那么只要能够模拟访问<code>http://tv.cctv.com/2018/02/28/VIDEKrNvEp5ead7SdmFq0fxe180228.shtml #当前页面链接</code>我们就能够找到节目码实现爬取视频了。<br>笔者一开始的思路是直接到<code>http://tv.cctv.com/lm/hqcjlx/</code>专题页面爬取最新节目的链接就好了，但是发现专题页面的更新有延迟（新节目可以在详细界面的往期模块看到，但是专题页面没有）并且偶尔会出现乱序的情况。所以最终Pass了这套方案，那么我们到哪里获取最新节目的链接呢？<br><img src="http://upload-images.jianshu.io/upload_images/2572206-ccbc59138f135578.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="专题页面"></p>
+</li>
+<li>刚刚有提到，节目会最早更新在详细播放页面的往期中，我们只要爬到往期中的url链接就可以了。继续分析页面请求<br><img src="http://upload-images.jianshu.io/upload_images/2572206-94126f17d4f227eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="往期"><br>定位到接口<code>http://api.cntv.cn/video/getVideoListByTopicIdInfo?videoid=VIDEKrNvEp5ead7SdmFq0fxe180228&amp;topicid=TOPC1451531385787654&amp;serviceId=cbox&amp;type=0&amp;t=jsonp&amp;cb=setItem0=</code>，返回了整个往期列表内的信息，分析关键参数<br><code>videoid=VIDEKrNvEp5ead7SdmFq0fxe180228</code><br><code>topicid=TOPC1451531385787654</code><br>只要能够获取到这两个参数，我们就可以发送往期视频接口列表的请求。<br><img src="http://upload-images.jianshu.io/upload_images/2572206-1b949bae2336934a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="往期节目接口"></li>
+<li><p>分析videoid和topicid<br>分析请求后看到，在页面请求中，我们在当前页面请求<code>http://tv.cctv.com/2018/02/28/VIDEKrNvEp5ead7SdmFq0fxe180228.shtml</code><br><img src="http://upload-images.jianshu.io/upload_images/2572206-c3d888e07b3868f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="videoid和topicid"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var itemid1=&quot;VIDEKrNvEp5ead7SdmFq0fxe180228&quot;;/*正文页id，赋值给留言评论模块的参数之一*/</span><br><span class="line"></span><br><span class="line">var column_id = &quot;TOPC1451531385787654&quot;;/*专题id*/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下面我们只要拿到最近任意一期的节目播放url，就可以拿到videoid和topicid了<br><img src="http://upload-images.jianshu.io/upload_images/2572206-efe60d63543de179.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<hr>
+<p>分析的工作终于渐入尾声，我们来整理一下捋出的线</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">步骤</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1. 视频下载</td>
+<td>为了实现视频下载，我们需要知道下载链接<code>http://cntv.hls.cdn.myqcloud.com/asp/hls/850/0303000a/3/default/9f1152607b444e62969618bd2b18b871/4.ts</code>中的节目码</td>
+</tr>
+<tr>
+<td style="text-align:left">2. 获取节目码</td>
+<td>当前页面请求<code>http://tv.cctv.com/2018/02/28/VIDEKrNvEp5ead7SdmFq0fxe180228.shtml</code>返回了我们需要的节目码，获取节目最新节目链接</td>
+</tr>
+<tr>
+<td style="text-align:left">3.获取最新节目链接</td>
+<td>节目接口<code>http://api.cntv.cn/video/getVideoListByTopicIdInfo?videoid=VIDEKrNvEp5ead7SdmFq0fxe180228&amp;topicid=TOPC1451531385787654&amp;serviceId=cbox&amp;type=0&amp;t=jsonp&amp;cb=setItem0=</code>返回了我们需要的最新节目链接，但是要知道<code>videoid</code>和<code>topicid</code></td>
+</tr>
+<tr>
+<td style="text-align:left">4. 获取<code>videoid</code>和<code>topicid</code></td>
+<td>在最近任意一期的节目页面请求中<code>http://tv.cctv.com/2018/02/28/VIDEKrNvEp5ead7SdmFq0fxe180228.shtml</code>我们可以获取<code>videoid</code>和<code>topicid</code></td>
+</tr>
+<tr>
+<td style="text-align:left">5. 获取最近一期节目链接</td>
+<td>我们在专题页面<code>http://tv.cctv.com/lm/hqcjlx/</code>随便拿一期节目链接即可</td>
+</tr>
+</tbody>
+</table>
+<p>至此，我们通过这条线就能够下载节目视频了</p>
+<h5 id="2-视频下载"><a href="#2-视频下载" class="headerlink" title="2. 视频下载"></a>2. 视频下载</h5><p>视频的下载可以查读代码，下载成功之后我们就会有一个有一个连续的.ts视频文件了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import os</span><br><span class="line">import time</span><br><span class="line">import datetime</span><br><span class="line">import hebingshipin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 设置文件保存根目录</span><br><span class="line"># path = r&apos;E:\xn\开发\python\pythondown_yangshi&apos;</span><br><span class="line">path = r&apos;/home/gzyDesktop/yangshiPython/huanqiucaijinglianxian/output/ts&apos;</span><br><span class="line"></span><br><span class="line"># 获取当前日期</span><br><span class="line">now = datetime.datetime.now()</span><br><span class="line">year = (now.strftime(&apos;%y&apos;))</span><br><span class="line">month = (now.strftime(&apos;%m&apos;))</span><br><span class="line">day = (now.strftime(&apos;%d&apos;))</span><br><span class="line"># print(year,month,day)</span><br><span class="line"></span><br><span class="line">def getVideo():</span><br><span class="line">    videoCenterId = getVideoCenterId()</span><br><span class="line">    if (videoCenterId == &quot;300&quot;):</span><br><span class="line">        print(&quot;今日节目未更新，等待下次监测&quot;)</span><br><span class="line">        return &quot;300&quot;</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;今日节目已更新，监测是否下载&quot;)</span><br><span class="line">        downloadVideo(videoCenterId)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 根据videoCenterId将对应日期的节目下载到指定文件夹</span><br><span class="line">def downloadVideo(videoCenterId):</span><br><span class="line">    filepath = path+r&apos;/20&apos;+year+month+day</span><br><span class="line">    isExists = os.path.exists(filepath)</span><br><span class="line">    if not isExists:</span><br><span class="line">        # 如果不存在则创建目录</span><br><span class="line">        # 创建目录操作函数</span><br><span class="line">        print(&quot;节目未下载，正在创建文件夹&quot;)</span><br><span class="line">        os.makedirs(filepath)</span><br><span class="line">        print(&apos;文件夹&apos;+filepath + &apos; 创建成功&apos;)</span><br><span class="line"></span><br><span class="line">        print(&quot;正在下载视频&quot;)</span><br><span class="line">        # 下载文件</span><br><span class="line">        for i in range(1, 156):</span><br><span class="line">            downloadUrl = r&apos;http://cntv.hls.cdn.myqcloud.com/asp/hls/850/0303000a/3/default/&apos;+videoCenterId+r&apos;/&apos; + str(i) + r&apos;.ts&apos;</span><br><span class="line">            url = downloadUrl</span><br><span class="line">            r = requests.get(url)</span><br><span class="line">            with open(filepath + r&apos;/&apos;+year+month+day+r&apos;_&apos; + str(i).zfill(3) + r&quot;.ts&quot;, &quot;wb&quot;) as code:</span><br><span class="line">                code.write(r.content)</span><br><span class="line">        print(&quot;视频下载成功&quot;)</span><br><span class="line">        print(&quot;正在将视频转为acc音频文件...&quot;)</span><br><span class="line">        hebingshipin.getMusic();</span><br><span class="line">    else:</span><br><span class="line">        # 如果目录存在则不创建，并提示目录已存在</span><br><span class="line">        print(&quot;视频已下载&quot;)</span><br><span class="line"></span><br><span class="line"># 获取《环球财经连线最新节目的url》</span><br><span class="line">def getVideoCenterId():</span><br><span class="line">    #</span><br><span class="line">    # 《环球财经连线》介绍页面</span><br><span class="line">    jieshaoyeurl = &quot;http://tv.cctv.com/lm/hqcjlx/&quot;</span><br><span class="line">    response = requests.get(jieshaoyeurl)</span><br><span class="line"></span><br><span class="line">    # 介绍页当前第一个节目的链接正则</span><br><span class="line">    firsturlCompile = &apos;\&quot;&gt;&lt;a href=\&quot;(.*?)\&quot; target=\&quot;_blank\&quot;&gt;&apos;</span><br><span class="line"></span><br><span class="line">    pattern = re.compile(firsturlCompile, re.DOTALL)</span><br><span class="line">    items = re.findall(pattern, response.text)</span><br><span class="line">    # print(items[0])</span><br><span class="line">    firsturl = items[0]</span><br><span class="line"></span><br><span class="line">    #</span><br><span class="line">    # 访问获取到的播放页面</span><br><span class="line">    response = requests.get(firsturl)</span><br><span class="line"></span><br><span class="line">    # column_id正则</span><br><span class="line">    column_idCompile = &apos;var column_id = \&quot;(.*?)\&quot;;&apos;</span><br><span class="line">    # itemid1正则</span><br><span class="line">    itemid1Compile = &apos;var itemid1=\&quot;(.*?)\&quot;;&apos;</span><br><span class="line"></span><br><span class="line">    column_idpattern = re.compile(column_idCompile, re.DOTALL)</span><br><span class="line">    column_iditems = re.findall(column_idpattern, response.text)</span><br><span class="line"></span><br><span class="line">    column_id = column_iditems[0]</span><br><span class="line">    # print(column_id)</span><br><span class="line"></span><br><span class="line">    itemid1pattern = re.compile(itemid1Compile, re.DOTALL)</span><br><span class="line">    itemid1items = re.findall(itemid1pattern, response.text)</span><br><span class="line"></span><br><span class="line">    itemid1 = itemid1items[0]</span><br><span class="line">    # print(itemid1)</span><br><span class="line"></span><br><span class="line">    #</span><br><span class="line">    # 由于介绍页面的节目不是最新节目，我们要调用另一个接口去获取最新的节目单</span><br><span class="line"></span><br><span class="line">    # http://api.cntv.cn/video/getVideoListByTopicIdInfo?videoid=&#123;itemid1&#125;&amp;topicid=&#123;column_id&#125;&amp;serviceId=cbox&amp;type=0&amp;t=jsonp&amp;cb=setItem0=</span><br><span class="line">    jiemudanUrl = r&apos;http://api.cntv.cn/video/getVideoListByTopicIdInfo?videoid=&apos; + itemid1 + r&apos;&amp;topicid=&apos; + column_id + r&apos;&amp;serviceId=cbox&amp;type=0&amp;t=jsonp&amp;cb=setItem0=&apos;</span><br><span class="line">    response = requests.get(jiemudanUrl)</span><br><span class="line"></span><br><span class="line">    # 最新节目url正则</span><br><span class="line">    newJiemuCompile = &apos;video_url\&quot;:\&quot;(.*?)\&quot;,&apos;</span><br><span class="line"></span><br><span class="line">    newJiemupattern = re.compile(newJiemuCompile, re.DOTALL)</span><br><span class="line">    newJiemuitems = re.findall(newJiemupattern, response.text)</span><br><span class="line">    # print(response.text)</span><br><span class="line">    newJiemu = newJiemuitems[0]</span><br><span class="line">    # print(newJiemu)</span><br><span class="line"></span><br><span class="line">    #</span><br><span class="line">    #至此最新节目的url已经获取到了</span><br><span class="line">    #</span><br><span class="line">    #判断当前节目是否是最新节目，如果不是则return</span><br><span class="line">    if(newJiemu.find(day+&quot;.shtml&quot;) == -1):</span><br><span class="line">        return &quot;300&quot;</span><br><span class="line">    #</span><br><span class="line">    # 获取最新节目的videoCenterId，用于后续的下载</span><br><span class="line">    response = requests.get(newJiemu)</span><br><span class="line"></span><br><span class="line">    # 最新节目url正则</span><br><span class="line">    videoCenterIdCompile = r&apos;addVariable\(&quot;videoCenterId&quot;,&quot;(.*?)&quot;\);&apos;</span><br><span class="line"></span><br><span class="line">    videoCenterIdpattern = re.compile(videoCenterIdCompile, re.DOTALL)</span><br><span class="line">    videoCenterIditems = re.findall(videoCenterIdpattern, response.text)</span><br><span class="line"></span><br><span class="line">    videoCenterId = videoCenterIditems[0]</span><br><span class="line">    # print(videoCenterId)</span><br><span class="line">    return videoCenterId</span><br></pre></td></tr></table></figure></p>
+<h4 id="二、视频的合并与转码"><a href="#二、视频的合并与转码" class="headerlink" title="二、视频的合并与转码"></a>二、视频的合并与转码</h4><p>视频的合并使用了ffmpeg，下载和安装可以参考  <a href="http://blog.csdn.net/hanzheng260561728/article/details/73744450" target="_blank" rel="noopener">Centos 7.3 Install ffmpeg 3.1</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">def hebingshipin(inVideopath,outVideopath,outFilename):</span><br><span class="line">    mkdir(inVideopath)</span><br><span class="line">    mkdir(outVideopath)</span><br><span class="line">    dirs = inVideopath</span><br><span class="line">    mp4 = outVideopath</span><br><span class="line">    filename = outFilename</span><br><span class="line">    a = 1</span><br><span class="line">    content = &quot;&quot;</span><br><span class="line">    lists = os.listdir(dirs)</span><br><span class="line">    lists.sort()</span><br><span class="line">    print(lists)</span><br><span class="line">    b = [lists[i:i + 250] for i in range(0, len(lists), 250)]</span><br><span class="line">    for lis in b:</span><br><span class="line">        cmd = &quot;cd %s &amp;&amp; ffmpeg -i \&quot;concat:&quot; % mp4</span><br><span class="line">        for file in lis:</span><br><span class="line">            if file != &apos;.DS_Store&apos;:</span><br><span class="line">                file_path = os.path.join(dirs, file)</span><br><span class="line">                cmd += file_path + &apos;|&apos;;</span><br><span class="line">                # print(&quot;文件：%s&quot;%file_path)</span><br><span class="line">        cmd = cmd[:-1]</span><br><span class="line">        cmd += &apos;&quot; -bsf:a aac_adtstoasc -c copy -vcodec copy %s.mp4&apos; % a</span><br><span class="line">        try:</span><br><span class="line">            os.system(cmd)</span><br><span class="line">            content += &quot;file &apos;%s.mp4&apos;\n&quot; % a</span><br><span class="line">            a = a + 1</span><br><span class="line">        except:</span><br><span class="line">            print(&quot;Unexpected error&quot;)</span><br><span class="line"></span><br><span class="line">    fp = open(&quot;%smp4list.txt&quot; % mp4, &apos;a+&apos;)</span><br><span class="line">    fp.write(content)</span><br><span class="line">    fp.close()</span><br><span class="line">    mp4cmd = &quot;cd %s &amp;&amp; ffmpeg -y -f concat -i mp4list.txt -c copy %s&quot; % (mp4, filename)</span><br><span class="line">    os.system(mp4cmd)</span><br><span class="line">    filenamecmd = &quot;cd %s &amp;&amp; mv 1.mp4 %s&quot; % (mp4, filename)</span><br><span class="line">    os.system(filenamecmd)</span><br><span class="line"></span><br><span class="line">def mkdir(filepath):</span><br><span class="line">    isExists = os.path.exists(filepath)</span><br><span class="line">    if not isExists:</span><br><span class="line">        # 如果不存在则创建目录</span><br><span class="line">        # 创建目录操作函数	</span><br><span class="line">        os.makedirs(filepath)</span><br><span class="line">    else:</span><br><span class="line">        print(filepath+&apos;文件夹已建立&apos;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="三、将视频转换为音频"><a href="#三、将视频转换为音频" class="headerlink" title="三、将视频转换为音频"></a>三、将视频转换为音频</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def videoToaacmusic(videoFilepath,videoFilename,musicFilename):</span><br><span class="line">    mkdir(videoFilepath)</span><br><span class="line">    haveMusiccmd = &quot;cd %s &amp;&amp; ffmpeg -i %s -vn -y -acodec -ab 192k copy %s&quot; % (videoFilepath,videoFilename,musicFilename)</span><br><span class="line">    os.system(haveMusiccmd)</span><br></pre></td></tr></table></figure>
+<p>总结：大概花了一天时间实现了这个想法，都是一些非常成熟的技术，重点在一整条链路的分析上，由于笔者是性能测试工程师，时常接触这方便的内容，且使用了其他工具，所以较为熟练。存在的疑点为：python爬虫的分析，目前是否存在相关的插件，可以帮助分析出一整条链路？</p>
+
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/20/python爬虫CCTV2《环球财经连线》/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python运行失败-报错：api-ms-win-core-path-l1-1-0-dll" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/20/python运行失败-报错：api-ms-win-core-path-l1-1-0-dll/">python运行失败 报错：api-ms-win-core-path-l1-1-0.dll</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/python运行失败-报错：api-ms-win-core-path-l1-1-0-dll/" class="archive-article-date">
+  	<time datetime="2018-09-20T09:24:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>前言：网上解决方案看了很多，本文针对其中一种情况，重新安装vc++2015<br>文件下载链接：<a href="https://pan.baidu.com/s/1-I2nhWwyOhBBEkgQngj6HA" target="_blank" rel="noopener">https://pan.baidu.com/s/1-I2nhWwyOhBBEkgQngj6HA</a> 密码：rel3</p>
+</blockquote>
+<ul>
+<li><ol>
+<li>首先执行一下下载的vc_redist.2015.x64.exe文件，1) 如果提示已经安装，点击卸载，然后重新安装  2)安装，不出意外，你应该会安装失败</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>下面我们来解决一下vc_redist.2015安装失败的问题，打开控制面板<br><img src="http://upload-images.jianshu.io/upload_images/2572206-3f2da247fb24c600.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="控制面板"></li>
+</ol>
+</li>
+<li><p>3.查看已安装的更新，搜索KB2999<br><img src="http://upload-images.jianshu.io/upload_images/2572206-c402a02ae816ae7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/2572206-b41ff2927b4ce981.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><ol start="4">
+<li>如果你搜索到了，右键卸了它；如果你没搜到，查看第5步<br>1) 访问C:\ProgramData\Package Cache文件夹，直接地址框进入，默认你是看不到文件夹的<br>1) 右上角搜索.msu<br><img src="http://upload-images.jianshu.io/upload_images/2572206-4516a15e8db9f0a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>1) 安装它，然后重启。重新启动的时候会有一次准备配置windows提示，平时更新都会看到这个界面。<br>1) 重新安装vc_redist.2015试试，成功了的话，那么恭喜你，你的python已经可以用了</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>如果你没有在更新列表里搜到KB2999这条更新<ul>
+<li>1.访问C:\ProgramData\Package Cache文件夹<br><img src="https://upload-images.jianshu.io/upload_images/2572206-e00c4f0846a920d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li><ol start="2">
+<li>搜索.msu文件，如果没搜到，在笔者的网盘里下载一个<br><img src="https://upload-images.jianshu.io/upload_images/2572206-31424c970644817c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ol>
+</li>
+<li><ol start="3">
+<li>把Windows6.1-KB2999226-x64.msu文件重命名为Windows6.1-KB2999226-x64.cab</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>解压Windows6.1-KB2999226-x64.cab得到<br><img src="https://upload-images.jianshu.io/upload_images/2572206-54d89b9861f581f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ol>
+</li>
+<li>5.按住shift右键打开cmd<br><img src="https://upload-images.jianshu.io/upload_images/2572206-6e7ccee37c1657e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li><ol start="6">
+<li>执行<code>dism /online /add-package /packagepath:&quot;Windows6.1-KB2999226-x64.cab&quot;</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>到这里重新安装一下vc_redist.2015.x64.exe文件，这次就可以成功了</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>重新安装一下python3.6（网盘已附带），愉快的开始你的python之旅吧</li>
+</ol>
+</li>
+</ul>
+
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/20/python运行失败-报错：api-ms-win-core-path-l1-1-0-dll/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Pycharm远程ssh连接的terminal乱码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/20/Pycharm远程ssh连接的terminal乱码/">Pycharm远程ssh连接的terminal乱码</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/Pycharm远程ssh连接的terminal乱码/" class="archive-article-date">
+  	<time datetime="2018-09-20T09:23:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/2572206-d219cfc4527e9dab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Pycharm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/20/Pycharm远程ssh连接的terminal乱码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-charles-flask实现动态mock" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/20/charles-flask实现动态mock/">charles+flask实现动态mock</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/charles-flask实现动态mock/" class="archive-article-date">
+  	<time datetime="2018-09-20T09:22:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="charles-flask实现动态mock"><a href="#charles-flask实现动态mock" class="headerlink" title="charles+flask实现动态mock"></a>charles+flask实现动态mock</h4><h5 id="直入正题"><a href="#直入正题" class="headerlink" title="直入正题"></a>直入正题</h5><p>工作遇到需要测试投放的广告效果，广告效果图是这样的<br><img src="https://upload-images.jianshu.io/upload_images/2572206-c6c40a778c7dead4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/180" alt="广告图"><br>想把广告图换成自己公司的图片上只要通过charles改改改就完了，但是怎么动态的改改改呢？</p>
+<h5 id="1-charles抓包设置"><a href="#1-charles抓包设置" class="headerlink" title="1.charles抓包设置"></a>1.charles抓包设置</h5><p><img src="https://upload-images.jianshu.io/upload_images/2572206-681bfcda82a50c88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="步骤1"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-7e17c0ea1ae03d00.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="步骤2"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-e37bf2ab8e144211.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="步骤3"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-7dda118ca22a1ae4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="步骤4：设置手机代理，ip是电脑ip"></p>
+<h5 id="2-设置map-remote"><a href="#2-设置map-remote" class="headerlink" title="2.设置map remote"></a>2.设置map remote</h5><ul>
+<li><p>找到关键请求<br><img src="https://upload-images.jianshu.io/upload_images/2572206-4af4a69c2cc25290.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="找到关键请求"></p>
+</li>
+<li><p>打开Map Remote<br><img src="https://upload-images.jianshu.io/upload_images/2572206-dbc2dd7eef7a9307.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打开Map Remote"></p>
+</li>
+<li><p>map remote配置<br><img src="https://upload-images.jianshu.io/upload_images/2572206-615bc20e080ea9d6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="map remote配置"></p>
+</li>
+</ul>
+<ul>
+<li><p>开启map remote<br><img src="https://upload-images.jianshu.io/upload_images/2572206-ee6ae000e6fb1982.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="开启map remote"></p>
+</li>
+<li><p>实现思路<br><img src="https://upload-images.jianshu.io/upload_images/2572206-086b478e533cb270.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>看到这很多同学可能就明白了，这不就是以前网络安全课或者在书上看到的黑客常用的攻击手段吗，没错，咱们今天体验一把</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="3-书写中转器"><a href="#3-书写中转器" class="headerlink" title="3.书写中转器"></a>3.书写中转器</h5><ul>
+<li>安装flask<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install flask</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#-*-coding:UTF-8-*-</span><br><span class="line">import flask</span><br><span class="line">import requests</span><br><span class="line">import json</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>替换方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def replace_txt(json_data):</span><br><span class="line">    data_id = &quot;&quot;</span><br><span class="line">    for dic in json_data[&quot;data&quot;]:</span><br><span class="line">        data_id = dic</span><br><span class="line"></span><br><span class="line">    list = json_data.get(&quot;data&quot;).get(data_id).get(&apos;list&apos;)</span><br><span class="line">    for ad in list:</span><br><span class="line">        print(ad)</span><br><span class="line">        ad[&apos;txt&apos;] = &quot;网易新闻&quot;</span><br><span class="line">        ad[&apos;desc&apos;] = &quot;人体75%都是水，喝够水的人生到底有多赚？&quot;</span><br><span class="line">        ad[&apos;img&apos;]=&quot;http://cms-bucket.nosdn.127.net/fa04e6870fd647c8b49cdf4719247a6b20180531114309.jpeg?imageView&amp;enlarge=1&amp;thumbnail=1200y800&amp;quality=85&quot;</span><br><span class="line">        ad[&apos;img2&apos;]=&quot;http://pgdt.gtimg.cn/gdt/0/9c59c1ca41aea62d77328526c4ef5eb9.PNG/0&quot;</span><br><span class="line">        ad[&apos;customized_invoke_url&apos;]=&quot;newsapp://doc/DJ4OSETE0511A0AV?spsAdDocId=DJ4OSETE0511A0AV&amp;spsPrice=0&amp;spsPicId=http%3A%2F%2Fcms-bucket.nosdn.127.net%2Ffa04e6870fd647c8b49cdf4719247a6b20180531114309.jpeg%3FimageView%26enlarge%3D1%26thumbnail%3D1200y800%26quality%3D85&amp;spsAdPlanId=176&amp;spsModelId=0&amp;s=news_zhizi_android_01&amp;spsAdId=2&amp;spsExpandId=291&amp;spsImpressionId=441203903548&amp;spsextend=test2&quot;</span><br><span class="line">        if not ad.get(&apos;ext&apos;):</span><br><span class="line">            ad[&apos;ext&apos;] = &#123;&#125;</span><br><span class="line">        ad[&apos;ext&apos;][&apos;appname&apos;]=&quot;网易新闻&quot;</span><br><span class="line">        ad[&apos;ext&apos;][&apos;pkg_name&apos;]=&quot;com.netease.newsreader.activity&quot;</span><br><span class="line">        ad[&apos;ext&apos;][&apos;appid&apos;]=100812722</span><br><span class="line">        ad[&apos;pkg_download_schema&apos;]=&quot;taskApkId=0&amp;packName=com.netease.newsreader.activity&amp;taskAppId=&amp;appId=&amp;via=ANDROIDQQ.FEED.ADVERTISE.zvqj62cnik7wo01&amp;versionCode=652&amp;channel=000116083636353430393231;70225816&quot;</span><br><span class="line">        # ad[&apos;rl&apos;]=&quot;newsapp://doc/DJ4OSETE0511A0AV?spsAdDocId=DJ4OSETE0511A0AV&amp;spsPrice=0&amp;spsPicId=http%3A%2F%2Fcms-bucket.nosdn.127.net%2Ffa04e6870fd647c8b49cdf4719247a6b20180531114309.jpeg%3FimageView%26enlarge%3D1%26thumbnail%3D1200y800%26quality%3D85&amp;spsAdPlanId=176&amp;spsModelId=0&amp;s=news_zhizi_android_01&amp;spsAdId=2&amp;spsExpandId=291&amp;spsImpressionId=441203903548&amp;spsextend=test2&quot;</span><br><span class="line">    # print(list)</span><br><span class="line">    json_data[&apos;data&apos;][data_id][&quot;list&quot;]=list</span><br><span class="line">    return json_data</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>请求接收-处理-返回(处理部分：替换请求url，将返回的response替换成我们需要的response）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@server.route(&apos;/information&apos;,methods=[&quot;get&quot;,&quot;post&quot;]) # server.route装饰器装饰方法</span><br><span class="line">def information():</span><br><span class="line">    url = flask.request.url</span><br><span class="line">    # print(&quot;url:&quot;,url)</span><br><span class="line">    url = url.replace(&quot;http://47.94.108.11:8999&quot;,&quot;http://info.gdt.qq.com&quot;)</span><br><span class="line">    res = requests.get(url).json()</span><br><span class="line">    if &apos;push&apos; not in url:</span><br><span class="line">        res = replace_txt(res)</span><br><span class="line">    return json.dumps(res,ensure_ascii=False)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.run(host=&apos;0.0.0.0&apos;,port=8999,debug=True) # server的启动</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="4-看一下效果"><a href="#4-看一下效果" class="headerlink" title="4.看一下效果"></a>4.看一下效果</h5><p><img src="https://upload-images.jianshu.io/upload_images/2572206-f74597ef83e8d247.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-e312369279b95282.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/280" alt=""></p>
+
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">charles</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">mock</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">flask</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/20/charles-flask实现动态mock/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Discuz安装问题记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -477,7 +991,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="mediawiki在windows下的安装"><a href="#mediawiki在windows下的安装" class="headerlink" title="mediawiki在windows下的安装"></a><a href="http://www.cnblogs.com/edwardsun/p/3904304.html" target="_blank" rel="noopener">mediawiki在windows下的安装</a></h1><blockquote>
+        <h3 id="mediawiki在windows下的安装"><a href="#mediawiki在windows下的安装" class="headerlink" title="mediawiki在windows下的安装"></a><a href="http://www.cnblogs.com/edwardsun/p/3904304.html" target="_blank" rel="noopener">mediawiki在windows下的安装</a></h3><blockquote>
 <p>文件下载地址：<a href="https://pan.baidu.com/s/1eUdDhlw" target="_blank" rel="noopener">https://pan.baidu.com/s/1eUdDhlw</a> 密码：xvhb<br>环境：</p>
 <ul>
 <li>windows7</li>
@@ -744,395 +1258,6 @@
 
 
   
-    <article id="post-tomcat日志详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/tomcat日志详解/">tomcat日志详解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/tomcat日志详解/" class="archive-article-date">
-  	<time datetime="2018-09-20T08:21:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>/logs</p>
-</blockquote>
-<p><strong>catalina.日期.log–启动日志</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 启动时的JVM参数</span><br><span class="line">- 操作系统日志信息</span><br><span class="line">** 如果没有log4j等日志机制，系统的错误信息和打印语句也在这个日志文件中记录</span><br><span class="line">** catalina.out是所有catalina日志文件的集合,但是应用向console输出的日志不会输出到catalina.&#123;yyyy-MM-dd&#125;.log。</span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2018/09/20/tomcat日志详解/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/tomcat日志详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Centos配置java-tomcat环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/Centos配置java-tomcat环境/">Centos配置java+tomcat环境</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/Centos配置java-tomcat环境/" class="archive-article-date">
-  	<time datetime="2018-09-20T08:07:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>系统：<br>jdk：jdk-8u161-linux-x64.tar<br>tomcat：8.0.50<br>链接：<a href="https://pan.baidu.com/s/1HSbXjRJmwmj_nukHSVrDRQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1HSbXjRJmwmj_nukHSVrDRQ</a> 密码：6aew</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/09/20/Centos配置java-tomcat环境/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/Centos配置java-tomcat环境/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka10-kafka整合flume" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka10-kafka整合flume/">kafka10 kafka整合flume</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/kafka10-kafka整合flume/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>flume安装参见<a href="https://www.jianshu.com/p/047c2a684771" target="_blank" rel="noopener">https://www.jianshu.com/p/047c2a684771</a></p>
-</blockquote>
-<h4 id="kafka整合flume"><a href="#kafka整合flume" class="headerlink" title="kafka整合flume"></a>kafka整合flume</h4><h5 id="1-配置flume"><a href="#1-配置flume" class="headerlink" title="1.配置flume"></a>1.配置flume</h5><ul>
-<li>添加</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka10-kafka整合flume/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka10-kafka整合flume/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka09-自定义提交offset" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka09-自定义提交offset/">kafka09 自定义提交offset</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/kafka09-自定义提交offset/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="自定义提交offset"><a href="#自定义提交offset" class="headerlink" title="自定义提交offset"></a>自定义提交offset</h4><p>之前的实验中，采用的是自动提交offset的方式，这样下次进行pull操作的时候，就能根据我们之前提交的offset拿到最新的消息。<br>但是这种方式可能没办法满足一些特定的业务场景，下面让我们来手写提交offset的程序吧。</p>
-<ul>
-<li>关闭自动提交offset</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka09-自定义提交offset/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka09-自定义提交offset/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1268,6 +1393,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
               </li>
              
@@ -1288,11 +1417,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kafka</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
