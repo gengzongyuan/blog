@@ -17,7 +17,7 @@
 <meta property="og:description" content="提前准备 文件下载地址：https://pan.baidu.com/s/1kVqweAr  安装  将probe.war文件上传至tomcat/webapps文件目录下    重启tomcat时war包会自动解压    将messages_cn.properties文件上传至webapps/probe/WEB-INF下">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-63d0e2e8983c7aee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-20T05:03:11.000Z">
+<meta property="og:updated_time" content="2018-09-20T05:09:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat监控之probe3.0的安装与使用">
 <meta name="twitter:description" content="提前准备 文件下载地址：https://pan.baidu.com/s/1kVqweAr  安装  将probe.war文件上传至tomcat/webapps文件目录下    重启tomcat时war包会自动解压    将messages_cn.properties文件上传至webapps/probe/WEB-INF下">
@@ -234,9 +234,12 @@
 </ol>
 </li>
 <li><ol start="3">
-<li>将messages_cn.properties文件上传至webapps/probe/WEB-INF下<a id="more"></a></li>
+<li>将messages_cn.properties文件上传至webapps/probe/WEB-INF下</li>
 </ol>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><ol start="4">
 <li>在tomcat安装目录下修改conf/tomcat-users.xml文件，添加<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version='1.0' encoding='utf-8'?&gt;</span><br><span class="line">&lt;tomcat-users&gt;</span><br><span class="line">  &lt;role rolename="tomcat"/&gt;</span><br><span class="line">  &lt;role rolename="role1"/&gt;</span><br><span class="line">  &lt;role rolename="manager-gui"/&gt; </span><br><span class="line">  &lt;role rolename="manager-script"/&gt;</span><br><span class="line">  &lt;role rolename="manager-jmx"/&gt;</span><br><span class="line">  &lt;role rolename="manager-status"/&gt;</span><br><span class="line">  &lt;user username="test1" password="1" roles="manager-gui"/&gt;</span><br><span class="line">  &lt;user username="test2" password="2" roles="manager-script,manager-jmx,manager-status,poweruser,probeuser"/&gt;</span><br><span class="line">&lt;/tomcat-users&gt;</span><br></pre></td></tr></table></figure>
 </li>
