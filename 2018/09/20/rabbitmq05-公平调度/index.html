@@ -9,14 +9,14 @@
   <title>rabbitmq05 公平调度 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="公平调度 不知道你有没有发现，如果在启动worker前消息队列中已经存在很多个消息了，当启动worker的时候会一股脑的把所有的消息都拿过去。如果之前消息队列中有1W条消息，那这1W条消息要消费多久啊！！  消息长度定义 使用basic_qos定义当前worker同一时间能够拿到手的消息的上限1channel.basic_qos(prefetch_count=1)">
-<meta name="keywords" content="rabbitmq">
+<meta name="keywords" content="python,rabbitmq">
 <meta property="og:type" content="article">
 <meta property="og:title" content="rabbitmq05 公平调度">
 <meta property="og:url" content="http://gengzongyuan.github.io/2018/09/20/rabbitmq05-公平调度/index.html">
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="公平调度 不知道你有没有发现，如果在启动worker前消息队列中已经存在很多个消息了，当启动worker的时候会一股脑的把所有的消息都拿过去。如果之前消息队列中有1W条消息，那这1W条消息要消费多久啊！！  消息长度定义 使用basic_qos定义当前worker同一时间能够拿到手的消息的上限1channel.basic_qos(prefetch_count=1)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-20T06:57:15.000Z">
+<meta property="og:updated_time" content="2018-09-20T07:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rabbitmq05 公平调度">
 <meta name="twitter:description" content="公平调度 不知道你有没有发现，如果在启动worker前消息队列中已经存在很多个消息了，当启动worker的时候会一股脑的把所有的消息都拿过去。如果之前消息队列中有1W条消息，那这1W条消息要消费多久啊！！  消息长度定义 使用basic_qos定义当前worker同一时间能够拿到手的消息的上限1channel.basic_qos(prefetch_count=1)">
@@ -236,6 +236,10 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
         		</li>
