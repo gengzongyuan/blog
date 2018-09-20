@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>大树的博客</title>
+  <title>vim操作技巧 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大树的博客">
-<meta property="og:url" content="http://gengzongyuan.github.io/index.html">
+  <meta name="description" content="vim操作技巧进入插入模式 很多新手进入插入模式都只是用 i。这样当然可以进入插入模式，但通常不是那么合适，因为 VIM 提供了很多进入插入模式的命令。下面是最常用的一些：  123456i：在当前字符的左边插入I：在当前行首插入a：在当前字符的右边插入A：在当前行尾插入o：在当前行下面插入一个新行O：在当前行上面插入一个新行">
+<meta name="keywords" content="vim,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim操作技巧">
+<meta property="og:url" content="http://gengzongyuan.github.io/2018/09/20/vim操作技巧/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="vim操作技巧进入插入模式 很多新手进入插入模式都只是用 i。这样当然可以进入插入模式，但通常不是那么合适，因为 VIM 提供了很多进入插入模式的命令。下面是最常用的一些：  123456i：在当前字符的左边插入I：在当前行首插入a：在当前字符的右边插入A：在当前行尾插入o：在当前行下面插入一个新行O：在当前行上面插入一个新行">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-20T04:38:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大树的博客">
+<meta name="twitter:title" content="vim操作技巧">
+<meta name="twitter:description" content="vim操作技巧进入插入模式 很多新手进入插入模式都只是用 i。这样当然可以进入插入模式，但通常不是那么合适，因为 VIM 提供了很多进入插入模式的命令。下面是最常用的一些：  123456i：在当前字符的左边插入I：在当前行首插入a：在当前字符的右边插入A：在当前行尾插入o：在当前行下面插入一个新行O：在当前行上面插入一个新行">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -164,16 +169,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-vim操作技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-vim操作技巧" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/vim操作技巧/">vim操作技巧</a>
+    <h1 class="article-title" itemprop="name">
+      vim操作技巧
     </h1>
   
 
@@ -187,6 +190,30 @@
 
         <!-- 目录内容 -->
         
+            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+             <span class="btn-bg"></span>
+                 <span class="btn-text">文章导航</span>
+                  </p>
+                <div id="toc-article" class="toc-article">
+                    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                        <strong class="toc-title">文章目录</strong>
+                   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vim操作技巧"><span class="toc-number">1.</span> <span class="toc-text">vim操作技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进入插入模式"><span class="toc-number">1.1.</span> <span class="toc-text">进入插入模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vim的除了自带以外的箭头值"><span class="toc-number">1.2.</span> <span class="toc-text">vim的除了自带以外的箭头值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速跳转"><span class="toc-number">1.3.</span> <span class="toc-text">快速跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单词跳转"><span class="toc-number">1.4.</span> <span class="toc-text">单词跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行数跳转"><span class="toc-number">1.5.</span> <span class="toc-text">行数跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页数跳转"><span class="toc-number">1.6.</span> <span class="toc-text">页数跳转</span></a></li></ol></li></ol>
+                 </div>
+           <script type="text/javascript"> 
+ 		function showToc(){
+                        var toc_article = document.getElementById("toc-article");
+                        var show_toc_btn = document.getElementById("show-toc-btn");
+                        toc_article.setAttribute("style","display:block");
+                        show_toc_btn.setAttribute("style","display:none");
+                        };
+                function showBtn(){
+                        var toc_article = document.getElementById("toc-article");
+                        var show_toc_btn = document.getElementById("show-toc-btn");
+                        toc_article.setAttribute("style","display:none");
+                        show_toc_btn.setAttribute("style","display:block");
+                        };
+           </script>
+        
         <!-- 目录内容结束 -->
    
 
@@ -196,9 +223,13 @@
 <p>很多新手进入插入模式都只是用 i。这样当然可以进入插入模式，但通常不是那么合适，因为 VIM 提供了很多进入插入模式的命令。下面是最常用的一些：</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i：在当前字符的左边插入</span><br><span class="line">I：在当前行首插入</span><br><span class="line">a：在当前字符的右边插入</span><br><span class="line">A：在当前行尾插入</span><br><span class="line">o：在当前行下面插入一个新行</span><br><span class="line">O：在当前行上面插入一个新行</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/09/20/vim操作技巧/#more">more >></a>
-        
+<a id="more"></a>
+<h3 id="vim的除了自带以外的箭头值"><a href="#vim的除了自带以外的箭头值" class="headerlink" title="vim的除了自带以外的箭头值"></a>vim的除了自带以外的箭头值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">h：←</span><br><span class="line">l：→</span><br><span class="line">j：↓</span><br><span class="line">k：↑</span><br></pre></td></tr></table></figure>
+<h3 id="快速跳转"><a href="#快速跳转" class="headerlink" title="快速跳转"></a>快速跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">H：跳到屏幕顶</span><br><span class="line">M：~中</span><br><span class="line">L：~下</span><br></pre></td></tr></table></figure>
+<h3 id="单词跳转"><a href="#单词跳转" class="headerlink" title="单词跳转"></a>单词跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w：跳到下一个单词的开始</span><br><span class="line">e：跳到单词的结束</span><br><span class="line">b：向后跳</span><br></pre></td></tr></table></figure>
+<h3 id="行数跳转"><a href="#行数跳转" class="headerlink" title="行数跳转"></a>行数跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gg：跳到文件的开始 </span><br><span class="line">G：跳到文件的结束 </span><br><span class="line">10gg或10G：跳到第10行</span><br><span class="line">CTRL-E：向下一行</span><br><span class="line">CTRL-Y：向上一行</span><br></pre></td></tr></table></figure>
+<h3 id="页数跳转"><a href="#页数跳转" class="headerlink" title="页数跳转"></a>页数跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CTRL-D：向下半页</span><br><span class="line">CTRL-U：向上半页</span><br></pre></td></tr></table></figure>
+
       
 
     <div class="article-info article-info-index">
@@ -233,16 +264,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/vim操作技巧/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2018/09/20/vim操作技巧/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/20/HEXO博客搭建（含免密传输）-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HEXO博客搭建（含免密传输）.md</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -257,209 +347,35 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HEXO博客搭建（含免密传输）-md" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/HEXO博客搭建（含免密传输）-md/">HEXO博客搭建（含免密传输）.md</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/HEXO博客搭建（含免密传输）-md/" class="archive-article-date">
-  	<time datetime="2018-09-20T03:41:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="github注册与respositories新建"><a href="#github注册与respositories新建" class="headerlink" title="github注册与respositories新建"></a>github注册与respositories新建</h5><ul>
-<li><p>注册github账号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建一个respositories<br><img src="https://upload-images.jianshu.io/upload_images/2572206-e0e984c260de9492.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-        
-          <a class="article-more-a" href="/2018/09/20/HEXO博客搭建（含免密传输）-md/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/HEXO博客搭建（含免密传输）-md/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vim操作技巧"><span class="toc-number">1.</span> <span class="toc-text">vim操作技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进入插入模式"><span class="toc-number">1.1.</span> <span class="toc-text">进入插入模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vim的除了自带以外的箭头值"><span class="toc-number">1.2.</span> <span class="toc-text">vim的除了自带以外的箭头值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速跳转"><span class="toc-number">1.3.</span> <span class="toc-text">快速跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单词跳转"><span class="toc-number">1.4.</span> <span class="toc-text">单词跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行数跳转"><span class="toc-number">1.5.</span> <span class="toc-text">行数跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页数跳转"><span class="toc-number">1.6.</span> <span class="toc-text">页数跳转</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-rabbitmq01-简单的hello-world！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/19/rabbitmq01-简单的hello-world！/">rabbitmq01 简单的hello world！</a>
-    </h1>
   
 
-        
-        <a href="/2018/09/19/rabbitmq01-简单的hello-world！/" class="archive-article-date">
-  	<time datetime="2018-09-19T09:40:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>课前准备：<a href="https://www.jianshu.com/p/d6e9309535b7（单节点安装部分）" target="_blank" rel="noopener">https://www.jianshu.com/p/d6e9309535b7（单节点安装部分）</a></p>
-</blockquote>
-<h4 id="简单的hello-world！"><a href="#简单的hello-world！" class="headerlink" title="简单的hello world！"></a>简单的hello world！</h4><h5 id="1-发送消息"><a href="#1-发送消息" class="headerlink" title="1.发送消息"></a>1.发送消息</h5><ul>
-<li>安装pika包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pika==0.9.5</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/09/19/rabbitmq01-简单的hello-world！/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/19/rabbitmq01-简单的hello-world！/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+<script type="text/javascript">
+document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
+</script>
+
   
 
 
@@ -483,8 +399,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
