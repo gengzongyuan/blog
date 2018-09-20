@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>Archives: 2018/9 | 大树的博客</title>
+  <title>rabbitmq03 ack消息确认 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大树的博客">
-<meta property="og:url" content="http://gengzongyuan.github.io/archives/2018/09/index.html">
+  <meta name="description" content="ack消息确认 ack的产生是因为，如果消息发送给一个worker了，如果再运行期间，worker挂掉了，那我们的消息也就跟着worker丢了，为了保证worker挂掉不会带着消息一起挂掉，产生了ack确认机制">
+<meta name="keywords" content="rabbitmq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rabbitmq03 ack消息确认">
+<meta property="og:url" content="http://gengzongyuan.github.io/2018/09/20/rabbitmq03-ack消息确认/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="ack消息确认 ack的产生是因为，如果消息发送给一个worker了，如果再运行期间，worker挂掉了，那我们的消息也就跟着worker丢了，为了保证worker挂掉不会带着消息一起挂掉，产生了ack确认机制">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-20T05:22:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大树的博客">
+<meta name="twitter:title" content="rabbitmq03 ack消息确认">
+<meta name="twitter:description" content="ack消息确认 ack的产生是因为，如果消息发送给一个worker了，如果再运行期间，worker挂掉了，那我们的消息也就跟着worker丢了，为了保证worker挂掉不会带着消息一起挂掉，产生了ack确认机制">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -164,36 +169,87 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-rabbitmq03-ack消息确认" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      rabbitmq03 ack消息确认
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq03-ack消息确认/" class="archive-article-date">
+
+        
+        <a href="/2018/09/20/rabbitmq03-ack消息确认/" class="archive-article-date">
   	<time datetime="2018-09-20T05:22:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq03-ack消息确认/">rabbitmq03 ack消息确认</a>
-    </h1>
-  
+        
+      </header>
+    
 
-        <div class="article-info info-on-right">
-          
+        <!-- 目录内容 -->
+        
+            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+             <span class="btn-bg"></span>
+                 <span class="btn-text">文章导航</span>
+                  </p>
+                <div id="toc-article" class="toc-article">
+                    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                        <strong class="toc-title">文章目录</strong>
+                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#ack消息确认"><span class="toc-number">1.</span> <span class="toc-text">ack消息确认</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#模拟"><span class="toc-number">1.1.</span> <span class="toc-text">模拟</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#处理消息"><span class="toc-number">1.2.</span> <span class="toc-text">处理消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#校验结果"><span class="toc-number">1.3.</span> <span class="toc-text">校验结果</span></a></li></ol></li></ol>
+                 </div>
+           <script type="text/javascript"> 
+ 		function showToc(){
+                        var toc_article = document.getElementById("toc-article");
+                        var show_toc_btn = document.getElementById("show-toc-btn");
+                        toc_article.setAttribute("style","display:block");
+                        show_toc_btn.setAttribute("style","display:none");
+                        };
+                function showBtn(){
+                        var toc_article = document.getElementById("toc-article");
+                        var show_toc_btn = document.getElementById("show-toc-btn");
+                        toc_article.setAttribute("style","display:none");
+                        show_toc_btn.setAttribute("style","display:block");
+                        };
+           </script>
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="ack消息确认"><a href="#ack消息确认" class="headerlink" title="ack消息确认"></a>ack消息确认</h4><blockquote>
+<p>ack的产生是因为，如果消息发送给一个worker了，如果再运行期间，worker挂掉了，那我们的消息也就跟着worker丢了，为了保证worker挂掉不会带着消息一起挂掉，产生了ack确认机制</p>
+</blockquote>
+<a id="more"></a>
+<h5 id="模拟"><a href="#模拟" class="headerlink" title="模拟"></a>模拟</h5><ul>
+<li>发送一条很长的消息</li>
+<li>./rabbitmqctl list_queues name messages_ready messages_unacknowledged查看消息是否到达队列</li>
+<li>运行worker然后暂停</li>
+<li>./rabbitmqctl list_queues name messages_ready messages_unacknowledged消息跟着worker一起丢失了</li>
+</ul>
+<h5 id="处理消息"><a href="#处理消息" class="headerlink" title="处理消息"></a>处理消息</h5><ul>
+<li>在回调函数中调用ch.basic_ack(delivery_tag = method.delivery_tag)来完成消息的消费确认<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import pika</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(</span><br><span class="line">        host=&apos;localhost&apos;))</span><br><span class="line">channel = connection.channel()</span><br><span class="line"></span><br><span class="line">channel.queue_declare(queue=&apos;hello&apos;)</span><br><span class="line"></span><br><span class="line">print &apos; [*] Waiting for messages. To exit press CTRL+C&apos;</span><br><span class="line"></span><br><span class="line">def callback(ch, method, properties, body):</span><br><span class="line">    print &quot; [x] Received %r&quot; % (body,)</span><br><span class="line">    time.sleep(body.decode().count(&apos;.&apos;))</span><br><span class="line">    print &quot; [x] Done&quot;</span><br><span class="line">    ch.basic_ack(delivery_tag = method.delivery_tag)</span><br><span class="line"></span><br><span class="line">channel.basic_consume(callback,</span><br><span class="line">                      queue=&apos;hello&apos;)</span><br><span class="line">channel.start_consuming()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="校验结果"><a href="#校验结果" class="headerlink" title="校验结果"></a>校验结果</h5><ul>
+<li><p>发送消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 sbin]# ./rabbitmqctl list_queues name messages_ready messages_unacknowledged </span><br><span class="line">Listing queues ...</span><br><span class="line">hello	1	0</span><br><span class="line">...done.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行worker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 sbin]# ./rabbitmqctl list_queues name messages_ready messages_unacknowledged </span><br><span class="line">Listing queues ...</span><br><span class="line">hello	0	1</span><br><span class="line">...done.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止worker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 sbin]# ./rabbitmqctl list_queues name messages_ready messages_unacknowledged </span><br><span class="line">Listing queues ...</span><br><span class="line">hello	1	0</span><br><span class="line">...done.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -205,7 +261,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -218,469 +274,119 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2018/09/20/rabbitmq03-ack消息确认/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq02-模拟工作请求/" class="archive-article-date">
-  	<time datetime="2018-09-20T05:19:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/20/rabbitmq02-模拟工作请求/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">rabbitmq02 模拟工作请求</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq02-模拟工作请求/">rabbitmq02 模拟工作请求</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#ack消息确认"><span class="toc-number">1.</span> <span class="toc-text">ack消息确认</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#模拟"><span class="toc-number">1.1.</span> <span class="toc-text">模拟</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#处理消息"><span class="toc-number">1.2.</span> <span class="toc-text">处理消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#校验结果"><span class="toc-number">1.3.</span> <span class="toc-text">校验结果</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/Nginx负载调优总结/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:58:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/Nginx负载调优总结/">Nginx负载调优总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">调优</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/Tomcat监控之probe3-0的安装与使用/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:56:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/Tomcat监控之probe3-0的安装与使用/">Tomcat监控之probe3.0的安装与使用</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">监控</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/MySQL之提示mysql-deamon-failed-to-start错误的解决方法/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:53:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/MySQL之提示mysql-deamon-failed-to-start错误的解决方法/">MySQL之提示mysql deamon failed to start错误的解决方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/mysql数据同步报错Incorrect-table-definition-there-can-be-only-one-TIMESTAMP-column-with-CURRENT-TIMESTAMP-in-DEFAULT-or-ON-UPDATE-clause/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:52:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/mysql数据同步报错Incorrect-table-definition-there-can-be-only-one-TIMESTAMP-column-with-CURRENT-TIMESTAMP-in-DEFAULT-or-ON-UPDATE-clause/">mysql数据同步报错Incorrect table definition;there can be only one TIMESTAMP column with CURRENT_TIMESTAMP in DEFAULT or ON UPDATE clause</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/centos-安装mysql5-7/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:48:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/centos-安装mysql5-7/">centos 安装mysql5.7</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/centos-memcache安装/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:46:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/centos-memcache安装/">centos memcache安装</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">memcache</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq安装/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:43:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq安装/">rabbitmq安装</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/linux配置免密登录/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:40:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/linux配置免密登录/">linux配置免密登录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/09/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/09/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+<script type="text/javascript">
+document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
+</script>
+
   
 
 
@@ -705,8 +411,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
