@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="多线程consumer开发之前写的comsumer是非线程安全的，在多线程环境中，需要使用不同的kafkaConsumer对象  MyMultiThreadComsumer">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-20T07:34:51.000Z">
+<meta property="og:updated_time" content="2018-09-27T07:27:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka07 多线程consumer开发">
 <meta name="twitter:description" content="多线程consumer开发之前写的comsumer是非线程安全的，在多线程环境中，需要使用不同的kafkaConsumer对象  MyMultiThreadComsumer">
@@ -194,30 +194,6 @@
 
         <!-- 目录内容 -->
         
-            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-             <span class="btn-bg"></span>
-                 <span class="btn-text">文章导航</span>
-                  </p>
-                <div id="toc-article" class="toc-article">
-                    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-                        <strong class="toc-title">文章目录</strong>
-                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#多线程consumer开发"><span class="toc-number">1.</span> <span class="toc-text">多线程consumer开发</span></a></li></ol>
-                 </div>
-           <script type="text/javascript"> 
- 		function showToc(){
-                        var toc_article = document.getElementById("toc-article");
-                        var show_toc_btn = document.getElementById("show-toc-btn");
-                        toc_article.setAttribute("style","display:block");
-                        show_toc_btn.setAttribute("style","display:none");
-                        };
-                function showBtn(){
-                        var toc_article = document.getElementById("toc-article");
-                        var show_toc_btn = document.getElementById("show-toc-btn");
-                        toc_article.setAttribute("style","display:none");
-                        show_toc_btn.setAttribute("style","display:block");
-                        };
-           </script>
-        
         <!-- 目录内容结束 -->
    
 
@@ -230,9 +206,9 @@
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">package com.shiyanlou.consumer;</span><br><span class="line"></span><br><span class="line">import org.apache.kafka.clients.consumer.ConsumerRecord;</span><br><span class="line">import org.apache.kafka.clients.consumer.ConsumerRecords;</span><br><span class="line">import org.apache.kafka.clients.consumer.KafkaConsumer;</span><br><span class="line">import org.apache.kafka.common.serialization.StringDeserializer;</span><br><span class="line">import scala.util.parsing.combinator.testing.Str;</span><br><span class="line"></span><br><span class="line">import javax.sound.midi.Track;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Properties;</span><br><span class="line"></span><br><span class="line">//实现Runnable接口，用于多线程环境</span><br><span class="line">public class MyMultiThreadComsumer implements Runnable &#123;</span><br><span class="line">    //声明KafkaConsumer对象，用于订阅topic，读取消息</span><br><span class="line">    private final KafkaConsumer&lt;String,String&gt; consumer;</span><br><span class="line">    // 声明topic列表变量，作为KafkaConsumer订阅的topic列表</span><br><span class="line">    private final List&lt;String&gt; topics;</span><br><span class="line">    // 声明一个id变量，用于区分不同的consumer对象，方便查看哪个consumer消费了哪些数据</span><br><span class="line">    private final int id;</span><br><span class="line">    //构造函数，实例化上面声明的三个变量</span><br><span class="line">    public MyMultiThreadComsumer(int id,String groupId,List&lt;String&gt; topics)&#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">        this.topics =  topics;</span><br><span class="line">        Properties props = new Properties();</span><br><span class="line">        props.put(&quot;bootstrap.servers&quot;,&quot;132.232.14.247:9092&quot;);</span><br><span class="line">        props.put(&quot;group.id&quot;,groupId);</span><br><span class="line">        props.put(&quot;key.deserializer&quot;, StringDeserializer.class.getName());</span><br><span class="line">        props.put(&quot;value.deserializer&quot;,StringDeserializer.class.getName());</span><br><span class="line">        // 此处new了一个kafkaConsumer，保证一个KafkaConsumer对象用于一个线程中</span><br><span class="line">        this.consumer = new KafkaConsumer&lt;String, String&gt;(props);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void run() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //订阅topic</span><br><span class="line">            consumer.subscribe(topics);</span><br><span class="line">            while (true)&#123;</span><br><span class="line">                //无限循环读取消息</span><br><span class="line">                ConsumerRecords&lt;String, String&gt; records = consumer.poll(2000);</span><br><span class="line">                for (ConsumerRecord&lt;String,String&gt; record:records)&#123;</span><br><span class="line">                    //打印消息内容</span><br><span class="line">                    System.out.println(&quot;Consumer-&quot;+id+&quot;s consumption message:partition=&quot;+record.partition()+&quot;,offset=&quot;+record.offset()+&quot;,key=&quot;+record.key()+&quot;,value=&quot;+record.value());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>MyMultiThreadConsumerTest<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.shiyanlou.consumer;</span><br><span class="line"></span><br><span class="line">import scala.util.parsing.combinator.testing.Str;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.concurrent.Executor;</span><br><span class="line">import java.util.concurrent.ExecutorService;</span><br><span class="line">import java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line">public class MyMultiThreadConsumerTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //numConsumers变量值就是创建Kafka对象的数量</span><br><span class="line">        int numConsumers = 3;</span><br><span class="line">        // 声明消费者组名称，三个kafkaConsumer对象属于一个消费者组</span><br><span class="line">        String groupId = &quot;group2&quot;;</span><br><span class="line">        //创建topic列表</span><br><span class="line">        List&lt;String&gt; topics = Arrays.asList(&quot;mySecondTopic&quot;);</span><br><span class="line">        //创建线程池对象，线程池中线程的数量为numConsumers&apos;</span><br><span class="line">        ExecutorService executor = Executors.newFixedThreadPool(numConsumers);</span><br><span class="line">        for(int i=0;i&lt;numConsumers;i++)&#123;</span><br><span class="line">            MyMultiThreadComsumer consumer = new MyMultiThreadComsumer(i,groupId,topics);</span><br><span class="line">            executor.submit(consumer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>MyMultiThreadConsumerTest</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.shiyanlou.consumer;</span><br><span class="line"></span><br><span class="line">import scala.util.parsing.combinator.testing.Str;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.concurrent.Executor;</span><br><span class="line">import java.util.concurrent.ExecutorService;</span><br><span class="line">import java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line">public class MyMultiThreadConsumerTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //numConsumers变量值就是创建Kafka对象的数量</span><br><span class="line">        int numConsumers = 3;</span><br><span class="line">        // 声明消费者组名称，三个kafkaConsumer对象属于一个消费者组</span><br><span class="line">        String groupId = &quot;group2&quot;;</span><br><span class="line">        //创建topic列表</span><br><span class="line">        List&lt;String&gt; topics = Arrays.asList(&quot;mySecondTopic&quot;);</span><br><span class="line">        //创建线程池对象，线程池中线程的数量为numConsumers&apos;</span><br><span class="line">        ExecutorService executor = Executors.newFixedThreadPool(numConsumers);</span><br><span class="line">        for(int i=0;i&lt;numConsumers;i++)&#123;</span><br><span class="line">            MyMultiThreadComsumer consumer = new MyMultiThreadComsumer(i,groupId,topics);</span><br><span class="line">            executor.submit(consumer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -617,6 +593,50 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">接口自动化 自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">FastStone</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">google注册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">性能测</a>
               </li>
             
             <div class="clearfix"></div>

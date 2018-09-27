@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-28176eb71410e120.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-5c7d22311d108e2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-27T03:22:21.000Z">
+<meta property="og:updated_time" content="2018-09-27T07:33:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UI自动化01 css selector&amp;xpath">
 <meta name="twitter:description" content="练习软件安装 安装49版本的FireFox 链接：https://pan.baidu.com/s/1V3aEkyoR_gAhQVGCks2I6w 密码：lw5u 通过拓展程序安装Firebug和FirePath F12找到FirePath">
@@ -211,17 +211,17 @@
 <a id="more"></a>
 <h5 id="1-xpath"><a href="#1-xpath" class="headerlink" title="1.xpath"></a>1.xpath</h5><ul>
 <li>通过路径解析XML的一种格式</li>
-<li>写xpath是在做一个缩减范围的过程<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//*   # 定位当前html的所有元素</span><br><span class="line">//input  # 由全部元素缩减到指定元素类型</span><br><span class="line"></span><br><span class="line"># 标签+属性方式进行定位</span><br><span class="line">//select[@name=&quot;city&quot; and @multiple=&quot;multiple&quot; and @size=&quot;4&quot;]</span><br><span class="line"></span><br><span class="line"># 取反定位</span><br><span class="line">//div[@class=&apos;driver&apos;]/div[@class=&quot;inner&quot;]/input[not(@placeholder=&quot;请通过ID定位元素&quot;)]</span><br><span class="line"></span><br><span class="line"># 层级定位,角标中的值代表：获取body中所有div在第二个位置的标签</span><br><span class="line"># 获取body下的第二个div</span><br><span class="line">//body/div[2]</span><br></pre></td></tr></table></figure>
-</li>
+<li>写xpath是在做一个缩减范围的过程</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//*   # 定位当前html的所有元素</span><br><span class="line">//input  # 由全部元素缩减到指定元素类型</span><br><span class="line"></span><br><span class="line"># 标签+属性方式进行定位</span><br><span class="line">//select[@name=&quot;city&quot; and @multiple=&quot;multiple&quot; and @size=&quot;4&quot;]</span><br><span class="line"></span><br><span class="line"># 取反定位</span><br><span class="line">//div[@class=&apos;driver&apos;]/div[@class=&quot;inner&quot;]/input[not(@placeholder=&quot;请通过ID定位元素&quot;)]</span><br><span class="line"></span><br><span class="line"># 层级定位,角标中的值代表：获取body中所有div在第二个位置的标签</span><br><span class="line"># 获取body下的第二个div</span><br><span class="line">//body/div[2]</span><br></pre></td></tr></table></figure>
 <h5 id="css-selector"><a href="#css-selector" class="headerlink" title="css selector"></a>css selector</h5><ul>
-<li><p>通过路径解析HTML的一种格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#i1  #通过id进行定位</span><br><span class="line">.classname  #通过class定位</span><br><span class="line">input  #通过标签进行定位</span><br><span class="line"></span><br><span class="line"># 属性的模糊匹配 开头^=</span><br><span class="line">input[placeholder^=&quot;请通过ID定&quot;]</span><br><span class="line"></span><br><span class="line"># 属性的模糊匹配 结尾$=</span><br><span class="line">input[placeholder$=&quot;过ID定位元素&quot;]</span><br><span class="line"></span><br><span class="line"># 属性的模糊匹配 任意</span><br><span class="line">input[placeholder*=&quot;元素&quot;]</span><br><span class="line"></span><br><span class="line"># 属性的取反</span><br><span class="line">div:not([id=&quot;wrapper&quot;])</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>层级获取</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># first-child</span><br><span class="line">body&gt;:first-child</span><br><span class="line"># last-child</span><br><span class="line">body&gt;:last-child</span><br><span class="line"># nth-child(x)</span><br><span class="line">body&gt;:nth-child(3)</span><br></pre></td></tr></table></figure>
-</li>
+<li>通过路径解析HTML的一种格式</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#i1  #通过id进行定位</span><br><span class="line">.classname  #通过class定位</span><br><span class="line">input  #通过标签进行定位</span><br><span class="line"></span><br><span class="line"># 属性的模糊匹配 开头^=</span><br><span class="line">input[placeholder^=&quot;请通过ID定&quot;]</span><br><span class="line"></span><br><span class="line"># 属性的模糊匹配 结尾$=</span><br><span class="line">input[placeholder$=&quot;过ID定位元素&quot;]</span><br><span class="line"></span><br><span class="line"># 属性的模糊匹配 任意</span><br><span class="line">input[placeholder*=&quot;元素&quot;]</span><br><span class="line"></span><br><span class="line"># 属性的取反</span><br><span class="line">div:not([id=&quot;wrapper&quot;])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>层级获取</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># first-child</span><br><span class="line">body&gt;:first-child</span><br><span class="line"># last-child</span><br><span class="line">body&gt;:last-child</span><br><span class="line"># nth-child(x)</span><br><span class="line">body&gt;:nth-child(3)</span><br></pre></td></tr></table></figure>
 
       
 
@@ -606,6 +606,50 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">接口自动化 自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">FastStone</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">google注册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">性能测</a>
               </li>
             
             <div class="clearfix"></div>

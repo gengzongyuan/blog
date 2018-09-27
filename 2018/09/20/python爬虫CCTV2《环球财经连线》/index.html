@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
   <title>python爬虫CCTV2《环球财经连线》 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="笔者前言：平时比较喜欢看CCTV2的《国际财经报道》（原环球财经连线），但是央视的app没有提供缓存功能，笔者又想上下班和跑步的时候看或者听。于是花了大概一天时间写了python脚本爬取了央视的视频并转为音频。相关文件下载地址：  一、爬取视频1. 分析视频链接通过对央视的cctv2直播和国际财经报道专题页面视频流的传递分析，最终选择了专题页面的视频接口，作为视频下载的爬虫接口。">
+  <meta name="description" content="title: python爬虫CCTV2《环球财经连线》toc: truedate: 2018-09-20 17:35:16tags:  python 爬虫categories: 开发    　笔者前言：平时比较喜欢看CCTV2的《国际财经报道》（原环球财经连线），但是央视的app没有提供缓存功能，笔者又想上下班和跑步的时候看或者听。于是花了大概一天时间写了python脚本爬取了央视的视频并转为音">
 <meta name="keywords" content="python,爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python爬虫CCTV2《环球财经连线》">
 <meta property="og:url" content="http://gengzongyuan.github.io/2018/09/20/python爬虫CCTV2《环球财经连线》/index.html">
 <meta property="og:site_name" content="大树的博客">
-<meta property="og:description" content="笔者前言：平时比较喜欢看CCTV2的《国际财经报道》（原环球财经连线），但是央视的app没有提供缓存功能，笔者又想上下班和跑步的时候看或者听。于是花了大概一天时间写了python脚本爬取了央视的视频并转为音频。相关文件下载地址：  一、爬取视频1. 分析视频链接通过对央视的cctv2直播和国际财经报道专题页面视频流的传递分析，最终选择了专题页面的视频接口，作为视频下载的爬虫接口。">
+<meta property="og:description" content="title: python爬虫CCTV2《环球财经连线》toc: truedate: 2018-09-20 17:35:16tags:  python 爬虫categories: 开发    　笔者前言：平时比较喜欢看CCTV2的《国际财经报道》（原环球财经连线），但是央视的app没有提供缓存功能，笔者又想上下班和跑步的时候看或者听。于是花了大概一天时间写了python脚本爬取了央视的视频并转为音">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-ae7fdc4ba60291f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-74b6b7d2eec3a513.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-1b949bae2336934a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-c3d888e07b3868f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-efe60d63543de179.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-21T01:08:37.000Z">
+<meta property="og:updated_time" content="2018-09-27T04:37:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python爬虫CCTV2《环球财经连线》">
-<meta name="twitter:description" content="笔者前言：平时比较喜欢看CCTV2的《国际财经报道》（原环球财经连线），但是央视的app没有提供缓存功能，笔者又想上下班和跑步的时候看或者听。于是花了大概一天时间写了python脚本爬取了央视的视频并转为音频。相关文件下载地址：  一、爬取视频1. 分析视频链接通过对央视的cctv2直播和国际财经报道专题页面视频流的传递分析，最终选择了专题页面的视频接口，作为视频下载的爬虫接口。">
+<meta name="twitter:description" content="title: python爬虫CCTV2《环球财经连线》toc: truedate: 2018-09-20 17:35:16tags:  python 爬虫categories: 开发    　笔者前言：平时比较喜欢看CCTV2的《国际财经报道》（原环球财经连线），但是央视的app没有提供缓存功能，笔者又想上下班和跑步的时候看或者听。于是花了大概一天时间写了python脚本爬取了央视的视频并转为音">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2572206-ae7fdc4ba60291f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
@@ -205,36 +205,18 @@
 
         <!-- 目录内容 -->
         
-            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-             <span class="btn-bg"></span>
-                 <span class="btn-text">文章导航</span>
-                  </p>
-                <div id="toc-article" class="toc-article">
-                    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-                        <strong class="toc-title">文章目录</strong>
-                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、爬取视频"><span class="toc-number">1.</span> <span class="toc-text">一、爬取视频</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-分析视频链接"><span class="toc-number">1.1.</span> <span class="toc-text">1. 分析视频链接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-视频下载"><span class="toc-number">1.2.</span> <span class="toc-text">2. 视频下载</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、视频的合并与转码"><span class="toc-number">2.</span> <span class="toc-text">二、视频的合并与转码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、将视频转换为音频"><span class="toc-number">3.</span> <span class="toc-text">三、将视频转换为音频</span></a></li></ol>
-                 </div>
-           <script type="text/javascript"> 
- 		function showToc(){
-                        var toc_article = document.getElementById("toc-article");
-                        var show_toc_btn = document.getElementById("show-toc-btn");
-                        toc_article.setAttribute("style","display:block");
-                        show_toc_btn.setAttribute("style","display:none");
-                        };
-                function showBtn(){
-                        var toc_article = document.getElementById("toc-article");
-                        var show_toc_btn = document.getElementById("show-toc-btn");
-                        toc_article.setAttribute("style","display:none");
-                        show_toc_btn.setAttribute("style","display:block");
-                        };
-           </script>
-        
         <!-- 目录内容结束 -->
    
 
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
+        <p>title: python爬虫CCTV2《环球财经连线》<br>toc: true<br>date: 2018-09-20 17:35:16<br>tags:</p>
+<ul>
+<li>python</li>
+<li>爬虫<br>categories: 开发</li>
+</ul>
+<hr>
+<blockquote>
 <p>　笔者前言：平时比较喜欢看CCTV2的《国际财经报道》（原环球财经连线），但是央视的app没有提供缓存功能，笔者又想上下班和跑步的时候看或者听。于是花了大概一天时间写了python脚本爬取了央视的视频并转为音频。<br>相关文件下载地址：</p>
 </blockquote>
 <h4 id="一、爬取视频"><a href="#一、爬取视频" class="headerlink" title="一、爬取视频"></a>一、爬取视频</h4><h5 id="1-分析视频链接"><a href="#1-分析视频链接" class="headerlink" title="1. 分析视频链接"></a>1. 分析视频链接</h5><p>通过对央视的cctv2直播和国际财经报道专题页面视频流的传递分析，最终选择了专题页面的视频接口，作为视频下载的爬虫接口。</p>
@@ -678,6 +660,50 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">接口自动化 自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">FastStone</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">google注册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">性能测</a>
               </li>
             
             <div class="clearfix"></div>

@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-7dba0678af204051.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-041011a784ed6404.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-ec0b80a0b97e42ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-27T03:22:12.000Z">
+<meta property="og:updated_time" content="2018-09-27T07:34:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UI自动化02 selenium安装与基础操作">
 <meta name="twitter:description" content="1、安装1pip install selenium">
@@ -212,32 +212,37 @@
 <li><p>进入2.41<code>http://chromedriver.storage.googleapis.com/index.html</code><br><img src="https://upload-images.jianshu.io/upload_images/2572206-7dba0678af204051.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 </li>
 <li>查看notes，根据自己的Chrome下载对应版本，直接下载最新的也可以<br><img src="https://upload-images.jianshu.io/upload_images/2572206-041011a784ed6404.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/2572206-ec0b80a0b97e42ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
-<li>下载好之后将解压后的目录文件放到环境变量中.进入pycharm执行代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(&apos;http://www.imdsx.cn)&apos;)</span><br></pre></td></tr></table></figure>
-</li>
+<li>下载好之后将解压后的目录文件放到环境变量中.进入pycharm执行代码</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(&apos;http://www.imdsx.cn)&apos;)</span><br></pre></td></tr></table></figure>
 <h5 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h5><ul>
-<li><p>请求连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.get(&quot;http://ui.imdsx.cn/uitester/&quot;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行js代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">js = &quot;window.scrollTo(0,0);&quot;</span><br><span class="line">driver.execute_script(js)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>操作浏览器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(driver.get_window_size())  # 获取当前浏览器尺寸</span><br><span class="line">driver.maximize_window()    # 最大化浏览器</span><br><span class="line">driver.set_window_size(500,500) # 设置浏览器大小</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>截图操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.get_screenshot_as_file(&quot;screenshot/test.png&quot;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>操作窗口tag</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># ****  获取当前tag指针</span><br><span class="line">print(driver.current_window_handle) # CDwindow-D32C65F58928B154475F88206D1F76E1</span><br><span class="line"></span><br><span class="line"># ****  获取浏览器所有的tag指针</span><br><span class="line">print(driver.window_handles)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关闭tag</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.close()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关闭浏览器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
-</li>
+<li>请求连接</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.get(&quot;http://ui.imdsx.cn/uitester/&quot;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行js代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">js = &quot;window.scrollTo(0,0);&quot;</span><br><span class="line">driver.execute_script(js)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>操作浏览器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(driver.get_window_size())  # 获取当前浏览器尺寸</span><br><span class="line">driver.maximize_window()    # 最大化浏览器</span><br><span class="line">driver.set_window_size(500,500) # 设置浏览器大小</span><br></pre></td></tr></table></figure>
+<ul>
+<li>截图操作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.get_screenshot_as_file(&quot;screenshot/test.png&quot;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>操作窗口tag</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># ****  获取当前tag指针</span><br><span class="line">print(driver.current_window_handle) # CDwindow-D32C65F58928B154475F88206D1F76E1</span><br><span class="line"></span><br><span class="line"># ****  获取浏览器所有的tag指针</span><br><span class="line">print(driver.window_handles)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>关闭tag</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>关闭浏览器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
 
       
 
@@ -622,6 +627,50 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">接口自动化 自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">FastStone</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">google注册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">性能测</a>
               </li>
             
             <div class="clearfix"></div>

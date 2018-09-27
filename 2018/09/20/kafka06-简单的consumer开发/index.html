@@ -9,14 +9,14 @@
   <title>kafka06 简单的consumer开发 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="简单的consumer开发简单的consumer">
-<meta name="keywords" content="kafka">
+<meta name="keywords" content="java,kafka">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kafka06 简单的consumer开发">
 <meta property="og:url" content="http://gengzongyuan.github.io/2018/09/20/kafka06-简单的consumer开发/index.html">
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="简单的consumer开发简单的consumer">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-20T07:20:50.000Z">
+<meta property="og:updated_time" content="2018-09-27T07:27:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka06 简单的consumer开发">
 <meta name="twitter:description" content="简单的consumer开发简单的consumer">
@@ -194,30 +194,6 @@
 
         <!-- 目录内容 -->
         
-            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-             <span class="btn-bg"></span>
-                 <span class="btn-text">文章导航</span>
-                  </p>
-                <div id="toc-article" class="toc-article">
-                    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-                        <strong class="toc-title">文章目录</strong>
-                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的consumer开发"><span class="toc-number">1.</span> <span class="toc-text">简单的consumer开发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#简单的consumer"><span class="toc-number">1.1.</span> <span class="toc-text">简单的consumer</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#consumer知识点"><span class="toc-number">1.2.</span> <span class="toc-text">consumer知识点</span></a></li></ol></li></ol>
-                 </div>
-           <script type="text/javascript"> 
- 		function showToc(){
-                        var toc_article = document.getElementById("toc-article");
-                        var show_toc_btn = document.getElementById("show-toc-btn");
-                        toc_article.setAttribute("style","display:block");
-                        show_toc_btn.setAttribute("style","display:none");
-                        };
-                function showBtn(){
-                        var toc_article = document.getElementById("toc-article");
-                        var show_toc_btn = document.getElementById("show-toc-btn");
-                        toc_article.setAttribute("style","display:none");
-                        show_toc_btn.setAttribute("style","display:block");
-                        };
-           </script>
-        
         <!-- 目录内容结束 -->
    
 
@@ -239,15 +215,16 @@
 </li>
 </ul>
 <h5 id="consumer知识点"><a href="#consumer知识点" class="headerlink" title="consumer知识点"></a>consumer知识点</h5><ul>
-<li>consumer group消费者组<br>在props中，我们配置了一个group.id代表一个消费者组，消费者组具有以下特性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props.put(&quot;group.id&quot;,&quot;group2&quot;);</span><br></pre></td></tr></table></figure>
-</li>
+<li>consumer group消费者组<br>在props中，我们配置了一个group.id代表一个消费者组，消费者组具有以下特性</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props.put(&quot;group.id&quot;,&quot;group2&quot;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- 当topic中的partition为4时候，消费者组中有1个consumer，那么这个comsumer会消费所有的partition</span><br><span class="line">- 当topic中的partition为4时候，消费者组中有2个consumer，那么每个comsumer会消费2个partition</span><br><span class="line">- 当topic中的partition为4时候，消费者组中有5个consumer，那么四个comsumer会对应4个partition，有一个consumer是空闲的</span><br><span class="line">***********</span><br><span class="line">- 当topic中的partition为4时候，现在有两个消费者组，每个消费者组有4个comsumer。</span><br><span class="line">- 那么两个消费者组是相互独立的，也就是说8个comsumer都在工作</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>查看mySecondTopic中的partition数量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">[root@tencent2 bin]# ./kafka-topics.sh --describe --zookeeper localhost:2181 --topic mySecondTopic</span><br><span class="line">[2018-09-11 18:05:15,638] INFO Accepted socket connection from /127.0.0.1:35734 (org.apache.zookeeper.server.NIOServerCnxnFactory)</span><br><span class="line">[2018-09-11 18:05:15,650] INFO Client attempting to establish new session at /127.0.0.1:35734 (org.apache.zookeeper.server.ZooKeeperServer)</span><br><span class="line">[2018-09-11 18:05:15,672] INFO Established session 0x165c7a392630003 with negotiated timeout 30000 for client /127.0.0.1:35734 (org.apache.zookeeper.server.ZooKeeperServer)</span><br><span class="line">Topic:mySecondTopic	PartitionCount:4	ReplicationFactor:2	Configs:</span><br><span class="line">	Topic: mySecondTopic	Partition: 0	Leader: 2	Replicas: 2,1	Isr: 1,2</span><br><span class="line">	Topic: mySecondTopic	Partition: 1	Leader: 0	Replicas: 0,2	Isr: 0,2</span><br><span class="line">	Topic: mySecondTopic	Partition: 2	Leader: 1	Replicas: 1,0	Isr: 0,1</span><br><span class="line">	Topic: mySecondTopic	Partition: 3	Leader: 2	Replicas: 2,1	Isr: 1,2</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>group.id = group1开启5个comsumer，并且发送消息，可以观察到有一个comsumer是没有进行工作的</p>
-</li>
+<li>查看mySecondTopic中的partition数量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>[root@tencent2 bin]# ./kafka-topics.sh –describe –zookeeper localhost:2181 –topic mySecondTopic<br>[2018-09-11 18:05:15,638] INFO Accepted socket connection from /127.0.0.1:35734 (org.apache.zookeeper.server.NIOServerCnxnFactory)<br>[2018-09-11 18:05:15,650] INFO Client attempting to establish new session at /127.0.0.1:35734 (org.apache.zookeeper.server.ZooKeeperServer)<br>[2018-09-11 18:05:15,672] INFO Established session 0x165c7a392630003 with negotiated timeout 30000 for client /127.0.0.1:35734 (org.apache.zookeeper.server.ZooKeeperServer)<br>Topic:mySecondTopic    PartitionCount:4    ReplicationFactor:2    Configs:<br>    Topic: mySecondTopic    Partition: 0    Leader: 2    Replicas: 2,1    Isr: 1,2<br>    Topic: mySecondTopic    Partition: 1    Leader: 0    Replicas: 0,2    Isr: 0,2<br>    Topic: mySecondTopic    Partition: 2    Leader: 1    Replicas: 1,0    Isr: 0,1<br>    Topic: mySecondTopic    Partition: 3    Leader: 2    Replicas: 2,1    Isr: 1,2<br><code>`</code></p>
+<ul>
+<li>group.id = group1开启5个comsumer，并且发送消息，可以观察到有一个comsumer是没有进行工作的</li>
 <li>group.id = group1开启4个comsumer,group.id = group2开启4个comsumer.可以观察到8个comsumer都在工作</li>
 </ul>
 
@@ -260,6 +237,10 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
         		</li>
@@ -630,6 +611,50 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">接口自动化 自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">FastStone</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">google注册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">性能测</a>
               </li>
             
             <div class="clearfix"></div>

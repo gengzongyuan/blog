@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>rabbitmq01 简单的hello world！ | 大树的博客</title>
+  <title>Tag: 性能测 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="课前准备：https://gengzongyuan.github.io/2018/09/20/rabbitmq%E5%AE%89%E8%A3%85/  （单节点安装部分）  简单的hello world！1.发送消息 安装pika包1pip install pika==0.9.5">
-<meta name="keywords" content="python,rabbitmq">
-<meta property="og:type" content="article">
-<meta property="og:title" content="rabbitmq01 简单的hello world！">
-<meta property="og:url" content="http://gengzongyuan.github.io/2018/09/19/rabbitmq01-简单的hello-world！/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="大树的博客">
+<meta property="og:url" content="http://gengzongyuan.github.io/tags/性能测/index.html">
 <meta property="og:site_name" content="大树的博客">
-<meta property="og:description" content="课前准备：https://gengzongyuan.github.io/2018/09/20/rabbitmq%E5%AE%89%E8%A3%85/  （单节点安装部分）  简单的hello world！1.发送消息 安装pika包1pip install pika==0.9.5">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-20T07:23:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="rabbitmq01 简单的hello world！">
-<meta name="twitter:description" content="课前准备：https://gengzongyuan.github.io/2018/09/20/rabbitmq%E5%AE%89%E8%A3%85/  （单节点安装部分）  简单的hello world！1.发送消息 安装pika包1pip install pika==0.9.5">
+<meta name="twitter:title" content="大树的博客">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -173,241 +168,75 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-rabbitmq01-简单的hello-world！" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      rabbitmq01 简单的hello world！
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/09/20/LoadRunner应用之批量获取邮编/" class="archive-article-date">
+  	<time datetime="2018-09-20T09:42:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/09/20/LoadRunner应用之批量获取邮编/">LoadRunner应用之批量获取邮编</a>
     </h1>
   
 
-        
-        <a href="/2018/09/19/rabbitmq01-简单的hello-world！/" class="archive-article-date">
-  	<time datetime="2018-09-19T09:40:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-            <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-             <span class="btn-bg"></span>
-                 <span class="btn-text">文章导航</span>
-                  </p>
-                <div id="toc-article" class="toc-article">
-                    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-                        <strong class="toc-title">文章目录</strong>
-                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的hello-world！"><span class="toc-number">1.</span> <span class="toc-text">简单的hello world！</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-发送消息"><span class="toc-number">1.1.</span> <span class="toc-text">1.发送消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-获取消息"><span class="toc-number">1.2.</span> <span class="toc-text">2.获取消息</span></a></li></ol></li></ol>
-                 </div>
-           <script type="text/javascript"> 
- 		function showToc(){
-                        var toc_article = document.getElementById("toc-article");
-                        var show_toc_btn = document.getElementById("show-toc-btn");
-                        toc_article.setAttribute("style","display:block");
-                        show_toc_btn.setAttribute("style","display:none");
-                        };
-                function showBtn(){
-                        var toc_article = document.getElementById("toc-article");
-                        var show_toc_btn = document.getElementById("show-toc-btn");
-                        toc_article.setAttribute("style","display:none");
-                        show_toc_btn.setAttribute("style","display:block");
-                        };
-           </script>
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>课前准备：<a href="https://gengzongyuan.github.io/2018/09/20/rabbitmq%E5%AE%89%E8%A3%85/">https://gengzongyuan.github.io/2018/09/20/rabbitmq%E5%AE%89%E8%A3%85/</a>  （单节点安装部分）</p>
-</blockquote>
-<h4 id="简单的hello-world！"><a href="#简单的hello-world！" class="headerlink" title="简单的hello world！"></a>简单的hello world！</h4><h5 id="1-发送消息"><a href="#1-发送消息" class="headerlink" title="1.发送消息"></a>1.发送消息</h5><ul>
-<li>安装pika包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pika==0.9.5</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<a id="more"></a> 
-<ul>
-<li><p>创建一个连接（BlockingConnection、ConnectionParameters）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pika</span><br><span class="line"># 创建一个连接器</span><br><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(&apos;localhost&apos;))</span><br><span class="line"># 建立一个channel</span><br><span class="line">channel = connection.channel()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用queue_declare创建一个队列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.queue_declare(queue=&apos;hello&apos;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用basic_publish发送消息到队列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">channel.basic_publish(exchange=&apos;&apos;, # 交换机</span><br><span class="line">                      routing_key=&apos;hello&apos;,  # 队列</span><br><span class="line">                      body=&apos;Hello World!&apos;)  # 消息</span><br><span class="line">print &quot; [x] Sent &apos;Hello World!&apos;&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关闭连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connection.close()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>到服务器上查看队列是否都有了</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl list_queues name messages_ready messages_unacknowledged</span><br></pre></td></tr></table></figure>
-<h5 id="2-获取消息"><a href="#2-获取消息" class="headerlink" title="2.获取消息"></a>2.获取消息</h5><ul>
-<li><p>保险起见先声明一个队列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.queue_declare(queue=&apos;hello&apos;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用basic_consume接收消息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def callback(ch, method, properties, body):</span><br><span class="line">    print &quot; [x] Received %r&quot; % (body,)</span><br><span class="line"></span><br><span class="line">channel.basic_consume(callback,</span><br><span class="line">                      queue=&apos;hello&apos;,</span><br><span class="line">                      no_ack=True) # 暂时先不用管</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">loadrunner</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">性能测</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2018/09/19/rabbitmq01-简单的hello-world！/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/09/20/HEXO博客搭建（含免密传输）-md/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          HEXO博客搭建（含免密传输）.md
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的hello-world！"><span class="toc-number">1.</span> <span class="toc-text">简单的hello world！</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-发送消息"><span class="toc-number">1.1.</span> <span class="toc-text">1.发送消息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-获取消息"><span class="toc-number">1.2.</span> <span class="toc-text">2.获取消息</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-<script type="text/javascript">
-document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
-</script>
-
-  
+    
 
 
           </div>
@@ -431,9 +260,9 @@ document.getElementsByClassName("toc-container tooltip-left")[0].style.display="
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
@@ -635,6 +464,50 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">接口自动化 自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">FastStone</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">google注册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">性能测</a>
               </li>
             
             <div class="clearfix"></div>
