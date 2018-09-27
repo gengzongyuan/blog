@@ -8,15 +8,21 @@
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
   <title>接口自动化01 unittest模块 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="自动化测试,selenium">
+  <meta name="description" content="unittest是一个具有查找用例、执行用例、校验结果、产生用例的模块，能够极大的方便我们的自动化测试">
+<meta name="keywords" content="自动化测试,接口自动化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="接口自动化01 unittest模块">
 <meta property="og:url" content="http://gengzongyuan.github.io/2018/09/21/接口自动化01-unittest模块/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="unittest是一个具有查找用例、执行用例、校验结果、产生用例的模块，能够极大的方便我们的自动化测试">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-21T09:47:16.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-cef34d1413c77122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-bb044061cd7014ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-27T02:31:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口自动化01 unittest模块">
+<meta name="twitter:description" content="unittest是一个具有查找用例、执行用例、校验结果、产生用例的模块，能够极大的方便我们的自动化测试">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-cef34d1413c77122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -220,7 +226,44 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>unittest是一个具有查找用例、执行用例、校验结果、产生用例的模块，能够极大的方便我们的自动化测试</p>
+<a id="more"></a>
+<hr>
+<p><strong>安装</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip intall unittest</span><br></pre></td></tr></table></figure></p>
+<p><strong>测试用例及测试集合</strong></p>
+<ul>
+<li>unittest中的方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 被测方法</span><br><span class="line">def calc(a,b):</span><br><span class="line">    return a//b</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># 创建一个测试类，继承自unittest.TestCase</span><br><span class="line">class test(unittest.TestCase):</span><br><span class="line">    # 每个case的前置动作</span><br><span class="line">    def setUp(self):</span><br><span class="line">        print(&apos;set up!&apos;)</span><br><span class="line"></span><br><span class="line">    # 所有case的前置动作，可以将数据库连接放到里面</span><br><span class="line">    @classmethod</span><br><span class="line">    def setUpClass(cls):</span><br><span class="line">        print(&quot;setUpClass&quot;)</span><br><span class="line"></span><br><span class="line">    # 测试case</span><br><span class="line">    # equal断言</span><br><span class="line">    def test_case1(self):</span><br><span class="line">        print(&quot;test_cast1&quot;)</span><br><span class="line">        res = calc(4,2)</span><br><span class="line">        self.assertEqual(res,2,msg=&apos;expect is not equal 2&apos;) # res == 2</span><br><span class="line"></span><br><span class="line">    # 测试case</span><br><span class="line">    # in断言</span><br><span class="line">    def test_case2(self):</span><br><span class="line">        print(&quot;test_cast2&quot;)</span><br><span class="line">        res = calc(5,1)</span><br><span class="line">        self.assertIn(res,[5,2],msg=&apos;expect is not equal 5 or 2&apos;)# res in [5,2]</span><br><span class="line"></span><br><span class="line">    # 每个case的后置动作</span><br><span class="line">    def tearDown(self):</span><br><span class="line">        print(&apos;tearDown!!&apos;)</span><br><span class="line"></span><br><span class="line">    # 所有case的后置动作</span><br><span class="line">    @classmethod</span><br><span class="line">    def tearDownClass(cls):</span><br><span class="line">        print(&quot;tearDownClass&quot;)</span><br><span class="line">    </span><br><span class="line">    # 后面会讲到</span><br><span class="line">    def say(self):</span><br><span class="line">        print(&quot;say&quot;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>unittest.main()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # main()方法使用TestLoader类来搜索所有包含在该模块中以“test”命名开头的测试方法，并自动执行他们。</span><br><span class="line">    # 这事我们可以看到say函数并没有被执行到</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>unittest.TestSuite()–测试集合</p>
+</li>
+<li>testsuit相当于一个测试集合，如果我们有10个测试类，现在我们想执行其中的5个测试类，这时就可以用到测试集合了<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">suite = unittest.TestSuite() # 定义一个测试用例集合</span><br><span class="line">suite.addTest(test(&apos;say&apos;))  # 将test的say方法添加到测试类中</span><br><span class="line">suite .addTest(unittest.makeSuite(test))  # 将类中的所有测试方法添加到测试集合中(所有以test开头)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>测试执行器</strong></p>
+<ul>
+<li><p>unittest.TextTestRunner()–文本执行器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 测试的执行结果会实时的打印在控制台上</span><br><span class="line">runner = unittest.TextTestRunner()</span><br><span class="line">runner.run(suite)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HTMLTestRunner.HTMLTestRunner–HTML执行器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install HTMLTestRunner</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">re = open(&apos;report.html&apos;,&apos;wb&apos;)</span><br><span class="line">runner = HTMLTestRunner.HTMLTestRunner(stream=re,</span><br><span class="line">                                       title=&quot;测试标题&quot;,</span><br><span class="line">                                       description=&quot;大树的测试报告描述&quot;)</span><br><span class="line">runner.run(test_suite)</span><br><span class="line">re.close()</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-cef34d1413c77122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="report.html"></p>
+<ul>
+<li>BeautifulReport–好看的HTML测试执行器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">链接：https://pan.baidu.com/s/1W04YSu7FgoaoTDlIe-tgAw 密码：tgln</span><br><span class="line">解压后将BeautifulReport拖到自己的环境变量中</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">report = BeautifulReport.BeautifulReport(test_suite)</span><br><span class="line">report.report(description=&quot;大树的测试报告&quot;,filename=&apos;report3.html&apos;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">如果想要在报告中显示每条用例的注释</span><br><span class="line">    def test_case2(self):</span><br><span class="line">        &apos;&apos;&apos;这是一个测试用例描述&apos;&apos;&apos; # 添加这一行</span><br><span class="line">        print(&quot;test_cast2&quot;)</span><br><span class="line">        res = calc(5,1)</span><br><span class="line">        self.assertIn(res,[5,2],msg=&apos;expect is not equal 5 or 2&apos;)# res in [5,2]</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-bb044061cd7014ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="report3"></p>
+
       
 
     <div class="article-info article-info-index">
@@ -235,7 +278,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">接口自动化</a>
         		</li>
       		
 		</ul>
@@ -471,6 +514,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -524,14 +575,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,6 +639,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jboss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">接口自动化</a>
               </li>
             
             <div class="clearfix"></div>

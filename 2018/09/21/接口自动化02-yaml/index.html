@@ -8,15 +8,18 @@
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
   <title>接口自动化02 yaml | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="自动化测试,selenium">
+  <meta name="description" content="yaml是一种标记文件，我们可以使用yaml高效的保存我们的测试用例 12345key : valuelist :   - value1  - value2  - value3">
+<meta name="keywords" content="自动化测试,接口自动化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="接口自动化02 yaml">
 <meta property="og:url" content="http://gengzongyuan.github.io/2018/09/21/接口自动化02-yaml/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="yaml是一种标记文件，我们可以使用yaml高效的保存我们的测试用例 12345key : valuelist :   - value1  - value2  - value3">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-21T09:47:16.000Z">
+<meta property="og:updated_time" content="2018-09-27T02:31:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口自动化02 yaml">
+<meta name="twitter:description" content="yaml是一种标记文件，我们可以使用yaml高效的保存我们的测试用例 12345key : valuelist :   - value1  - value2  - value3">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -220,7 +223,13 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>yaml是一种标记文件，我们可以使用yaml高效的保存我们的测试用例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">key : value</span><br><span class="line">list : </span><br><span class="line">  - value1</span><br><span class="line">  - value2</span><br><span class="line">  - value3</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">-</span><br><span class="line">  url : http://118.24.3.40/api/user/login</span><br><span class="line">  method : post</span><br><span class="line">  detail : 登录接口</span><br><span class="line">  data:</span><br><span class="line">    username : niuhanyang</span><br><span class="line">    passwd : aA123456</span><br><span class="line">  check:</span><br><span class="line">      - sign</span><br><span class="line">      - userId</span><br><span class="line"></span><br><span class="line">-</span><br><span class="line">  url : http://118.24.3.40/api/user/all_stu</span><br><span class="line">  method : get</span><br><span class="line">  detail : 获取所有学生信息</span><br><span class="line">  headers :</span><br><span class="line">    Referer: http://api.nnzhp.cn/</span><br><span class="line">  data:</span><br><span class="line">  check:</span><br><span class="line">    -</span><br><span class="line">      stu_info</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import yaml,json</span><br><span class="line">all_case = json.dumps(yaml.load(open(&apos;login.yaml&apos;,encoding=&apos;utf-8&apos;)),ensure_ascii=False,indent=4)</span><br><span class="line">print(all_case)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;method&quot;: &quot;post&quot;,</span><br><span class="line">        &quot;url&quot;: &quot;http://118.24.3.40/api/user/login&quot;,</span><br><span class="line">        &quot;detail&quot;: &quot;登录接口&quot;,</span><br><span class="line">        &quot;data&quot;: &#123;</span><br><span class="line">            &quot;passwd&quot;: &quot;aA123456&quot;,</span><br><span class="line">            &quot;username&quot;: &quot;niuhanyang&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;check&quot;: [</span><br><span class="line">            &quot;sign&quot;,</span><br><span class="line">            &quot;userId&quot;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;method&quot;: &quot;get&quot;,</span><br><span class="line">        &quot;data&quot;: null,</span><br><span class="line">        &quot;url&quot;: &quot;http://118.24.3.40/api/user/all_stu&quot;,</span><br><span class="line">        &quot;headers&quot;: &#123;</span><br><span class="line">            &quot;Referer&quot;: &quot;http://api.nnzhp.cn/&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;detail&quot;: &quot;获取所有学生信息&quot;,</span><br><span class="line">        &quot;check&quot;: [</span><br><span class="line">            &quot;stu_info&quot;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
       
 
     <div class="article-info article-info-index">
@@ -235,7 +244,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">接口自动化</a>
         		</li>
       		
 		</ul>
@@ -471,6 +480,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -524,14 +541,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,6 +605,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jboss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">接口自动化</a>
               </li>
             
             <div class="clearfix"></div>

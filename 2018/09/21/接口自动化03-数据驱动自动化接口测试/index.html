@@ -8,15 +8,18 @@
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
   <title>接口自动化03 数据驱动自动化接口测试 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="自动化测试,selenium">
+  <meta name="description" content="数据驱动自动化接口测试">
+<meta name="keywords" content="自动化测试,接口自动化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="接口自动化03 数据驱动自动化接口测试">
 <meta property="og:url" content="http://gengzongyuan.github.io/2018/09/21/接口自动化03-数据驱动自动化接口测试/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="数据驱动自动化接口测试">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-21T09:47:16.000Z">
+<meta property="og:updated_time" content="2018-09-27T02:31:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口自动化03 数据驱动自动化接口测试">
+<meta name="twitter:description" content="数据驱动自动化接口测试">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -198,7 +201,7 @@
                 <div id="toc-article" class="toc-article">
                     <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
                         <strong class="toc-title">文章目录</strong>
-                   
+                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据驱动自动化接口测试"><span class="toc-number">1.</span> <span class="toc-text">数据驱动自动化接口测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-测试用例设计"><span class="toc-number">1.1.</span> <span class="toc-text">1.测试用例设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-测试类书写"><span class="toc-number">1.2.</span> <span class="toc-text">2.测试类书写</span></a></li></ol></li></ol>
                  </div>
            <script type="text/javascript"> 
  		function showToc(){
@@ -220,7 +223,26 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="数据驱动自动化接口测试"><a href="#数据驱动自动化接口测试" class="headerlink" title="数据驱动自动化接口测试"></a>数据驱动自动化接口测试</h4><a id="more"></a>
+<h5 id="1-测试用例设计"><a href="#1-测试用例设计" class="headerlink" title="1.测试用例设计"></a>1.测试用例设计</h5><ul>
+<li>yaml文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">-</span><br><span class="line">  url : http://118.24.3.40/api/user/login  # 访问url</span><br><span class="line">  method : post  # 请求方式</span><br><span class="line">  detail : 登录接口-成功用例  # 用例描述</span><br><span class="line">  header:</span><br><span class="line">  cookie:</span><br><span class="line">  is_json : False</span><br><span class="line">  data:  # 请求数据</span><br><span class="line">    username : niuhanyang</span><br><span class="line">    passwd : aA123456</span><br><span class="line">  check:  # 检查点</span><br><span class="line">      - sign</span><br><span class="line">      - userId</span><br><span class="line"></span><br><span class="line">-</span><br><span class="line">  url : http://118.24.3.40/api/user/login  # 访问url</span><br><span class="line">  method : post  # 请求方式</span><br><span class="line">  detail : 登录接口-失败用例  # 用例描述</span><br><span class="line">  header:</span><br><span class="line">  cookie:</span><br><span class="line">  is_json : False</span><br><span class="line">  data:  # 请求数据</span><br><span class="line">    username : niuhanyang</span><br><span class="line">    passwd : aA1234567</span><br><span class="line">  check:  # 检查点</span><br><span class="line">      - 用户名/密码错误</span><br><span class="line">      - error_code</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-测试类书写"><a href="#2-测试类书写" class="headerlink" title="2.测试类书写"></a>2.测试类书写</h5><ul>
+<li><p>ddt<br>ddt是python的数据驱动模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@ddt.ddt  # 给测试类添加装饰器</span><br><span class="line">@ddt.file_data  # 添加数据驱动数据，被修饰的方法可以通过**XXX获取参数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加用例描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self._testMethodDoc = detail</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@ddt.ddt</span><br><span class="line">class TestClass(unittest.TestCase):</span><br><span class="line">    @ddt.file_data(r&apos;../cases/login_case.yaml&apos;) # 导入yaml用例文件</span><br><span class="line">    def test_interface(self,**test_data):</span><br><span class="line">        url = test_data.get(&apos;url&apos;,None)</span><br><span class="line">        method = test_data.get(&apos;method&apos;,None)</span><br><span class="line">        detail = test_data.get(&apos;detail&apos;,None)</span><br><span class="line">        self._testMethodDoc = detail    # ※添加用例描述</span><br><span class="line">        header = test_data.get(&apos;header&apos;,None)</span><br><span class="line">        cookie = test_data.get(&apos;cookie&apos;,None)</span><br><span class="line">        is_json = test_data.get(&quot;is_json&quot;,None)</span><br><span class="line">        data = test_data.get(&apos;data&apos;,None)</span><br><span class="line">        check = test_data.get(&apos;check&apos;,None)</span><br><span class="line"></span><br><span class="line">        if method:</span><br><span class="line">            method = str(method).upper()</span><br><span class="line">            if method == &quot;GET&quot;:</span><br><span class="line">                res = requests.get(url=url,params=data,headers=header,cookies=cookie)</span><br><span class="line">            elif method == &quot;POST&quot;:</span><br><span class="line">                if is_json:</span><br><span class="line">                    res = requests.post(url=url,json=data,headers=header,cookies=cookie)</span><br><span class="line">                else:</span><br><span class="line">                    res = requests.post(url=url,data=data,headers=header,cookies=cookie)</span><br><span class="line">            else:</span><br><span class="line">                res = &quot;CASE WRONG，CASEDATA：&quot;+url+method+detail+header+cookie+is_json+data</span><br><span class="line">        else:</span><br><span class="line">            res = &quot;CASE WRONG，CASEDATA：&quot;+url+method+detail+header+cookie+is_json+data</span><br><span class="line"></span><br><span class="line">        # 比较接口执行结果</span><br><span class="line">        for c in check:</span><br><span class="line">            self.assertIn(c,res.text,detail+&apos;--测试执行失败,&apos;+c+&apos;检查失败&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过添加测试类到testsuit执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test_suit = unittest.TestSuite()</span><br><span class="line">test_suit.addTest(unittest.makeSuite(TestClass))</span><br><span class="line">report = BeautifulReport.BeautifulReport(test_suit)</span><br><span class="line">report.report(description=&quot;接口测试报告&quot;,filename=&apos;report.html&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
 
     <div class="article-info article-info-index">
@@ -235,7 +257,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">接口自动化</a>
         		</li>
       		
 		</ul>
@@ -354,7 +376,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据驱动自动化接口测试"><span class="toc-number">1.</span> <span class="toc-text">数据驱动自动化接口测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-测试用例设计"><span class="toc-number">1.1.</span> <span class="toc-text">1.测试用例设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-测试类书写"><span class="toc-number">1.2.</span> <span class="toc-text">2.测试类书写</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -471,6 +493,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -524,14 +554,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,6 +618,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jboss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">接口自动化</a>
               </li>
             
             <div class="clearfix"></div>

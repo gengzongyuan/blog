@@ -8,15 +8,20 @@
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
   <title>接口自动化04 数据驱动自动化接口测试进阶 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="自动化测试,selenium">
+  <meta name="description" content="数据驱动自动化接口测试进阶 上一章我们实现的接口自动化只能对单个yaml文件生效，如果我们有一堆yaml文件，就抓瞎了，所以诞生了这篇进阶篇">
+<meta name="keywords" content="自动化测试,接口自动化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="接口自动化04 数据驱动自动化接口测试进阶">
 <meta property="og:url" content="http://gengzongyuan.github.io/2018/09/21/接口自动化04-数据驱动自动化接口测试进阶/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="数据驱动自动化接口测试进阶 上一章我们实现的接口自动化只能对单个yaml文件生效，如果我们有一堆yaml文件，就抓瞎了，所以诞生了这篇进阶篇">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-21T09:47:16.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-f0edfd43fc6a97fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-27T02:32:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口自动化04 数据驱动自动化接口测试进阶">
+<meta name="twitter:description" content="数据驱动自动化接口测试进阶 上一章我们实现的接口自动化只能对单个yaml文件生效，如果我们有一堆yaml文件，就抓瞎了，所以诞生了这篇进阶篇">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-f0edfd43fc6a97fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -198,7 +203,7 @@
                 <div id="toc-article" class="toc-article">
                     <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
                         <strong class="toc-title">文章目录</strong>
-                   
+                   <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据驱动自动化接口测试进阶"><span class="toc-number">1.</span> <span class="toc-text">数据驱动自动化接口测试进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#思路"><span class="toc-number">1.1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-测试数据"><span class="toc-number">1.2.</span> <span class="toc-text">1.测试数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-模板文件"><span class="toc-number">1.3.</span> <span class="toc-text">2.模板文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-将模板文件和yaml数据处理成测试类"><span class="toc-number">1.4.</span> <span class="toc-text">3.将模板文件和yaml数据处理成测试类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-执行用例"><span class="toc-number">1.5.</span> <span class="toc-text">4.执行用例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-开始执行吧"><span class="toc-number">1.6.</span> <span class="toc-text">5.开始执行吧</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-report-html"><span class="toc-number">1.7.</span> <span class="toc-text">6.report.html</span></a></li></ol></li></ol>
                  </div>
            <script type="text/javascript"> 
  		function showToc(){
@@ -220,7 +225,46 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="数据驱动自动化接口测试进阶"><a href="#数据驱动自动化接口测试进阶" class="headerlink" title="数据驱动自动化接口测试进阶"></a>数据驱动自动化接口测试进阶</h4><blockquote>
+<p>上一章我们实现的接口自动化只能对单个yaml文件生效，如果我们有一堆yaml文件，就抓瞎了，所以诞生了这篇进阶篇</p>
+</blockquote>
+<a id="more"></a>
+<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><ul>
+<li><p>前置数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 很多yaml文件（login.yaml、regiser.yaml）</span><br><span class="line">- 模板文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过yaml文件和模板文件生成.py类</p>
+</li>
+<li>通过unittest.defaultTestLoader.discover加载所有的测试类</li>
+<li>执行所有的用例<h5 id="1-测试数据"><a href="#1-测试数据" class="headerlink" title="1.测试数据"></a>1.测试数据</h5></li>
+<li><p>login_case.yaml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">-</span><br><span class="line">  url : http://118.24.3.40/api/user/login  # 访问url</span><br><span class="line">  method : post  # 请求方式</span><br><span class="line">  detail : 登录接口-成功用例  # 用例描述</span><br><span class="line">  header:</span><br><span class="line">  cookie:</span><br><span class="line">  is_json : False</span><br><span class="line">  data:  # 请求数据</span><br><span class="line">    username : niuhanyang</span><br><span class="line">    passwd : aA123456</span><br><span class="line">  check:  # 检查点</span><br><span class="line">      - sign</span><br><span class="line">      - userId</span><br><span class="line"></span><br><span class="line">-</span><br><span class="line">  url : http://118.24.3.40/api/user/login  # 访问url</span><br><span class="line">  method : post  # 请求方式</span><br><span class="line">  detail : 登录接口-失败用例  # 用例描述</span><br><span class="line">  header:</span><br><span class="line">  cookie:</span><br><span class="line">  is_json : False</span><br><span class="line">  data:  # 请求数据</span><br><span class="line">    username : niuhanyang</span><br><span class="line">    passwd : aA1234567</span><br><span class="line">  check:  # 检查点</span><br><span class="line">      - 用户名/密码错误</span><br><span class="line">      - error_code</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>regiser_case.yaml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">-</span><br><span class="line">  url : http://118.24.3.40/api/user/login  # 访问url</span><br><span class="line">  method : post  # 请求方式</span><br><span class="line">  detail : 注册接口-成功用例  # 用例描述</span><br><span class="line">  header:</span><br><span class="line">  cookie:</span><br><span class="line">  is_json : False</span><br><span class="line">  data:  # 请求数据</span><br><span class="line">    username : niuhanyang</span><br><span class="line">    passwd : aA123456</span><br><span class="line">  check:  # 检查点</span><br><span class="line">      - sign</span><br><span class="line">      - userId</span><br><span class="line"></span><br><span class="line">-</span><br><span class="line">  url : http://118.24.3.40/api/user/login  # 访问url</span><br><span class="line">  method : post  # 请求方式</span><br><span class="line">  detail : 注册接口-失败用例  # 用例描述</span><br><span class="line">  header:</span><br><span class="line">  cookie:</span><br><span class="line">  is_json : False</span><br><span class="line">  data:  # 请求数据</span><br><span class="line">    username : niuhanyang</span><br><span class="line">    passwd : aA1234567</span><br><span class="line">  check:  # 检查点</span><br><span class="line">      - 用户名/密码错误</span><br><span class="line">      - error_code</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-模板文件"><a href="#2-模板文件" class="headerlink" title="2.模板文件"></a>2.模板文件</h5><ul>
+<li>case_template（在之前的基础上去除执行器，并且将测试类名和文件名都进行%s替换，方便我们后续处理）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import unittest</span><br><span class="line">import ddt</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">@ddt.ddt</span><br><span class="line">class %s(unittest.TestCase):</span><br><span class="line">    @ddt.file_data(r&apos;%s&apos;) # 导入yaml用例文件</span><br><span class="line">    def test_interface(self,**test_data):</span><br><span class="line">        url = test_data.get(&apos;url&apos;,None)</span><br><span class="line">        method = test_data.get(&apos;method&apos;,None)</span><br><span class="line">        detail = test_data.get(&apos;detail&apos;,None)</span><br><span class="line">        self._testMethodDoc = detail    # ※添加用例描述</span><br><span class="line">        header = test_data.get(&apos;header&apos;,None)</span><br><span class="line">        cookie = test_data.get(&apos;cookie&apos;,None)</span><br><span class="line">        is_json = test_data.get(&quot;is_json&quot;,None)</span><br><span class="line">        data = test_data.get(&apos;data&apos;,None)</span><br><span class="line">        check = test_data.get(&apos;check&apos;,None)</span><br><span class="line"></span><br><span class="line">        if method:</span><br><span class="line">            method = str(method).upper()</span><br><span class="line">            if method == &quot;GET&quot;:</span><br><span class="line">                res = requests.get(url=url,params=data,headers=header,cookies=cookie)</span><br><span class="line">            elif method == &quot;POST&quot;:</span><br><span class="line">                if is_json:</span><br><span class="line">                    res = requests.post(url=url,json=data,headers=header,cookies=cookie)</span><br><span class="line">                else:</span><br><span class="line">                    res = requests.post(url=url,data=data,headers=header,cookies=cookie)</span><br><span class="line">            else:</span><br><span class="line">                res = &quot;CASE WRONG，CASEDATA：&quot;+url+method+detail+header+cookie+is_json+data</span><br><span class="line">        else:</span><br><span class="line">            res = &quot;CASE WRONG，CASEDATA：&quot;+url+method+detail+header+cookie+is_json+data</span><br><span class="line"></span><br><span class="line">        # 比较接口执行结果</span><br><span class="line">        for c in check:</span><br><span class="line">            self.assertIn(c,res.text,detail+&apos;--测试执行失败,&apos;+c+&apos;检查失败&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-将模板文件和yaml数据处理成测试类"><a href="#3-将模板文件和yaml数据处理成测试类" class="headerlink" title="3.将模板文件和yaml数据处理成测试类"></a>3.将模板文件和yaml数据处理成测试类</h5><ul>
+<li>读取cases文件夹下所有以.yaml结尾的文件</li>
+<li>获取文件名</li>
+<li>读取模板文件</li>
+<li>将文件名和文件地址传入到模板文件中</li>
+<li>保存为数据文件.py结尾的文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def create_py():</span><br><span class="line">    all_file = glob.glob(&apos;../cases/*.yaml&apos;)</span><br><span class="line">    all_class_name = []</span><br><span class="line">    for file in all_file:</span><br><span class="line">        file_name = file.split(&apos;%s&apos;%os.sep).pop().replace(&apos;.yaml&apos;,&apos;&apos;)</span><br><span class="line">        all_class_name.append(file_name)</span><br><span class="line"></span><br><span class="line">    with open(&apos;../data/case_template&apos;,encoding=&apos;utf-8&apos;) as f:</span><br><span class="line">        template_str = f.read()</span><br><span class="line"></span><br><span class="line">    for class_name in all_class_name:</span><br><span class="line">        with open(os.path.join(&apos;../cases/&apos;,class_name+&apos;.py&apos;),&apos;w&apos;,encoding=&apos;utf-8&apos;) as fw:</span><br><span class="line">            template_coding = template_str % (class_name.capitalize(), os.path.join(&apos;../cases/&apos;,class_name+&apos;.yaml&apos;))</span><br><span class="line">            fw.write(template_coding)</span><br><span class="line"></span><br><span class="line">create_py()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="4-执行用例"><a href="#4-执行用例" class="headerlink" title="4.执行用例"></a>4.执行用例</h5><ul>
+<li>通过unittest.defaultTestLoader.discover(‘../cases/‘, “*.py”)读取所有的测试类文件</li>
+<li>将所有的case添加到suit中</li>
+<li>执行器执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def run_all_case():</span><br><span class="line">    test_suit = unittest.TestSuite()</span><br><span class="line">    all_case = unittest.defaultTestLoader.discover(&apos;../cases/&apos;, &quot;*.py&quot;)</span><br><span class="line">    [test_suit.addTest(case) for case in all_case]</span><br><span class="line">    print(&quot;加载%s条用例&quot; % test_suit.countTestCases())</span><br><span class="line">    runner = BeautifulReport.BeautifulReport(test_suit)</span><br><span class="line">    runner.report(description=&quot;测试用例描述&quot;, filename=&quot;report.html&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="5-开始执行吧"><a href="#5-开始执行吧" class="headerlink" title="5.开始执行吧"></a>5.开始执行吧</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create_py()</span><br><span class="line">run_all_case()</span><br></pre></td></tr></table></figure>
+<h5 id="6-report-html"><a href="#6-report-html" class="headerlink" title="6.report.html"></a>6.report.html</h5><p><img src="https://upload-images.jianshu.io/upload_images/2572206-f0edfd43fc6a97fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
       
 
     <div class="article-info article-info-index">
@@ -235,7 +279,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">接口自动化</a>
         		</li>
       		
 		</ul>
@@ -316,15 +360,6 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/21/unittest-main加载前缀修改/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          unittest main加载前缀修改
-        
-      </div>
-    </a>
-  
   
     <a href="/2018/09/21/接口自动化03-数据驱动自动化接口测试/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">接口自动化03 数据驱动自动化接口测试</div>
@@ -354,7 +389,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据驱动自动化接口测试进阶"><span class="toc-number">1.</span> <span class="toc-text">数据驱动自动化接口测试进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#思路"><span class="toc-number">1.1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-测试数据"><span class="toc-number">1.2.</span> <span class="toc-text">1.测试数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-模板文件"><span class="toc-number">1.3.</span> <span class="toc-text">2.模板文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-将模板文件和yaml数据处理成测试类"><span class="toc-number">1.4.</span> <span class="toc-text">3.将模板文件和yaml数据处理成测试类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-执行用例"><span class="toc-number">1.5.</span> <span class="toc-text">4.执行用例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-开始执行吧"><span class="toc-number">1.6.</span> <span class="toc-text">5.开始执行吧</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-report-html"><span class="toc-number">1.7.</span> <span class="toc-text">6.report.html</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -471,6 +506,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -524,14 +567,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,6 +631,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jboss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">接口自动化</a>
               </li>
             
             <div class="clearfix"></div>
