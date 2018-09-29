@@ -170,6 +170,151 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-手机自动化02 adb指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/28/手机自动化02 adb指令/">手机自动化02 adb指令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/28/手机自动化02 adb指令/" class="archive-article-date">
+  	<time datetime="2018-09-28T12:09:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-28</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="adb与appium"><a href="#adb与appium" class="headerlink" title="adb与appium"></a>adb与appium</h4><p>adb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。<br>而appium就是将我们的python代码转化为adb指令进行操作。后面我们会进一步了解到</p>
+<h4 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h4><ul>
+<li><p>查看当前已连接设备</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">------------</span><br><span class="line">List of devices attached</span><br><span class="line">CQQCJJFMTWJV8HW4        device</span><br><span class="line">emulator-5554   device</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>-s</code>获取特定设备信息（多设备时使用）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 当只有一台设备的时候我们可以直接使用adb对设备进行操作</span><br><span class="line"># 多个设备的时候就需要通过-s进行设备的指定</span><br><span class="line">adb -s emulator-5554 shell wm size</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入adb shell命令行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\gengzongyuan&gt;adb shell</span><br><span class="line">root@x86:/ # exit</span><br><span class="line"></span><br><span class="line">C:\Users\gengzongyuan&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取当前手机安装的应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm list packages    # 所有应用</span><br><span class="line">adb shell pm list packages -3 # 第三方应用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\gengzongyuan&gt;adb install -r -g C:\Users\gengzongyuan\Desktop\mobileqq_android.apk</span><br><span class="line">C:\Users\gengzongyuan\Desktop\mobileqq.... 2.9 MB/s (54702331 bytes n 18.151s)</span><br><span class="line">        pkg: /data/local/tmp/mobileqq_android.apk</span><br><span class="line">Success</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-r	允许覆盖安装</span><br><span class="line">-s	将应用安装到 sdcard</span><br><span class="line">-d	允许降级覆盖安装</span><br><span class="line">-g	授予所有运行时权限</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb uninstall [包名]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除应用数据和缓存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm clear [包名]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动应用程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell am start 包名/启动页名称</span><br><span class="line">adb shell am start com.tencent.mobileqq/.activity.SplashActivity</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>强制停止应用程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell am force-stop 包名</span><br><span class="line">adb shell am force-stop com.tencent.mobileqq</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制文件到设备中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb push &lt;电脑上的文件路径&gt; &lt;设备里的目录&gt;</span><br><span class="line">adb push C:\Users\gengzongyuan\Desktop\mobileqq_android.apk /sdcard/testDir/</span><br><span class="line">C:\Users\gengzongyuan\Desktop\mobileqq.... 2.8 MB/s (54702331 bytes in 18.661s)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>模拟按键/输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb shell input keyevent &lt;keycode&gt;</span><br><span class="line">3	HOME 键</span><br><span class="line">4	返回键</span><br><span class="line">····</span><br><span class="line">可以参考github  https://github.com/mzlogin/awesome-adb</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>滑动操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell input swipe 起始点x坐标 起始点y坐标 结束点x坐标 结束点y坐标</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入文本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在焦点处于某文本框时，可以通过 input 命令来输入文本。</span><br><span class="line">adb shell input text hello</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>截图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb exec-out screencap -p &gt; C:/sc.png</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送随机事件</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://github.com/mzlogin/awesome-adb" target="_blank" rel="noopener">https://github.com/mzlogin/awesome-adb</a></p>
+</li>
+</ul>
+
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">手机自动化</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">adb</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/28/手机自动化02 adb指令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-手机自动化01 环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1073,97 +1218,6 @@
 
 
   
-    <article id="post-python 13面向对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/27/python 13面向对象/">python 13面向对象</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/27/python 13面向对象/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:03:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>构造函数</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def __init__(self):</span><br><span class="line">    # 构造函数，实例在被创建的时候执行</span><br><span class="line">    print(&quot;构造函数，类在实例化的时候，会自动执行它&quot;)</span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2018/09/27/python 13面向对象/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/27/python 13面向对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1448,6 +1502,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">手机自动化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">adb</a>
               </li>
             
             <div class="clearfix"></div>

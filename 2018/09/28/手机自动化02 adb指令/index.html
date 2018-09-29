@@ -6,25 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>《图解HTTP笔记》01链接中的片段标志符 | 大树的博客</title>
+  <title>手机自动化02 adb指令 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="看下面这段链接，常规的链接内容我们都清楚，但是#后面的内容又是什么呢？ 01定位（锚点） – 跳转到页面指定位置1234567891011121314151617181920212223创建html文件&amp;lt;html&amp;gt;	&amp;lt;head&amp;gt;		&amp;lt;script src=&amp;quot;jquery/jquery.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;		&amp;lt;scri">
-<meta name="keywords" content="HTTP,网络协议">
+  <meta name="description" content="adb与appiumadb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。而appium就是将我们的python代码转化为adb指令进行操作。后面我们会进一步了解到 常用指令 查看当前已连接设备 12345adb devices-----------">
+<meta name="keywords" content="自动化测试,手机自动化,adb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《图解HTTP笔记》01链接中的片段标志符">
-<meta property="og:url" content="http://gengzongyuan.github.io/2018/09/27/《图解HTTP笔记》01链接中的片段标志符/index.html">
+<meta property="og:title" content="手机自动化02 adb指令">
+<meta property="og:url" content="http://gengzongyuan.github.io/2018/09/28/手机自动化02 adb指令/index.html">
 <meta property="og:site_name" content="大树的博客">
-<meta property="og:description" content="看下面这段链接，常规的链接内容我们都清楚，但是#后面的内容又是什么呢？ 01定位（锚点） – 跳转到页面指定位置1234567891011121314151617181920212223创建html文件&amp;lt;html&amp;gt;	&amp;lt;head&amp;gt;		&amp;lt;script src=&amp;quot;jquery/jquery.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;		&amp;lt;scri">
+<meta property="og:description" content="adb与appiumadb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。而appium就是将我们的python代码转化为adb指令进行操作。后面我们会进一步了解到 常用指令 查看当前已连接设备 12345adb devices-----------">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-40e69c45969a5b22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-527ff4b7eb668ac8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-c7ef39e192effee2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-10a4886b2e670a25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-27T07:05:34.000Z">
+<meta property="og:updated_time" content="2018-09-28T12:10:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《图解HTTP笔记》01链接中的片段标志符">
-<meta name="twitter:description" content="看下面这段链接，常规的链接内容我们都清楚，但是#后面的内容又是什么呢？ 01定位（锚点） – 跳转到页面指定位置1234567891011121314151617181920212223创建html文件&amp;lt;html&amp;gt;	&amp;lt;head&amp;gt;		&amp;lt;script src=&amp;quot;jquery/jquery.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;		&amp;lt;scri">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-40e69c45969a5b22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="手机自动化02 adb指令">
+<meta name="twitter:description" content="adb与appiumadb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。而appium就是将我们的python代码转化为adb指令进行操作。后面我们会进一步了解到 常用指令 查看当前已连接设备 12345adb devices-----------">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -178,20 +173,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-《图解HTTP笔记》01链接中的片段标志符" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-手机自动化02 adb指令" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      《图解HTTP笔记》01链接中的片段标志符
+      手机自动化02 adb指令
     </h1>
   
 
         
-        <a href="/2018/09/27/《图解HTTP笔记》01链接中的片段标志符/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:04:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
+        <a href="/2018/09/28/手机自动化02 adb指令/" class="archive-article-date">
+  	<time datetime="2018-09-28T12:09:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-28</time>
 </a>
         
       </header>
@@ -204,20 +199,55 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>看下面这段链接，常规的链接内容我们都清楚，但是#后面的内容又是什么呢？<br><img src="https://upload-images.jianshu.io/upload_images/2572206-40e69c45969a5b22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong>01定位（锚点） – 跳转到页面指定位置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">创建html文件</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;script src=&quot;jquery/jquery.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">		&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">			$(document).ready(function()&#123;</span><br><span class="line">				// 在这里写你的代码...</span><br><span class="line">				for(var i=0;i&lt;10;i++)&#123;</span><br><span class="line">				$(&quot;ol&quot;).append(&quot;&lt;li&gt;大树&lt;li&gt;&quot;)					</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;ol&gt;&lt;/ol&gt;</span><br><span class="line">		&lt;button id=&quot;btn1&quot;&gt;id=&quot;btn1&quot;&lt;/button&gt;</span><br><span class="line">		&lt;a name=&quot;a1&quot;&gt;name:a1&lt;/a&gt;</span><br><span class="line">		&lt;ol&gt;&lt;/ol&gt;</span><br><span class="line">		&lt;button name=&quot;btn2&quot;&gt;name=&quot;btn2&quot;&lt;/button&gt;</span><br><span class="line">		&lt;a name=&quot;a2&quot;&gt;name:a2&lt;/a&gt;</span><br><span class="line">		&lt;ol&gt;&lt;/ol&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">分别访问</span><br><span class="line">http://127.0.0.1:8848/w3schoolJquery1/nihao.html#a1</span><br><span class="line">http://127.0.0.1:8848/w3schoolJquery1/nihao.html#a2</span><br><span class="line">http://127.0.0.1:8848/w3schoolJquery1/nihao.html#btn1</span><br><span class="line">http://127.0.0.1:8848/w3schoolJquery1/nihao.html#btn2</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>浏览器加载页面时，如果附带#string参数，将会对页面所有标签的id进行搜索，当id=string时，跳转到string对应的位置<strong>（也可以使用name进行指定，但name仅使用于<a><a>）</a></a></strong></p>
-</blockquote>
-<p><strong>02 – 会传递参数给服务器吗</strong><br><img src="https://upload-images.jianshu.io/upload_images/2572206-527ff4b7eb668ac8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>浏览器访问并进行抓包后发现，并不会将#后的参数传递给服务器</p>
-</blockquote>
-<p><strong>03 – 如果浏览器重新访问含#string的链接会向服务器发送请求吗？</strong><br><img src="https://upload-images.jianshu.io/upload_images/2572206-c7ef39e192effee2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器访问"><br><img src="https://upload-images.jianshu.io/upload_images/2572206-10a4886b2e670a25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="抓包结果"></p>
-<blockquote>
-<p>在浏览器访问了三条记录，发现仅请求了服务器两次<br><strong>答案：不会</strong></p>
-</blockquote>
+        <h4 id="adb与appium"><a href="#adb与appium" class="headerlink" title="adb与appium"></a>adb与appium</h4><p>adb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。<br>而appium就是将我们的python代码转化为adb指令进行操作。后面我们会进一步了解到</p>
+<h4 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h4><ul>
+<li><p>查看当前已连接设备</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">------------</span><br><span class="line">List of devices attached</span><br><span class="line">CQQCJJFMTWJV8HW4        device</span><br><span class="line">emulator-5554   device</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>-s</code>获取特定设备信息（多设备时使用）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 当只有一台设备的时候我们可以直接使用adb对设备进行操作</span><br><span class="line"># 多个设备的时候就需要通过-s进行设备的指定</span><br><span class="line">adb -s emulator-5554 shell wm size</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入adb shell命令行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\gengzongyuan&gt;adb shell</span><br><span class="line">root@x86:/ # exit</span><br><span class="line"></span><br><span class="line">C:\Users\gengzongyuan&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取当前手机安装的应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm list packages    # 所有应用</span><br><span class="line">adb shell pm list packages -3 # 第三方应用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\gengzongyuan&gt;adb install -r -g C:\Users\gengzongyuan\Desktop\mobileqq_android.apk</span><br><span class="line">C:\Users\gengzongyuan\Desktop\mobileqq.... 2.9 MB/s (54702331 bytes n 18.151s)</span><br><span class="line">        pkg: /data/local/tmp/mobileqq_android.apk</span><br><span class="line">Success</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-r	允许覆盖安装</span><br><span class="line">-s	将应用安装到 sdcard</span><br><span class="line">-d	允许降级覆盖安装</span><br><span class="line">-g	授予所有运行时权限</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb uninstall [包名]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除应用数据和缓存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm clear [包名]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动应用程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell am start 包名/启动页名称</span><br><span class="line">adb shell am start com.tencent.mobileqq/.activity.SplashActivity</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>强制停止应用程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell am force-stop 包名</span><br><span class="line">adb shell am force-stop com.tencent.mobileqq</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制文件到设备中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb push &lt;电脑上的文件路径&gt; &lt;设备里的目录&gt;</span><br><span class="line">adb push C:\Users\gengzongyuan\Desktop\mobileqq_android.apk /sdcard/testDir/</span><br><span class="line">C:\Users\gengzongyuan\Desktop\mobileqq.... 2.8 MB/s (54702331 bytes in 18.661s)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>模拟按键/输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb shell input keyevent &lt;keycode&gt;</span><br><span class="line">3	HOME 键</span><br><span class="line">4	返回键</span><br><span class="line">····</span><br><span class="line">可以参考github  https://github.com/mzlogin/awesome-adb</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>滑动操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell input swipe 起始点x坐标 起始点y坐标 结束点x坐标 结束点y坐标</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入文本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在焦点处于某文本框时，可以通过 input 命令来输入文本。</span><br><span class="line">adb shell input text hello</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>截图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb exec-out screencap -p &gt; C:/sc.png</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送随机事件</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://github.com/mzlogin/awesome-adb" target="_blank" rel="noopener">https://github.com/mzlogin/awesome-adb</a></p>
+</li>
+</ul>
 
       
 
@@ -229,11 +259,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络协议</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">手机自动化</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">adb</a>
         		</li>
       		
 		</ul>
@@ -245,7 +279,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
         		</li>
       		
 		</ul>
@@ -300,7 +334,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2018/09/27/《图解HTTP笔记》01链接中的片段标志符/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2018/09/28/手机自动化02 adb指令/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,18 +348,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/27/《图解HTTP笔记》02HEAD方法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          《图解HTTP笔记》02HEAD方法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/27/python 14装饰器/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python 14装饰器</div>
+    <a href="/2018/09/28/手机自动化01 环境搭建/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">手机自动化01 环境搭建</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -352,7 +377,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#adb与appium"><span class="toc-number">1.</span> <span class="toc-text">adb与appium</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常用指令"><span class="toc-number">2.</span> <span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
                     </div>
                 </span>
             </div>
