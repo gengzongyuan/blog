@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
   <title>手机自动化02 adb指令 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="adb与appiumadb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。而appium就是将我们的python代码转化为adb指令进行操作。后面我们会进一步了解到 常用指令 查看当前已连接设备 12345adb devices-----------">
+  <meta name="description" content="adb与appiumadb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。 常用指令 查看当前已连接设备 12345adb devices------------List of devices attachedCQQCJJFMTWJV8HW4">
 <meta name="keywords" content="自动化测试,手机自动化,adb">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手机自动化02 adb指令">
 <meta property="og:url" content="http://gengzongyuan.github.io/2018/09/28/手机自动化02 adb指令/index.html">
 <meta property="og:site_name" content="大树的博客">
-<meta property="og:description" content="adb与appiumadb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。而appium就是将我们的python代码转化为adb指令进行操作。后面我们会进一步了解到 常用指令 查看当前已连接设备 12345adb devices-----------">
+<meta property="og:description" content="adb与appiumadb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。 常用指令 查看当前已连接设备 12345adb devices------------List of devices attachedCQQCJJFMTWJV8HW4">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-28T12:10:13.000Z">
+<meta property="og:updated_time" content="2018-09-29T08:10:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机自动化02 adb指令">
-<meta name="twitter:description" content="adb与appiumadb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。而appium就是将我们的python代码转化为adb指令进行操作。后面我们会进一步了解到 常用指令 查看当前已连接设备 12345adb devices-----------">
+<meta name="twitter:description" content="adb与appiumadb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。 常用指令 查看当前已连接设备 12345adb devices------------List of devices attachedCQQCJJFMTWJV8HW4">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -199,7 +199,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="adb与appium"><a href="#adb与appium" class="headerlink" title="adb与appium"></a>adb与appium</h4><p>adb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。<br>而appium就是将我们的python代码转化为adb指令进行操作。后面我们会进一步了解到</p>
+        <h4 id="adb与appium"><a href="#adb与appium" class="headerlink" title="adb与appium"></a>adb与appium</h4><p>adb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。</p>
 <h4 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h4><ul>
 <li><p>查看当前已连接设备</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">------------</span><br><span class="line">List of devices attached</span><br><span class="line">CQQCJJFMTWJV8HW4        device</span><br><span class="line">emulator-5554   device</span><br></pre></td></tr></table></figure>
