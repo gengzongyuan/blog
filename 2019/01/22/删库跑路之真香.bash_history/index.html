@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="删库之后的精髓就在于，把.bash_history里的记录清理干净  实验一：删除.bash_history 123456[root@tencent1 ~]# rm -rf .bash_history [root@tencent1 ~]# cat .bash_history #1548157074rm -rf .bash_history可以看到删除.bash_history的记录还是会存进去  实">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-22T11:51:41.000Z">
+<meta property="og:updated_time" content="2019-01-22T11:58:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="删库跑路之真香.bash_history">
 <meta name="twitter:description" content="删库之后的精髓就在于，把.bash_history里的记录清理干净  实验一：删除.bash_history 123456[root@tencent1 ~]# rm -rf .bash_history [root@tencent1 ~]# cat .bash_history #1548157074rm -rf .bash_history可以看到删除.bash_history的记录还是会存进去  实">
@@ -208,8 +208,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 ~]# echo &apos;&apos;&gt;.bash_history </span><br><span class="line">[root@tencent1 ~]# cat .bash_history </span><br><span class="line"></span><br><span class="line">#1548157381</span><br><span class="line">echo &apos;&apos;&gt;.bash_history </span><br><span class="line"></span><br><span class="line">仍然不好使</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>实验三：终极手段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 ~]# mkdir data</span><br><span class="line">[root@tencent1 ~]# rm -rf data</span><br><span class="line">[root@tencent1 ~]# cat .bash_history </span><br><span class="line"></span><br><span class="line">#1548157655</span><br><span class="line">echo &apos;&apos;&gt;.bash_history </span><br><span class="line">#1548157662</span><br><span class="line">mkdir data</span><br><span class="line">#1548157664</span><br><span class="line">rm -rf data</span><br><span class="line"></span><br><span class="line">我们先模拟一下删库，可以看到.bash_history里已经有记录了</span><br><span class="line"></span><br><span class="line">编辑一个shell</span><br><span class="line">[root@tencent1 ~]# cat mytest.sh </span><br><span class="line">sed -i &apos;s/rm -rf data/ls/&apos; .bash_history</span><br><span class="line"></span><br><span class="line">执行shell</span><br><span class="line">[root@tencent1 ~]# sh mytest.sh </span><br><span class="line">[root@tencent1 ~]# cat .bash_history </span><br><span class="line"></span><br><span class="line">#1548157655</span><br><span class="line">echo &apos;&apos;&gt;.bash_history </span><br><span class="line">#1548157662</span><br><span class="line">mkdir data</span><br><span class="line">#1548157664</span><br><span class="line">ls</span><br><span class="line">#1548157671</span><br><span class="line">cat .bash_history </span><br><span class="line">#1548157721</span><br><span class="line">cat mytest.sh </span><br><span class="line">#1548157765</span><br><span class="line">sh mytest.sh </span><br><span class="line"></span><br><span class="line">可以看到我们的删库指令已经神不知鬼不觉的被替换掉了</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 ~]# mkdir data</span><br><span class="line">[root@tencent1 ~]# rm -rf data</span><br><span class="line">[root@tencent1 ~]# cat .bash_history </span><br><span class="line"></span><br><span class="line">#1548157655</span><br><span class="line">echo &apos;&apos;&gt;.bash_history </span><br><span class="line">#1548157662</span><br><span class="line">mkdir data</span><br><span class="line">#1548157664</span><br><span class="line">rm -rf data</span><br><span class="line"></span><br><span class="line">我们先模拟一下删库，可以看到.bash_history里已经有记录了</span><br><span class="line"></span><br><span class="line">编辑一个shell</span><br><span class="line">[root@tencent1 ~]# cat mytest.sh </span><br><span class="line">sed -i &apos;s/rm -rf data/ls/&apos; .bash_history</span><br><span class="line"></span><br><span class="line">执行shell</span><br><span class="line">[root@tencent1 ~]# sh mytest.sh </span><br><span class="line">[root@tencent1 ~]# cat .bash_history </span><br><span class="line"></span><br><span class="line">#1548157655</span><br><span class="line">echo &apos;&apos;&gt;.bash_history </span><br><span class="line">#1548157662</span><br><span class="line">mkdir data</span><br><span class="line">#1548157664</span><br><span class="line">ls</span><br><span class="line">#1548157671</span><br><span class="line">cat .bash_history </span><br><span class="line">#1548157721</span><br><span class="line">cat mytest.sh </span><br><span class="line">#1548157765</span><br><span class="line">sh mytest.sh </span><br><span class="line"></span><br><span class="line">可以看到我们的删库指令已经神不知鬼不觉的被替换掉了</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<blockquote>
+<p>后记：这种情况仅限没有经过堡垒机跳转登录服务器的情况，咂摸一下，要是公司有堡垒机赶紧想办法补救和认错，实在不行，收拾东西赶紧跑</p>
+</blockquote>
 
       
 
@@ -301,6 +305,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/01/24/linux基础攻略大全/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          linux基础攻略大全
+        
+      </div>
+    </a>
   
   
     <a href="/2018/11/06/linux配置支持中文字体/" id="article-nav-older" class="article-nav-link-wrap">
@@ -697,6 +710,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="https://threedr3am.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>threedr3am</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://blog.itpub.net/30089851" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>hackeruncle-J哥</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://blog.csdn.net/weixin_42330251" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>小海</a>
             </li>
           
         </ul>
