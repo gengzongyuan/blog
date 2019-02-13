@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
   <title>Python Redis Cmd指令实现 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开发自动化平台的时候，想实现录入一行cmd指令就去执行的效果，网上找了一堆材料都没有对应的帮助，跑去翻了redis的源码才找到解决方案  先来看redis的一条get方法是怎么实现的1234567    def get(self, name):        &amp;quot;&amp;quot;&amp;quot;        Return the value at key ``name``, or None i">
+  <meta name="description" content="开发自动化平台的时候，想实现录入一行cmd指令就去执行的效果，网上找了一堆材料都没有对应的帮助，跑去翻了redis的源码才找到解决方案   先来看redis的一条get方法是怎么实现的1234567    def get(self, name):        &amp;quot;&amp;quot;&amp;quot;        Return the value at key ``name``, or None">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Redis Cmd指令实现">
 <meta property="og:url" content="http://gengzongyuan.github.io/2019/02/13/Python Redis Cmd指令实现/index.html">
 <meta property="og:site_name" content="大树的博客">
-<meta property="og:description" content="开发自动化平台的时候，想实现录入一行cmd指令就去执行的效果，网上找了一堆材料都没有对应的帮助，跑去翻了redis的源码才找到解决方案  先来看redis的一条get方法是怎么实现的1234567    def get(self, name):        &amp;quot;&amp;quot;&amp;quot;        Return the value at key ``name``, or None i">
+<meta property="og:description" content="开发自动化平台的时候，想实现录入一行cmd指令就去执行的效果，网上找了一堆材料都没有对应的帮助，跑去翻了redis的源码才找到解决方案   先来看redis的一条get方法是怎么实现的1234567    def get(self, name):        &amp;quot;&amp;quot;&amp;quot;        Return the value at key ``name``, or None">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-13T03:48:18.000Z">
+<meta property="og:updated_time" content="2019-02-13T03:50:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Redis Cmd指令实现">
-<meta name="twitter:description" content="开发自动化平台的时候，想实现录入一行cmd指令就去执行的效果，网上找了一堆材料都没有对应的帮助，跑去翻了redis的源码才找到解决方案  先来看redis的一条get方法是怎么实现的1234567    def get(self, name):        &amp;quot;&amp;quot;&amp;quot;        Return the value at key ``name``, or None i">
+<meta name="twitter:description" content="开发自动化平台的时候，想实现录入一行cmd指令就去执行的效果，网上找了一堆材料都没有对应的帮助，跑去翻了redis的源码才找到解决方案   先来看redis的一条get方法是怎么实现的1234567    def get(self, name):        &amp;quot;&amp;quot;&amp;quot;        Return the value at key ``name``, or None">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -201,11 +201,11 @@
       
         <blockquote>
 <p>开发自动化平台的时候，想实现录入一行cmd指令就去执行的效果，网上找了一堆材料都没有对应的帮助，跑去翻了redis的源码才找到解决方案</p>
+</blockquote>
 <ul>
 <li>先来看redis的一条get方法是怎么实现的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    def get(self, name):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Return the value at key ``name``, or None if the key doesn&apos;t exist</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        return self.execute_command(&apos;GET&apos;, name)</span><br><span class="line"></span><br><span class="line">可以看到调用了execute_command方法</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-</blockquote>
 <a id="more"></a>
 <ul>
 <li><p>在client.py代码里找到了封装的execute_command方法</p>
