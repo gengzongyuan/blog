@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>Category: 开发 | 大树的博客</title>
+  <title>MySQL语法 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大树的博客">
-<meta property="og:url" content="http://gengzongyuan.github.io/categories/开发/page/3/index.html">
+  <meta name="description" content="相关术语12345SQL语言：Structured Query Language：结构化查询语言DDL：数据定义语言DML：数据操作语言DQL：数据查询语言DCL：数据控制语言">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL语法">
+<meta property="og:url" content="http://gengzongyuan.github.io/2019/02/13/MySQL语法/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="相关术语12345SQL语言：Structured Query Language：结构化查询语言DDL：数据定义语言DML：数据操作语言DQL：数据查询语言DCL：数据控制语言">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-3ef466b7f6778357.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-508f3260cc9546f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-50178ef974a74f2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-69d5099db7c4c69e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-13T12:44:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大树的博客">
+<meta name="twitter:title" content="MySQL语法">
+<meta name="twitter:description" content="相关术语12345SQL语言：Structured Query Language：结构化查询语言DDL：数据定义语言DML：数据操作语言DQL：数据查询语言DCL：数据控制语言">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-3ef466b7f6778357.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -168,48 +178,137 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MySQL语法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MySQL语法
+    </h1>
+  
+
+        
+        <a href="/2019/02/13/MySQL语法/" class="archive-article-date">
+  	<time datetime="2019-02-13T04:44:04.946Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-13</time>
+</a>
+        
+      </header>
     
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SQL语言：Structured Query Language：结构化查询语言</span><br><span class="line">DDL：数据定义语言</span><br><span class="line">DML：数据操作语言</span><br><span class="line">DQL：数据查询语言</span><br><span class="line">DCL：数据控制语言</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="MySQL相关操作"><a href="#MySQL相关操作" class="headerlink" title="MySQL相关操作"></a>MySQL相关操作</h4><ul>
+<li><p>语法规范</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">常用MySQL的关键字我们需要大写，库名、表名、字段名称等使用小写</span><br><span class="line">SQL语句支持折行操作，拆分的时候不能把完整单词拆开</span><br><span class="line">数据库名称、表名称、字段名称不要使用MySQL的保留字，如果必须要使用，需要用反引号``将其括起来</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常见SQL语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT USER()	得到登陆的用户</span><br><span class="line">SELECT VERSION()	得到MySQL的版本信息</span><br><span class="line">SELECT NOW()	得到当前的日期时间</span><br><span class="line">SELECT DATABASE()	得到当前打开的数据库</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>####数据库相关操作</p>
+<ul>
+<li><p>创建数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE &#123;DATABASE|SCHEMA&#125; db_name;</span><br><span class="line">CREATE DATABASE [IF NOT EXISTS] db_name;</span><br><span class="line">检测数据库名称是否存在，不存在则创建</span><br><span class="line"></span><br><span class="line">在创建数据库的同时指定编码方式</span><br><span class="line">CREATE DATABASE [IF NOT EXISTS] db_name [DEFAULT] CHARACTER SET [=] charset;</span><br><span class="line">注意</span><br><span class="line">-  数据库名称最好有意义</span><br><span class="line">-  名称不要包含特殊字符或者是MySQL关键字</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">查看当前服务器下全部数据库</span><br><span class="line">SHOW DATABASES|SCHEMAS;</span><br><span class="line">查看指定数据库的详细信息</span><br><span class="line">SHOW CREATE DATABASE db_name;</span><br><span class="line">修改指定数据库的编码方式</span><br><span class="line">ALTER DATABASE db_name [DEFAULT] CHARACTER SET [=] charset;</span><br><span class="line">打开指定数据库</span><br><span class="line">USE db_name;</span><br><span class="line">得到当前打开的数据库</span><br><span class="line">SELECT DATABASE()|SCHEMA();</span><br><span class="line">删除指定的数据库</span><br><span class="line">DROP DATABASE db_name;</span><br><span class="line">如果数据库存在则删除</span><br><span class="line">DROP DATABASE [IF EXISTS] db_name;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><ul>
+<li><img src="https://upload-images.jianshu.io/upload_images/2572206-3ef466b7f6778357.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="整数型"></li>
+<li><img src="https://upload-images.jianshu.io/upload_images/2572206-508f3260cc9546f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浮点型"></li>
+<li><p><img src="https://upload-images.jianshu.io/upload_images/2572206-50178ef974a74f2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="字符串类型"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CHAR效率高于VARCHAR,CHAR相当于拿空间换时间，VARCHAR拿时间换空间</span><br><span class="line">CHAR默认存储数据的时候，后面会用空格填充到指定长度；而在检索的时候会去掉后面空格；VARCHAR在保存的时候不进行填充，尾部的空格会留下</span><br><span class="line">TEXT列不能有默认值,检索的时候不存在大小写转换</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><img src="https://upload-images.jianshu.io/upload_images/2572206-69d5099db7c4c69e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="日期类型"></p>
+</li>
+</ul>
+<h4 id="数据库表操作"><a href="#数据库表操作" class="headerlink" title="数据库表操作"></a>数据库表操作</h4><ul>
+<li><p>基础知识</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">是数据库最重要的组成部分之一，数据是保存在数据表中</span><br><span class="line">数据表由行(row)和列(column)来组成</span><br><span class="line">每个数据表中至少有一列，行可以有零行一行或者多行组成</span><br><span class="line">表名要求唯一，不要包含特殊字符，最好含义明确</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE [IF NOT EXISTS] tbl_name(</span><br><span class="line">    字段名称 字段类型 [完整性约束条件],</span><br><span class="line">    字段名称 字段类型 [完整性约束条件],</span><br><span class="line">	...</span><br><span class="line">)ENGINE=存储引擎 CHARSET=编码方式;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>约束</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UNSIGNED	无符号，没有负数，从0开始</span><br><span class="line">ZEROFILL	零填充，当数据的显示长度不够的时候可以使用前补0的效果填充至指定长度,字段会自动添加UNSIGNEDNOT NULL	非空约束，也就是插入值的时候这个字段必须要给值,值不能为空</span><br><span class="line">DEFAULT	默认值，如果插入记录的时候没有给字段赋值，则使用默认值</span><br><span class="line">PRIMARY KEY	主键，标识记录的唯一性，值不能重复，一个表只能有一个主键，自动禁止为空</span><br><span class="line">AUTO_INCREMENT	自动增长，只能用于数值列，而且配合索引使用,默认起始值从1开始，每次增长1</span><br><span class="line">UNIQUE KEY	唯一性，一个表中可以有多个字段是唯一索引，同样的值不能重复，但是NULL值除外</span><br><span class="line">FOREIGN KEY	外键约束</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据库表的详细信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SHOW CREATE TABLE tbl_name;</span><br><span class="line"></span><br><span class="line">查看表结构</span><br><span class="line">DESC tbl_name;</span><br><span class="line">DESCRIBE tbl_name;</span><br><span class="line">SHOW COLUMNS FROM tbl_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE [IF EXISTS] tbl_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表结构的相关操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">添加字段</span><br><span class="line">ALTER TABLE tbl_name </span><br><span class="line">ADD 字段名称 字段属性 [完整性约束条件] [FIRST|AFTER 字段名称]</span><br><span class="line"></span><br><span class="line">删除字段</span><br><span class="line">ALTER TABLE tbl_name</span><br><span class="line">DROP 字段名称</span><br><span class="line"></span><br><span class="line">添加默认值</span><br><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ALTER 字段名称 SET DEFAULT 默认值;</span><br><span class="line"></span><br><span class="line">删除默认值</span><br><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ALTER 字段名称 DROP DEFAULT</span><br><span class="line"></span><br><span class="line">修改字段类型、字段属性</span><br><span class="line">ALTER TABLE tbl_name</span><br><span class="line">MODIFY 字段名称 字段类型 [字段属性] [FIRST | AFTER 字段名称]</span><br><span class="line"></span><br><span class="line">修改字段名称、字段类型、字段属性</span><br><span class="line">ALTER TABLE tbl_name</span><br><span class="line">CHANGE 原字段名称 新字段名称 字段类型 字段属性 [FIRST | AFTER 字段名称]</span><br><span class="line"></span><br><span class="line">添加主键</span><br><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ADD PRIMARY KEY(字段名称)</span><br><span class="line"></span><br><span class="line">删除主键</span><br><span class="line">ALTER TABLE tbl_name</span><br><span class="line">DROP PRIMARY KEY;</span><br><span class="line"></span><br><span class="line">添加唯一</span><br><span class="line">ALTER TABLE tbl_name</span><br><span class="line">ADD UNIQUE KEY|INDEX [index_name] (字段名称)</span><br><span class="line"></span><br><span class="line">删除唯一</span><br><span class="line">ALTER TABLE tbl_name </span><br><span class="line">DROP index_name;</span><br><span class="line"></span><br><span class="line">修改数据表名称</span><br><span class="line">ALTER TABLE tbl_name </span><br><span class="line">RENAME [TO|AS] new_tbl_name</span><br><span class="line">RENAME TABLE tbl_name TO new_tbl_name;</span><br><span class="line"></span><br><span class="line">修改AUTO_INCREMENT的值</span><br><span class="line">ALTER TABLE tbl_name AUTO_INCREMENT=值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="MySQL数据操作"><a href="#MySQL数据操作" class="headerlink" title="MySQL数据操作"></a>MySQL数据操作</h4><ul>
+<li><p>增</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">INSERT [INTO] tbl_name[(col_name,...)] &#123;VALUE|VALUES&#125;(VALUES...);</span><br><span class="line"></span><br><span class="line">不指定字段名称</span><br><span class="line">INSERT tbl_name VALUE(value...)</span><br><span class="line">需要按照建表时的字段顺序给每一个字段赋值</span><br><span class="line"></span><br><span class="line">列出指定字段</span><br><span class="line">INSERT tbl_name(字段名称,...) VALUES(值,...)</span><br><span class="line"></span><br><span class="line">INSERT ... SET的形式</span><br><span class="line">INSERT tbl_name SET 字段名称=值,...;</span><br><span class="line"></span><br><span class="line">INSERT ... SELECT</span><br><span class="line">INSERT tbl_name[(字段名称...)] SELECT 字段名称,... FROM  tbl_name [WHERE 条件]</span><br><span class="line"></span><br><span class="line">一次添加多条记录</span><br><span class="line">INSERT tbl_name[(字段名称,...)] VALUES(值,...),</span><br><span class="line">(值,....),</span><br><span class="line">(值,...)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UPDATE tbl_name SET 字段名称=值,字段名称=值 [WHERE 条件]</span><br><span class="line">如果不添加条件，整个表中的记录都会被更新</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM tbl_name [WHERE 条件]</span><br><span class="line">如果不添加条件，表中所有记录都会被删除</span><br><span class="line"></span><br><span class="line">DELETE 清空数据表的时候不会重置AUTO_INCREMENT的值，可以通过ALTER 语句将其重置为1</span><br><span class="line"></span><br><span class="line">彻底清空数据表</span><br><span class="line">TRUNCATE [TABLE] tbl_name;</span><br><span class="line">清除表中所有记录，会重置AUTO_INCREMENT的值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><ul>
+<li><p>语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT select_expr,... FROM tbl_name</span><br><span class="line">[WHERE 条件]</span><br><span class="line">[GROUP BY &#123;col_name|position&#125; HAVING 二次筛选]</span><br><span class="line">[ORDER BY &#123;col_name|position|expr&#125; [ASC|DESC]]</span><br><span class="line">[LIMIT 限制结果集的显示条数]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>基础操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">查询表中所有记录</span><br><span class="line">SELECT * FROM tbl_name;</span><br><span class="line">*所有字段</span><br><span class="line"></span><br><span class="line">指定字段的信息</span><br><span class="line">SELECT 字段名称,... FROM tbl_name</span><br><span class="line"></span><br><span class="line">库名.表名</span><br><span class="line">SELECT 字段名称,... FROM db_name.tbl_name;</span><br><span class="line"></span><br><span class="line">给字段起别名</span><br><span class="line">SELECT 字段名称 [AS] 别名名称,... FROM db_name.tbl_name; </span><br><span class="line"></span><br><span class="line">给数据表起别名</span><br><span class="line">SELECT 字段名称 ,... FROM tbl_name [AS] 别名;</span><br><span class="line"></span><br><span class="line">表名.字段名的</span><br><span class="line">SELECT tbl_name.col_name,... FROM tbl_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>where条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> 比较运算符</span><br><span class="line">   &gt; &gt;= &lt; &lt;= != &lt;&gt; &lt;=&gt;</span><br><span class="line"> </span><br><span class="line"> &lt;=&gt; 和 =的区别?  &lt;=&gt;可以检测NULL值</span><br><span class="line"></span><br><span class="line"> IS [NOT] NULL</span><br><span class="line"> 检测值是否为NULL或者NOT NULL</span><br><span class="line"></span><br><span class="line"> 指定范围  [NOT] BETWEEN ... AND</span><br><span class="line"></span><br><span class="line"> 指定集合  [NOT] IN(值,...)</span><br><span class="line"></span><br><span class="line"> 逻辑运算符</span><br><span class="line"> AND  逻辑与</span><br><span class="line"> OR  逻辑或</span><br><span class="line"></span><br><span class="line"> 匹配字符</span><br><span class="line">[NOT] LIKE</span><br><span class="line">%  任意长度的字符串</span><br><span class="line">_  任意一个字符</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GROUP BY 分组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">把值相同放到一个组中，最终查询出的结果只会显示组中一条记录</span><br><span class="line">分组配合GROUP_CONCAT()查看组中某个字段的详细信息</span><br><span class="line"></span><br><span class="line">配合聚合函数使用</span><br><span class="line">  COUNT()</span><br><span class="line">    统计记录总数</span><br><span class="line">    如果写的是COUNT(字段名称)，字段中的值为NULL，不统计进来</span><br><span class="line">    写COUNT(*)会统计NULL值</span><br><span class="line">  SUM()  求和</span><br><span class="line">  MAX()  求最大值</span><br><span class="line">  MIN()  求最小值</span><br><span class="line">  AVG()  求平均值</span><br><span class="line"></span><br><span class="line">配合WITH ROLLUP关键使用,会在记录末尾添加一条记录，是上面所有记录的总和</span><br><span class="line">HAVING子句对分组结果进行二次筛选</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ORDER BY 排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORDER BY 字段名称 ASC|DESC</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LIMIT 限制结果集显示条数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LIMIT 值</span><br><span class="line">显示结果集的前几条记录</span><br><span class="line">LIMIT offset,row_count</span><br><span class="line">从offset开始，显示几条记录,offset从0开始</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多表查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- 内连接：查询两个表中符合连接条件的记录</span><br><span class="line">SELECT 字段名称,... FROM tbl_name1</span><br><span class="line">INNER JOIN tbl_name2</span><br><span class="line">ON 连接条件</span><br><span class="line"></span><br><span class="line">- 左连接：先显示左表中的全部记录，再去右表中查询复合条件的记录，不符合的以NULL代替</span><br><span class="line">SELECT 字段名称,... FROM tbl_name1</span><br><span class="line">LEFT [OUTER] JOIN tbl_name2</span><br><span class="line">ON 条件;</span><br><span class="line"></span><br><span class="line">- 右连接：先显示右表中的全部记录，再去左表中查询复合条件的记录，不符合的以NULL代替</span><br><span class="line">SELECT 字段名称,... FROM tbl_name1</span><br><span class="line"> RIGHT [OUTER] JOIN tbl_name2</span><br><span class="line">ON 条件;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名称 FROM tbl_name WHERE col_name=(SELECT col_name FROM tbl_name)</span><br><span class="line"></span><br><span class="line">- 内层语句查询的结果可以做为外层语句查询的条件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>联合查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名称,... FROM tbl_name1 </span><br><span class="line">UNION</span><br><span class="line">SELECT 字段名称... FROM tbl_name2;</span><br><span class="line"></span><br><span class="line">SELECT 字段名称,... FROM tbl_name1 </span><br><span class="line">UNION ALL</span><br><span class="line">SELECT 字段名称... FROM tbl_name2;</span><br><span class="line"></span><br><span class="line">UNION ALL 是简单的合并，UNION会去掉表中重复记录</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/python-01常用数据类型/" class="archive-article-date">
-  	<time datetime="2018-09-27T06:56:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/python-01常用数据类型/">python-01常用数据类型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -222,489 +321,128 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2019/02/13/MySQL语法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/python爬虫CCTV2《环球财经连线》/" class="archive-article-date">
-  	<time datetime="2018-09-20T09:35:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/02/13/MySQL基础操作/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MySQL基础操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/13/MySQL安装部署/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL安装部署</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/python爬虫CCTV2《环球财经连线》/">python爬虫CCTV2《环球财经连线》</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#相关术语"><span class="toc-number">1.</span> <span class="toc-text">相关术语</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL相关操作"><span class="toc-number">2.</span> <span class="toc-text">MySQL相关操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据类型"><span class="toc-number">3.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库表操作"><span class="toc-number">4.</span> <span class="toc-text">数据库表操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL数据操作"><span class="toc-number">5.</span> <span class="toc-text">MySQL数据操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询"><span class="toc-number">6.</span> <span class="toc-text">查询</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/python运行失败-报错：api-ms-win-core-path-l1-1-0-dll/" class="archive-article-date">
-  	<time datetime="2018-09-20T09:24:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/python运行失败-报错：api-ms-win-core-path-l1-1-0-dll/">python运行失败 报错：api-ms-win-core-path-l1-1-0.dll</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/Pycharm远程ssh连接的terminal乱码/" class="archive-article-date">
-  	<time datetime="2018-09-20T09:23:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/Pycharm远程ssh连接的terminal乱码/">Pycharm远程ssh连接的terminal乱码</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Pycharm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/kafka10-kafka整合flume/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/kafka10-kafka整合flume/">kafka10 kafka整合flume</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/kafka09-自定义提交offset/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/kafka09-自定义提交offset/">kafka09 自定义提交offset</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/kafka08-消费指定offset的消息/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/kafka08-消费指定offset的消息/">kafka08 消费指定offset的消息</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/kafka07-多线程consumer开发/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/kafka07-多线程consumer开发/">kafka07 多线程consumer开发</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/kafka06-简单的consumer开发/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/kafka06-简单的consumer开发/">kafka06 简单的consumer开发</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/kafka05-开发自定义分区器/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/kafka05-开发自定义分区器/">kafka05 开发自定义分区器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/categories/开发/page/2/">&laquo; Prev</a><a class="page-number" href="/categories/开发/">1</a><a class="page-number" href="/categories/开发/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/categories/开发/page/4/">4</a><a class="page-number" href="/categories/开发/page/5/">5</a><a class="extend next" rel="next" href="/categories/开发/page/4/">Next &raquo;</a>
-    </nav>
+  
+
+  
+<script type="text/javascript">
+document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
+</script>
+
   
 
 
@@ -729,10 +467,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
