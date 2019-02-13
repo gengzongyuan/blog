@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>大树的博客</title>
+  <title>MySQL安装部署 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大树的博客">
-<meta property="og:url" content="http://gengzongyuan.github.io/page/5/index.html">
+  <meta name="description" content="MySQL安装卸载RPM1234567- 安装yum install -y mysql-server.x86_64yum install -y mysql.x86_64service mysqld startmysql -uroot -pEnter password: 直接回车 12345- 卸载rpm -qa|grep mysqlmysql57-community-release-el6-11.">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL安装部署">
+<meta property="og:url" content="http://gengzongyuan.github.io/2019/02/13/MySQL安装部署/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="MySQL安装卸载RPM1234567- 安装yum install -y mysql-server.x86_64yum install -y mysql.x86_64service mysqld startmysql -uroot -pEnter password: 直接回车 12345- 卸载rpm -qa|grep mysqlmysql57-community-release-el6-11.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-13T07:21:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大树的博客">
+<meta name="twitter:title" content="MySQL安装部署">
+<meta name="twitter:description" content="MySQL安装卸载RPM1234567- 安装yum install -y mysql-server.x86_64yum install -y mysql.x86_64service mysqld startmysql -uroot -pEnter password: 直接回车 12345- 卸载rpm -qa|grep mysqlmysql57-community-release-el6-11.">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -168,22 +173,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-UI自动化07-屏幕动作ActionChains" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-MySQL安装部署" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/UI自动化07-屏幕动作ActionChains/">UI自动化07 屏幕动作ActionChains</a>
+    <h1 class="article-title" itemprop="name">
+      MySQL安装部署
     </h1>
   
 
         
-        <a href="/2018/09/21/UI自动化07-屏幕动作ActionChains/" class="archive-article-date">
-  	<time datetime="2018-09-21T09:33:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
+        <a href="/2019/02/13/MySQL安装部署/" class="archive-article-date">
+  	<time datetime="2019-02-12T23:21:25.917Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-13</time>
 </a>
         
       </header>
@@ -196,593 +199,45 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>点击操作<code>单击、双击、右键</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">click_btn = driver.find_element_by_xpath(&apos;//input[@value=&quot;click me&quot;]&apos;)  # 单击按钮</span><br><span class="line">doubleclick_btn = driver.find_element_by_xpath(&apos;//input[@value=&quot;dbl click me&quot;]&apos;)  # 双击按钮</span><br><span class="line">rightclick_btn = driver.find_element_by_xpath(&apos;//input[@value=&quot;right click me&quot;]&apos;)  # 右键单击按钮</span><br><span class="line"></span><br><span class="line">ActionChains(driver).click(click_btn).double_click(doubleclick_btn).context_click(rightclick_btn).perform()  # 链式用法</span><br></pre></td></tr></table></figure>
+        <h4 id="MySQL安装卸载"><a href="#MySQL安装卸载" class="headerlink" title="MySQL安装卸载"></a>MySQL安装卸载</h4><h5 id="RPM"><a href="#RPM" class="headerlink" title="RPM"></a>RPM</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- 安装</span><br><span class="line">yum install -y mysql-server.x86_64</span><br><span class="line">yum install -y mysql.x86_64</span><br><span class="line">service mysqld start</span><br><span class="line"></span><br><span class="line">mysql -uroot -p</span><br><span class="line">Enter password: 直接回车</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 卸载</span><br><span class="line">rpm -qa|grep mysql</span><br><span class="line">mysql57-community-release-el6-11.noarch</span><br><span class="line"></span><br><span class="line">rpm -e mysql57-community-release-el6-11.noarch</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="自主安装"><a href="#自主安装" class="headerlink" title="自主安装"></a>自主安装</h4><ul>
+<li><p>下载并校验md5值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">下载地址</span><br><span class="line">链接: https://pan.baidu.com/s/1G9OPorT249LhwkZ9AHJShA 提取码: xx4p 复制这段内容后打开百度网盘手机App，操作更方便哦</span><br><span class="line"></span><br><span class="line">cd /usr/local</span><br><span class="line">rz</span><br><span class="line"></span><br><span class="line">* md5sum校验文件md5看是不是有缺失</span><br><span class="line">md5sum mysql-5.6.23-linux-glibc2.5-x86_64.tar.gz</span><br><span class="line">61affe944eff55fcf51b31e67f25dc10  mysql-5.6.23-linux-glibc2.5-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查是否安装过MySQL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep mysqld</span><br><span class="line">rpm -qa |grep -i mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压移动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zvfx mysql-5.6.23-linux-glibc2.5-x86_64.tar.gz </span><br><span class="line">mv mysql-5.6.23-linux-glibc2.5-x86_64 mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建dba用户组和mysqladmin用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">生产：专门的软件会有专门的用户去部署 运行</span><br><span class="line">oa系统  oaadmin</span><br><span class="line">erp系统  erpadmin</span><br><span class="line"></span><br><span class="line"># 创建组</span><br><span class="line">groupadd -g 101 dba		</span><br><span class="line">cat /etc/group | grep dba</span><br><span class="line">dba:x:101:</span><br><span class="line"></span><br><span class="line"># 创建用户</span><br><span class="line">useradd -u 501 -g dba -G root -d /usr/local/mysql mysqladmin</span><br><span class="line">useradd: warning: the home directory already exists.# 提示用户家目录已经存在</span><br><span class="line">Not copying any file from skel directory into it.	# 没有cp skel到家目录中</span><br><span class="line">[root@hadoop614 etc]# id mysqladmin</span><br><span class="line">uid=501(mysqladmin) gid=101(dba) groups=101(dba),0(root)</span><br><span class="line"></span><br><span class="line">-------/etc/skel文件夹中存放了基础的用户配置，我们可以直接拿过来使用</span><br><span class="line">cp /etc/skel/.* /usr/local/mysql</span><br><span class="line">cp: omitting directory ‘.’</span><br><span class="line">cp: omitting directory ‘..’</span><br><span class="line">-------</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 /etc/my.cnf  (640权限)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">寻找顺序：/etc/my.cnf--&gt;/etc/mysql/my.cnf--&gt;SYSCONFDIR/my.cnf--&gt;$MYSQL_HOME/my.cnf-&gt; --defaults-extra-file-&gt;~/my.cnf</span><br><span class="line"></span><br><span class="line">cd /etc/</span><br><span class="line">vi my.cnf</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">port            = 3306</span><br><span class="line">socket          = /usr/local/mysql/data/mysql.sock</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">port            = 3306</span><br><span class="line">socket          = /usr/local/mysql/data/mysql.sock</span><br><span class="line"></span><br><span class="line">skip-external-locking</span><br><span class="line">key_buffer_size = 256M</span><br><span class="line">sort_buffer_size = 2M</span><br><span class="line">read_buffer_size = 2M</span><br><span class="line">read_rnd_buffer_size = 4M</span><br><span class="line">query_cache_size= 32M</span><br><span class="line">max_allowed_packet = 16M</span><br><span class="line">myisam_sort_buffer_size=128M</span><br><span class="line">tmp_table_size=32M</span><br><span class="line"></span><br><span class="line">table_open_cache = 512</span><br><span class="line">thread_cache_size = 8</span><br><span class="line">wait_timeout = 86400</span><br><span class="line">interactive_timeout = 86400</span><br><span class="line">max_connections = 600</span><br><span class="line"></span><br><span class="line"># Try number of CPU&apos;s*2 for thread_concurrency</span><br><span class="line">thread_concurrency = 32</span><br><span class="line"></span><br><span class="line">#isolation level and default engine </span><br><span class="line">default-storage-engine = INNODB</span><br><span class="line">transaction-isolation = READ-COMMITTED</span><br><span class="line"></span><br><span class="line">server-id  = 1</span><br><span class="line">basedir     = /usr/local/mysql</span><br><span class="line">datadir     = /usr/local/mysql/data</span><br><span class="line">pid-file     = /usr/local/mysql/data/hostname.pid</span><br><span class="line"></span><br><span class="line">#open performance schema</span><br><span class="line">log-warnings</span><br><span class="line">sysdate-is-now</span><br><span class="line"></span><br><span class="line">binlog_format = MIXED</span><br><span class="line">log_bin_trust_function_creators=1</span><br><span class="line">log-error  = /usr/local/mysql/data/hostname.err</span><br><span class="line">log-bin=/usr/local/mysql/arch/mysql-bin</span><br><span class="line">#other logs</span><br><span class="line">#general_log =1</span><br><span class="line">#general_log_file  = /usr/local/mysql/data/general_log.err</span><br><span class="line">#slow_query_log=1</span><br><span class="line">#slow_query_log_file=/usr/local/mysql/data/slow_log.err</span><br><span class="line"></span><br><span class="line">#for replication slave</span><br><span class="line">#log-slave-updates </span><br><span class="line">#sync_binlog = 1</span><br><span class="line"></span><br><span class="line">#for innodb options </span><br><span class="line">innodb_data_home_dir = /usr/local/mysql/data/</span><br><span class="line">innodb_data_file_path = ibdata1:500M:autoextend</span><br><span class="line">innodb_log_group_home_dir = /usr/local/mysql/arch</span><br><span class="line">innodb_log_files_in_group = 2</span><br><span class="line">innodb_log_file_size = 200M</span><br><span class="line"></span><br><span class="line">#生产上 机械硬盘 sata盘 5000r 7200 10000 15000 ==&gt; ssd 生产</span><br><span class="line"># innodb_buffer_pool_size 调大 8G</span><br><span class="line"></span><br><span class="line">innodb_buffer_pool_size = 1024M </span><br><span class="line">innodb_additional_mem_pool_size = 50M</span><br><span class="line">innodb_log_buffer_size = 16M</span><br><span class="line"></span><br><span class="line">innodb_lock_wait_timeout = 100</span><br><span class="line">#innodb_thread_concurrency = 0</span><br><span class="line">innodb_flush_log_at_trx_commit = 1</span><br><span class="line">innodb_locks_unsafe_for_binlog=1</span><br><span class="line"></span><br><span class="line">#innodb io features: add for mysql5.5.8</span><br><span class="line">performance_schema</span><br><span class="line">innodb_read_io_threads=4</span><br><span class="line">innodb-write-io-threads=4</span><br><span class="line">innodb-io-capacity=200</span><br><span class="line">#purge threads change default(0) to 1 for purge</span><br><span class="line">innodb_purge_threads=1</span><br><span class="line">innodb_use_native_aio=on</span><br><span class="line"></span><br><span class="line">#case-sensitive file names and separate tablespace</span><br><span class="line">innodb_file_per_table = 1</span><br><span class="line">lower_case_table_names=1</span><br><span class="line"></span><br><span class="line">[mysqldump]</span><br><span class="line">quick</span><br><span class="line">max_allowed_packet = 16M</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">no-auto-rehash</span><br><span class="line"></span><br><span class="line">[mysqlhotcopy]</span><br><span class="line">interactive-timeout</span><br><span class="line"></span><br><span class="line">[myisamchk]</span><br><span class="line">key_buffer_size = 256M</span><br><span class="line">sort_buffer_size = 256M</span><br><span class="line">read_buffer = 2M</span><br><span class="line">write_buffer = 2M</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-        
-          <a class="article-more-a" href="/2018/09/21/UI自动化07-屏幕动作ActionChains/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/UI自动化07-屏幕动作ActionChains/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UI自动化06-等待" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/UI自动化06-等待/">UI自动化06 等待</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/UI自动化06-等待/" class="archive-article-date">
-  	<time datetime="2018-09-21T09:33:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="等待"><a href="#等待" class="headerlink" title="等待"></a>等待</h4><p>等待在UI自动化测试中会经常使用到，有时我们需要服务器进行响应或者js进行执行，才能执行接下来的动作。</p>
-        
-          <a class="article-more-a" href="/2018/09/21/UI自动化06-等待/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/UI自动化06-等待/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UI自动化05-select选择器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/UI自动化05-select选择器/">UI自动化05 select选择器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/UI自动化05-select选择器/" class="archive-article-date">
-  	<time datetime="2018-09-21T09:32:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from selenium.webdriver.support.select import Select</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/09/21/UI自动化05-select选择器/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/UI自动化05-select选择器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UI自动化04-switch切换器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/UI自动化04-switch切换器/">UI自动化04 switch切换器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/UI自动化04-switch切换器/" class="archive-article-date">
-  	<time datetime="2018-09-21T09:32:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="switch切换器"><a href="#switch切换器" class="headerlink" title="switch切换器"></a>switch切换器</h4><p>切换器会在三种场景中使用到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修改权限</span><br><span class="line">chmod 640 my.cnf</span><br><span class="line">chown mysqladmin:dba /etc/my.cnf</span><br></pre></td></tr></table></figure>
 <ul>
-<li>切换浏览器tag</li>
-<li>切换页面frame</li>
-<li>切换alert<br>官方提供了两种switch给我们使用，一种已经过时了，我们先来看看最新的</li>
+<li><p>修改mysqladmin家目录权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 755 /usr/local/mysql</span><br><span class="line">chown -R mysqladmin:dba /usr/local/mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换mysqladmin用户创建arch目录  存储binlog  归档日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">su - mysqladmin</span><br><span class="line">mkdir arch binlog</span><br><span class="line">* 重新安装切记：rm -rf data rm -rf arch</span><br><span class="line"></span><br><span class="line">scripts/mysql_install_db  \</span><br><span class="line">&gt; --user=mysqladmin \</span><br><span class="line">&gt; --basedir=/usr/local/mysql \</span><br><span class="line">&gt; --datadir=/usr/local/mysql/data</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-        
-          <a class="article-more-a" href="/2018/09/21/UI自动化04-switch切换器/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/UI自动化04-switch切换器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UI自动化03-18种定位器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/UI自动化03-18种定位器/">UI自动化03 18种定位器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/UI自动化03-18种定位器/" class="archive-article-date">
-  	<time datetime="2018-09-21T09:32:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="18种定位器"><a href="#18种定位器" class="headerlink" title="18种定位器"></a>18种定位器</h4><p>selenium提供了18种定位器，方便我们找到需要的控件</p>
-        
-          <a class="article-more-a" href="/2018/09/21/UI自动化03-18种定位器/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/UI自动化03-18种定位器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UI自动化02-selenium安装与基础操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/UI自动化02-selenium安装与基础操作/">UI自动化02 selenium安装与基础操作</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/UI自动化02-selenium安装与基础操作/" class="archive-article-date">
-  	<time datetime="2018-09-21T09:32:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/09/21/UI自动化02-selenium安装与基础操作/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/UI自动化02-selenium安装与基础操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UI自动化01-css-selector-xpath" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/UI自动化01-css-selector-xpath/">UI自动化01 css selector&amp;xpath</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/UI自动化01-css-selector-xpath/" class="archive-article-date">
-  	<time datetime="2018-09-21T09:32:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="练习软件安装"><a href="#练习软件安装" class="headerlink" title="练习软件安装"></a>练习软件安装</h5><ul>
-<li>安装49版本的FireFox</li>
-<li>链接：<a href="https://pan.baidu.com/s/1V3aEkyoR_gAhQVGCks2I6w" target="_blank" rel="noopener">https://pan.baidu.com/s/1V3aEkyoR_gAhQVGCks2I6w</a> 密码：lw5u</li>
-<li>通过拓展程序安装Firebug和FirePath<br><img src="https://upload-images.jianshu.io/upload_images/2572206-28176eb71410e120.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
-<li>F12找到FirePath<br><img src="https://upload-images.jianshu.io/upload_images/2572206-5c7d22311d108e2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql的数据转换到大数据中常用的方式</span><br><span class="line">mysql--&gt;maxwell--&gt;kafka--&gt;ss--&gt;hbase</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>配置服务并开机自启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br><span class="line">logout</span><br><span class="line"># 将服务文件拷贝到init.d下，并重命名为mysql</span><br><span class="line">cd /usr/local/mysql</span><br><span class="line">cp support-files/mysql.server /etc/rc.d/init.d/mysql </span><br><span class="line">#赋予可执行权限</span><br><span class="line">chmod +x /etc/rc.d/init.d/mysql</span><br><span class="line">#删除服务</span><br><span class="line">chkconfig --del mysql</span><br><span class="line">#添加服务</span><br><span class="line">chkconfig --level 345 mysql on</span><br><span class="line">vi /etc/rc.local</span><br><span class="line">在文件中追加：su - mysqladmin -c &quot;/etc/init.d/mysql start --federated&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">方法1：</span><br><span class="line">service mysql start</span><br><span class="line">service mysql status</span><br><span class="line">service mysql stop</span><br><span class="line"></span><br><span class="line">方法2：mysqld_safe &amp;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-        
-          <a class="article-more-a" href="/2018/09/21/UI自动化01-css-selector-xpath/#more">more >></a>
-        
+
       
 
     <div class="article-info article-info-index">
@@ -793,11 +248,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -809,7 +260,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
+        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
         		</li>
       		
 		</ul>
@@ -817,16 +268,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/UI自动化01-css-selector-xpath/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2019/02/13/MySQL安装部署/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/13/Python Redis Cmd指令实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python Redis Cmd指令实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -841,302 +351,35 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-性能测试数据整理技巧集锦" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/性能测试数据整理技巧集锦/">性能测试数据整理技巧集锦</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/性能测试数据整理技巧集锦/" class="archive-article-date">
-  	<time datetime="2018-09-21T08:38:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>前言：性能测试的过程少不了测试数据的整理，有时需要我们自己构建测试数据，有时配合开发人员提供测试数据即可，本文记录了笔者在工作时遇到的情景及数据解决的方式。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/09/21/性能测试数据整理技巧集锦/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/性能测试//" class="article-tag-list-link color5">性能测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/性能测试数据整理技巧集锦/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL安装卸载"><span class="toc-number">1.</span> <span class="toc-text">MySQL安装卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#RPM"><span class="toc-number">1.1.</span> <span class="toc-text">RPM</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自主安装"><span class="toc-number">2.</span> <span class="toc-text">自主安装</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-网页加载时间超过多少秒，你会转身离开？-云栖社区回答" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/网页加载时间超过多少秒，你会转身离开？-云栖社区回答/">网页加载时间超过多少秒，你会转身离开？---云栖社区回答</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/网页加载时间超过多少秒，你会转身离开？-云栖社区回答/" class="archive-article-date">
-  	<time datetime="2018-09-21T08:36:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="原帖："><a href="#原帖：" class="headerlink" title="原帖："></a>原帖：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">你的网站为什么不受欢迎？是因为图片加载不出来？因为视频播放不了？亦或者是网页出现乱码？这些问题都会影响着网站的用户体验。但最直接的原因，小编粗浅认为，网页加载时间过长会直接导致用户流失。据某性能管理平台研究发现，近半数人最多等3秒。如果某网站不能在3秒内打开，许多人会失去耐心，转头就走。对于某些购物网站来说，加载时间每延长1秒，一年就会减少数以亿计的营收。</span><br><span class="line"> 一个系统的性能，会直接影响用户的留存。那该如何给你的网站或者系统做一个全方位的性能测试，保证你的网站可以在3秒、2秒，甚至更短的时间内加载完成，这显然是一个值得研究的课题。</span><br><span class="line"> 一起来聊聊吧</span><br><span class="line">1. 性能测试在软件的生命周期中的地位。</span><br><span class="line">2. 如何做一个全方位的系统性能测试？</span><br><span class="line">3. 作为刚如行的新人，该如何学习性能测试呢？</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/09/21/网页加载时间超过多少秒，你会转身离开？-云栖社区回答/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/网页加载时间超过多少秒，你会转身离开？-云栖社区回答/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Jmeter获取随机身份证参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/Jmeter获取随机身份证参数/">Jmeter获取随机身份证参数</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/Jmeter获取随机身份证参数/" class="archive-article-date">
-  	<time datetime="2018-09-21T08:34:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>项目上遇到需要使用身份证信息进行注册，代码已经封在jar包里，各位同学可以参考下面步骤调用<br>下载链接：<a href="https://pan.baidu.com/s/1wQUoBz5GMh3JKxbpBs3qpQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1wQUoBz5GMh3JKxbpBs3qpQ</a> 密码：ptdo<br>jmeter版本：4.0<br>jdk：1.8</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/09/21/Jmeter获取随机身份证参数/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jmeter</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/Jmeter获取随机身份证参数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+<script type="text/javascript">
+document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
+</script>
+
   
 
 
@@ -1160,8 +403,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
