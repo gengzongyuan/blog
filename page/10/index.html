@@ -170,6 +170,203 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-rabbitmq04-消息持久化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/20/rabbitmq04-消息持久化/">rabbitmq04 消息持久化</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/rabbitmq04-消息持久化/" class="archive-article-date">
+  	<time datetime="2018-09-20T06:56:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="消息持久化"><a href="#消息持久化" class="headerlink" title="消息持久化"></a>消息持久化</h4><blockquote>
+<p>之前我们考虑过，如果worker崩溃，消息将会丢失，所以引入了ack。那如果整个rabbitmq崩溃，那怎么办呢？</p>
+</blockquote>
+<ul>
+<li>将队列声明为持久化</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/09/20/rabbitmq04-消息持久化/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/20/rabbitmq04-消息持久化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-rabbitmq03-ack消息确认" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/20/rabbitmq03-ack消息确认/">rabbitmq03 ack消息确认</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/rabbitmq03-ack消息确认/" class="archive-article-date">
+  	<time datetime="2018-09-20T05:22:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="ack消息确认"><a href="#ack消息确认" class="headerlink" title="ack消息确认"></a>ack消息确认</h4><blockquote>
+<p>ack的产生是因为，如果消息发送给一个worker了，如果再运行期间，worker挂掉了，那我们的消息也就跟着worker丢了，为了保证worker挂掉不会带着消息一起挂掉，产生了ack确认机制</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2018/09/20/rabbitmq03-ack消息确认/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/20/rabbitmq03-ack消息确认/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-rabbitmq02-模拟工作请求" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -945,193 +1142,6 @@
 
 
   
-    <article id="post-linux配置免密登录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/linux配置免密登录/">linux配置免密登录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/linux配置免密登录/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:40:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">host1----&gt;host2</span><br><span class="line"></span><br><span class="line">进入host1机器</span><br><span class="line">cd ~/.ssh</span><br><span class="line">ssh-keygen -t rsa（四个回车）</span><br><span class="line">ssh-copy-id host2（输入密码，大功告成）</span><br><span class="line"></span><br><span class="line">ssh host2</span><br></pre></td></tr></table></figure>
-
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/linux配置免密登录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vim操作技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/vim操作技巧/">vim操作技巧</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/vim操作技巧/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:37:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="vim操作技巧"><a href="#vim操作技巧" class="headerlink" title="vim操作技巧"></a>vim操作技巧</h2><h3 id="进入插入模式"><a href="#进入插入模式" class="headerlink" title="进入插入模式"></a>进入插入模式</h3><blockquote>
-<p>很多新手进入插入模式都只是用 i。这样当然可以进入插入模式，但通常不是那么合适，因为 VIM 提供了很多进入插入模式的命令。下面是最常用的一些：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i：在当前字符的左边插入</span><br><span class="line">I：在当前行首插入</span><br><span class="line">a：在当前字符的右边插入</span><br><span class="line">A：在当前行尾插入</span><br><span class="line">o：在当前行下面插入一个新行</span><br><span class="line">O：在当前行上面插入一个新行</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/09/20/vim操作技巧/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/vim操作技巧/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
@@ -1420,6 +1430,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
               </li>
             
             <div class="clearfix"></div>
