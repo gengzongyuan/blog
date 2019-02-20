@@ -170,6 +170,382 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-深度剖析Hadoop的SNN工作机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/20/深度剖析Hadoop的SNN工作机制/">深度剖析Hadoop的SNN工作机制</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/20/深度剖析Hadoop的SNN工作机制/" class="archive-article-date">
+  	<time datetime="2019-02-20T11:39:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>NN数据和SNN数据对比<br><img src="https://upload-images.jianshu.io/upload_images/2572206-bdbf0c979a997186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NN持久化存储路径：/home/hadoop/app/tmp/dfs/name/current</span><br><span class="line">SNN持久化存储路径：/home/hadoop/app/tmp/dfs/namesecondary/current</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/02/20/深度剖析Hadoop的SNN工作机制/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/20/深度剖析Hadoop的SNN工作机制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-深度剖析Hadoop的文件存储机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/20/深度剖析Hadoop的文件存储机制/">深度剖析Hadoop的文件存储机制</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/20/深度剖析Hadoop的文件存储机制/" class="archive-article-date">
+  	<time datetime="2019-02-20T11:38:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 上传一个比较大的文件，就拿我们Hadoop的压缩包进行上传</span><br><span class="line">hadoop fs -put hadoop-2.6.0-cdh5.7.0.tar.gz /</span><br><span class="line"></span><br><span class="line">上传完毕之后到浏览器页面查看一下文件</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-cee742faa9c36620.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+        
+          <a class="article-more-a" href="/2019/02/20/深度剖析Hadoop的文件存储机制/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/20/深度剖析Hadoop的文件存储机制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-HDFS架构设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/20/HDFS架构设计/">HDFS架构设计</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/20/HDFS架构设计/" class="archive-article-date">
+  	<time datetime="2019-02-20T11:38:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="块剖析"><a href="#块剖析" class="headerlink" title="块剖析"></a>块剖析</h4><ul>
+<li>配置信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">块的大小128M </span><br><span class="line">块的副本数3 </span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.blocksize&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;134217728&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;3&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">blocksize和replication参数解读</span><br><span class="line"></span><br><span class="line">一个文件260M会按照128M的规格切分成:128+128+4的三块</span><br><span class="line">这三块数据，每块数据都有3份，分布在不同的dn上</span><br><span class="line"></span><br><span class="line">共计：9块数据，总大小260*3大小</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/02/20/HDFS架构设计/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/20/HDFS架构设计/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Hadoop web界面解读" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/20/Hadoop web界面解读/">Hadoop web界面解读</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/20/Hadoop web界面解读/" class="archive-article-date">
+  	<time datetime="2019-02-20T11:38:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="http-hadoop001-50070-hdfs界面"><a href="#http-hadoop001-50070-hdfs界面" class="headerlink" title="http://hadoop001:50070/ hdfs界面"></a><code>http://hadoop001:50070/</code> hdfs界面</h4><ul>
+<li>Table Bar<br><img src="https://upload-images.jianshu.io/upload_images/2572206-91cd5353aa688ae5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li><p>总览<br><img src="https://upload-images.jianshu.io/upload_images/2572206-e0295a574ab9d0f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>文件浏览器，可以在里面看到我们hdfs上的数据<br><img src="https://upload-images.jianshu.io/upload_images/2572206-b6c0ba8ae19b243c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/2572206-3b3ecfbbc405faa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击对应的文件可以看到文件的详细信息"><br><img src="https://upload-images.jianshu.io/upload_images/2572206-d4623e13b664c133.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件详细信息"></p>
+</li>
+</ul>
+<h4 id="http-hadoop001-8088-cluster-yarn界面"><a href="#http-hadoop001-8088-cluster-yarn界面" class="headerlink" title="http://hadoop001:8088/cluster yarn界面"></a><code>http://hadoop001:8088/cluster</code> yarn界面</h4><p><img src="https://upload-images.jianshu.io/upload_images/2572206-f0a4e2bb7d481461.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/2572206-9f34b5339b0865e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/20/Hadoop web界面解读/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Hadoop案例wordcount实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -752,396 +1128,9 @@
 
 
   
-    <article id="post-Hadoop入门介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/15/Hadoop入门介绍/">Hadoop入门介绍</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/15/Hadoop入门介绍/" class="archive-article-date">
-  	<time datetime="2019-02-15T02:19:44.346Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-15</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Hadoop概述"><a href="#Hadoop概述" class="headerlink" title="Hadoop概述"></a>Hadoop概述</h4><ul>
-<li>Hadoop名字的由来<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 作者：Nutch、Doug Cutting</span><br><span class="line">- 是一个虚构的名词</span><br><span class="line">- 项目作者的孩子给一个棕色的大象样子的填充玩具的命名</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">学习一个新的框架，直接查看该项目的官网地址</span><br><span class="line">Hadoop</span><br><span class="line">Hive</span><br><span class="line"></span><br><span class="line">Apache社区</span><br><span class="line">hadoop.apache.org</span><br><span class="line">hive.apache.org</span><br><span class="line">spark.apache.org</span><br><span class="line">flink.apache.org</span><br><span class="line"></span><br><span class="line">官网释义：</span><br><span class="line">reliable, scalable, distributed computing.</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/02/15/Hadoop入门介绍/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/15/Hadoop入门介绍/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-loadrunner+java怎么玩？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/14/loadrunner+java怎么玩？/">loadrunner+java怎么玩？</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/14/loadrunner+java怎么玩？/" class="archive-article-date">
-  	<time datetime="2019-02-14T02:51:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>前言：工作上遇到部分参数需要通过CA服务器加密，加密需要调用CA jar包的方法，调用java代码是免不了的了。笔者公司有要求一定要用Loadrunner做，这种情况其实还是建议使用Jmeter的。废话不多说了，开始吧。</p>
-</blockquote>
-<hr>
-<p>环境：</p>
-<h2 id="win7-loadrunner11-jdk1-6"><a href="#win7-loadrunner11-jdk1-6" class="headerlink" title="win7+loadrunner11+jdk1.6"></a>win7+loadrunner11+jdk1.6</h2><h4 id="1、前期准备"><a href="#1、前期准备" class="headerlink" title="1、前期准备"></a>1、前期准备</h4><p>Loadrunner11支持jdk的最高版本是1.6，使用<figure class="highlight java"><figcaption><span>-version```确定一下自己的jdk版本</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">![](https:<span class="comment">//upload-images.jianshu.io/upload_images/2572206-d2d302feda815e29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 2、新建脚本</span><br><span class="line">新建Java Vuser脚本</span><br><span class="line">![](https:<span class="comment">//upload-images.jianshu.io/upload_images/2572206-3425f210756adb8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">进入runtime-setting</span><br><span class="line">![](https:<span class="comment">//upload-images.jianshu.io/upload_images/2572206-be2b0c52638f0bd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">配置jdk目录，默认安装目录填```C:\<span class="function">Program <span class="title">Files</span> <span class="params">(x86)</span>\Java\jdk1.6.0_39</span></span><br></pre></td></tr></table></figure></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2572206-248a9fbef3306308.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>在action里输入一行java代码运行起来看看环境是否配置成功了<code>System.out.println(&quot;dashu&quot;);</code><br><img src="https://upload-images.jianshu.io/upload_images/2572206-f91d0a931f0e5696.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/2572206-178cd85e853b7ece.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h4 id="3、-调试java代码"><a href="#3、-调试java代码" class="headerlink" title="3、 调试java代码"></a>3、 调试java代码</h4><p>我们要确保代码是可以执行的，笔者建议代码先封装好之后，直接在loadrunner中进行调用</p>
-
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">loadrunner</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/14/loadrunner+java怎么玩？/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-记一次跳过oom的内存泄漏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/14/记一次跳过oom的内存泄漏/">记一次跳过oom的内存泄漏</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/14/记一次跳过oom的内存泄漏/" class="archive-article-date">
-  	<time datetime="2019-02-14T02:48:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="整体复盘"><a href="#整体复盘" class="headerlink" title="整体复盘"></a>整体复盘</h4><ul>
-<li>18:23：数据同学告知图片拼接服务404</li>
-<li>第一时间去瞄了日志，发现宕机前落了如下日志<br><img src="https://upload-images.jianshu.io/upload_images/2572206-f8dd910e4afda90e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00007fb0eaa1b000, 12288, 0) failed; error=&apos;Cannot allocate memory&apos; (errno=12)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/02/14/记一次跳过oom的内存泄漏/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/14/记一次跳过oom的内存泄漏/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-依赖扫描工具DependencyCheck" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/14/依赖扫描工具DependencyCheck/">依赖扫描工具DependencyCheck</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/14/依赖扫描工具DependencyCheck/" class="archive-article-date">
-  	<time datetime="2019-02-13T18:41:36.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>先上github地址：<a href="https://github.com/jeremylong/DependencyCheck" target="_blank" rel="noopener">https://github.com/jeremylong/DependencyCheck</a><br>DependencyCheck是一款可以扫描依赖工具的软件，使用起来很方便，但是报告比较难读</p>
-</blockquote>
-<ul>
-<li>到<code>https://bintray.com/jeremy-long/owasp/dependency-check</code>下载最新的安装包<br><img src="https://upload-images.jianshu.io/upload_images/2572206-b6ecc7a312da4bfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/02/14/依赖扫描工具DependencyCheck/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/14/依赖扫描工具DependencyCheck/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
