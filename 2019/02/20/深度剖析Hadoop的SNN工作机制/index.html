@@ -8,20 +8,21 @@
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
   <title>深度剖析Hadoop的SNN工作机制 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="NN数据和SNN数据对比12NN持久化存储路径：/home/hadoop/app/tmp/dfs/name/currentSNN持久化存储路径：/home/hadoop/app/tmp/dfs/namesecondary/current">
+  <meta name="description" content="元数据描述及持久化位置 12345元数据：HDFS的目录结构以及每个文件的BLOCK信息（id，副本系数、block存放在哪个DN上）存放位置：$&amp;#123;hadoop.tmp.dir&amp;#125;/name/....NN持久化存储路径：/home/hadoop/app/tmp/dfs/name/currentSNN持久化存储路径：/home/hadoop/app/tmp/dfs/namesec">
 <meta name="keywords" content="hadoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度剖析Hadoop的SNN工作机制">
 <meta property="og:url" content="http://gengzongyuan.github.io/2019/02/20/深度剖析Hadoop的SNN工作机制/index.html">
 <meta property="og:site_name" content="大树的博客">
-<meta property="og:description" content="NN数据和SNN数据对比12NN持久化存储路径：/home/hadoop/app/tmp/dfs/name/currentSNN持久化存储路径：/home/hadoop/app/tmp/dfs/namesecondary/current">
+<meta property="og:description" content="元数据描述及持久化位置 12345元数据：HDFS的目录结构以及每个文件的BLOCK信息（id，副本系数、block存放在哪个DN上）存放位置：$&amp;#123;hadoop.tmp.dir&amp;#125;/name/....NN持久化存储路径：/home/hadoop/app/tmp/dfs/name/currentSNN持久化存储路径：/home/hadoop/app/tmp/dfs/namesec">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-bdbf0c979a997186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-e88a3430c038867a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-e31b1479bf97bd38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-20T11:39:49.000Z">
+<meta property="og:updated_time" content="2019-02-22T11:30:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度剖析Hadoop的SNN工作机制">
-<meta name="twitter:description" content="NN数据和SNN数据对比12NN持久化存储路径：/home/hadoop/app/tmp/dfs/name/currentSNN持久化存储路径：/home/hadoop/app/tmp/dfs/namesecondary/current">
+<meta name="twitter:description" content="元数据描述及持久化位置 12345元数据：HDFS的目录结构以及每个文件的BLOCK信息（id，副本系数、block存放在哪个DN上）存放位置：$&amp;#123;hadoop.tmp.dir&amp;#125;/name/....NN持久化存储路径：/home/hadoop/app/tmp/dfs/name/currentSNN持久化存储路径：/home/hadoop/app/tmp/dfs/namesec">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-bdbf0c979a997186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
@@ -203,13 +204,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li>NN数据和SNN数据对比<br><img src="https://upload-images.jianshu.io/upload_images/2572206-bdbf0c979a997186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NN持久化存储路径：/home/hadoop/app/tmp/dfs/name/current</span><br><span class="line">SNN持久化存储路径：/home/hadoop/app/tmp/dfs/namesecondary/current</span><br></pre></td></tr></table></figure>
+<li><p>元数据描述及持久化位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">元数据：HDFS的目录结构以及每个文件的BLOCK信息（id，副本系数、block存放在哪个DN上）</span><br><span class="line">存放位置：$&#123;hadoop.tmp.dir&#125;/name/....</span><br><span class="line"></span><br><span class="line">NN持久化存储路径：/home/hadoop/app/tmp/dfs/name/current</span><br><span class="line">SNN持久化存储路径：/home/hadoop/app/tmp/dfs/namesecondary/current</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NN数据和SNN数据对比<br><img src="https://upload-images.jianshu.io/upload_images/2572206-bdbf0c979a997186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 </li>
 </ul>
 <a id="more"></a>
 <ul>
-<li>流程图<br><img src="https://upload-images.jianshu.io/upload_images/2572206-e31b1479bf97bd38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>流程图<br><img src="https://upload-images.jianshu.io/upload_images/2572206-e88a3430c038867a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">NN:</span><br><span class="line">- 定期将内存中的元数据信息*序列化*到磁盘--&gt;fsimage</span><br><span class="line">- 记录时间段内所有对HDFS相关的操作指令--&gt;edits日志</span><br><span class="line"></span><br><span class="line">SNN:</span><br><span class="line">s-1)SNN将DN的fsimage和edits日志复制到SNN上</span><br><span class="line">s-2)反序列化数据到内存中</span><br><span class="line">s-3)将edits中记录的所有对于HDFS做的操作更新到内存中去</span><br><span class="line">s-5)生成新的fsimage文件</span><br><span class="line">s-6)将新的fsimage文件复制到NN上</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-e31b1479bf97bd38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. NN会复制上一小时的edit文件和fsimage文件给到SNN</span><br><span class="line">2. SNN将文件合并为新的fsimage文件</span><br><span class="line">3. NN会check  SNN传递过来的fsimage文件,check完毕后放置在自己的目录下</span><br><span class="line">4. 这一小时的日志会记录在NN的edits_inprogress日志中，待这一小时结束，变为editXXX-XXX文件</span><br><span class="line"></span><br><span class="line">---------</span><br><span class="line">每一小时重复这个循环</span><br></pre></td></tr></table></figure>
       
 
@@ -306,7 +312,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          HDFS读写流程
+          HDFS读写流程及副本放置机制
         
       </div>
     </a>
