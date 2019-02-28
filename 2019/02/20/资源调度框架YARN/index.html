@@ -17,10 +17,9 @@
 <meta property="og:description" content="YARN产生背景 MapReduce1.x存在的问题（JobTracker是单节点）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-6e101a140e53cf77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-8374cf590e7d9d79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-6fcabdedd2559f08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-8b44987c727664ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-20T05:40:41.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-84c748c6bb866415.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-28T03:37:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="资源调度框架YARN">
 <meta name="twitter:description" content="YARN产生背景 MapReduce1.x存在的问题（JobTracker是单节点）">
@@ -209,7 +208,7 @@
 </ul>
 <a id="more"></a>
 <ul>
-<li>资源利用率&amp;运维成本（一种类型一个集群）<br><img src="https://upload-images.jianshu.io/upload_images/2572206-8374cf590e7d9d79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>资源利用率&amp;运维成本（一种类型一个集群）</li>
 </ul>
 <h4 id="YARN架构"><a href="#YARN架构" class="headerlink" title="YARN架构"></a>YARN架构</h4><ul>
 <li><p>1 RM(ResourceManager) + N NM(NodeManager)  一主多被<br><img src="https://upload-images.jianshu.io/upload_images/2572206-6fcabdedd2559f08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
@@ -223,11 +222,17 @@
 <li><p>AM（AplicationMaster）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 每一个应用/作业对应一个AM，负责应用程序的管理</span><br><span class="line">- 数据的切分</span><br><span class="line">- 为应用程序向RM申请资源(container)，并分配给内部任务</span><br><span class="line">- 与NM通信，以启停task,task是运行在container中的</span><br><span class="line">- task的监控和容错</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Container</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 对任务运行情况的描述:cpu,mem···</span><br></pre></td></tr></table></figure>
+</ul>
+<h6 id="YARN-Container"><a href="#YARN-Container" class="headerlink" title="YARN - Container"></a>YARN - Container</h6><ul>
+<li><p>vcore概念</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">YARN中目前的CPU被划分成虚拟CPU（CPU virtual Core），</span><br><span class="line">- YARN自己引入的概念，</span><br><span class="line">- 初衷是，考虑到不同节点的CPU性能可能不同，每个CPU具有的计算能力也是不一样的，</span><br><span class="line"></span><br><span class="line">用户提交作业时，可以指定每个任务需要的虚拟CPU个数。</span><br><span class="line"></span><br><span class="line">历史版本中，默认1物理core=2vcore</span><br><span class="line">最新版本，1物理core=1vcore</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">YARN中目前的</span><br><span class="line"></span><br><span class="line">- Container是运行在nodemanager节点机器上，虚拟的概念</span><br><span class="line">- 将一定大小的内存和cpu vcore组成的最小单元</span><br><span class="line">- 运行计算的任务task，每1个container都是1个单独的进程</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="YARN的执行流程"><a href="#YARN的执行流程" class="headerlink" title="YARN的执行流程"></a>YARN的执行流程</h4><p><img src="https://upload-images.jianshu.io/upload_images/2572206-8b44987c727664ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- 1. client向RM提交作业</span><br><span class="line">- 2. RM找到可以调度的NM</span><br><span class="line">- 3. NM启动container，并启动AM</span><br><span class="line">- 4. AM向RM注册，然后AM为各个任务申请资源，并监控task上的资源</span><br><span class="line">- 5. AM采用轮询的方式通过RPC协议向RM申请和领取资源</span><br><span class="line">- 6. AM申请到资源之后，便和相应的NM通信，要求NM启动任务</span><br><span class="line">- 7. NM启动container，并启动对应的task</span><br></pre></td></tr></table></figure></p>
+<h4 id="YARN的执行流程"><a href="#YARN的执行流程" class="headerlink" title="YARN的执行流程"></a>YARN的执行流程</h4><p><img src="https://upload-images.jianshu.io/upload_images/2572206-84c748c6bb866415.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ResourceManager 资源作业管理者  </span><br><span class="line">	Applications Manager 作业管理</span><br><span class="line">	Resource Scheduler 资源调度</span><br><span class="line"></span><br><span class="line">NodeManager   节点者</span><br><span class="line"></span><br><span class="line">- 1. client向RM提交作业（job），其中包括applicationsMaster程序、启动applicationMaster命令等</span><br><span class="line">- 2. RM为该job分配第一个容器，并与对应的NM通信，要求它在这个容器中启动MR applicationMaster程序</span><br><span class="line">- 3. applicationMaster首先向application Manager注册，此时用户就可以在web界面查看job的整个运行状态</span><br><span class="line">- 4. applicationMaster和Resource Scheduler通信，采用轮询的方式通过RPC协议去申请和领取资源列表</span><br><span class="line">- 5. applicationMaster申请到资源后，便于对应的NM通过RPC通信，要求启动任务</span><br><span class="line">- 6. NodeManager为任务设置好运行环境（包括环境变量、 JAR包、二进制程序等）后，将任务启动命令写到一个脚本中，并通</span><br><span class="line">过运行该脚本启动任务</span><br><span class="line">- 7. 各个任务通过某个RPC协议向ApplicationMaster汇报自己的状态和进度，以让ApplicationMaster随时掌握各个任务的运行</span><br><span class="line">状态，从而可以在任务失败时重新启动任务。在应用程序运行过程中，用户可随时通过RPC向ApplicationMaster查询应用程序</span><br><span class="line">的当前运行状态</span><br><span class="line">- 8. 应用程序运行完成后， ApplicationMaster向ResourceManager注销并关闭自己</span><br><span class="line"></span><br><span class="line">简述：</span><br><span class="line">a. 第一个阶段是启动ApplicationMaster；</span><br><span class="line">b. 第二个阶段是由ApplicationMaster创建应用程序，为它申请资源，并监控它的整个运行过程，直到运行完成。</span><br></pre></td></tr></table></figure>
 
       
 
@@ -362,7 +367,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#YARN产生背景"><span class="toc-number">1.</span> <span class="toc-text">YARN产生背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YARN架构"><span class="toc-number">2.</span> <span class="toc-text">YARN架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YARN的执行流程"><span class="toc-number">3.</span> <span class="toc-text">YARN的执行流程</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#YARN产生背景"><span class="toc-number">1.</span> <span class="toc-text">YARN产生背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YARN架构"><span class="toc-number">2.</span> <span class="toc-text">YARN架构</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#YARN-Container"><span class="toc-number">2.0.1.</span> <span class="toc-text">YARN - Container</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YARN的执行流程"><span class="toc-number">3.</span> <span class="toc-text">YARN的执行流程</span></a></li></ol>
                     </div>
                 </span>
             </div>
