@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>Archives | 大树的博客</title>
+  <title>YARN资源调优指南 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大树的博客">
-<meta property="og:url" content="http://gengzongyuan.github.io/archives/page/5/index.html">
+  <meta name="description" content="内存资源规划与配置 内存资源规划12345678910111213141548G物理内存- linux系统本身需要占用的内存+空留：20%-25%  9.6G- 剩余：80%  38.4G生产情况，NN和RM是部署在一台机器上的，一般分配8个G的内存，看情况适当调大- NN：8G- RM：8G生产情况，DN和NM也是部署在一台机器上的数据本地化：减少网络IO- DN：4G- NM：4G剩余资源内存">
+<meta name="keywords" content="hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YARN资源调优指南">
+<meta property="og:url" content="http://gengzongyuan.github.io/2019/02/28/YARN资源调优指南/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="内存资源规划与配置 内存资源规划12345678910111213141548G物理内存- linux系统本身需要占用的内存+空留：20%-25%  9.6G- 剩余：80%  38.4G生产情况，NN和RM是部署在一台机器上的，一般分配8个G的内存，看情况适当调大- NN：8G- RM：8G生产情况，DN和NM也是部署在一台机器上的数据本地化：减少网络IO- DN：4G- NM：4G剩余资源内存">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-28T08:07:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大树的博客">
+<meta name="twitter:title" content="YARN资源调优指南">
+<meta name="twitter:description" content="内存资源规划与配置 内存资源规划12345678910111213141548G物理内存- linux系统本身需要占用的内存+空留：20%-25%  9.6G- 剩余：80%  38.4G生产情况，NN和RM是部署在一台机器上的，一般分配8个G的内存，看情况适当调大- NN：8G- RM：8G生产情况，DN和NM也是部署在一台机器上的数据本地化：减少网络IO- DN：4G- NM：4G剩余资源内存">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -168,48 +173,74 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-YARN资源调优指南" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      YARN资源调优指南
+    </h1>
+  
+
+        
+        <a href="/2019/02/28/YARN资源调优指南/" class="archive-article-date">
+  	<time datetime="2019-02-28T08:07:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
+</a>
+        
+      </header>
     
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="内存资源规划与配置"><a href="#内存资源规划与配置" class="headerlink" title="内存资源规划与配置"></a>内存资源规划与配置</h4><ul>
+<li>内存资源规划<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">48G物理内存</span><br><span class="line"></span><br><span class="line">- linux系统本身需要占用的内存+空留：20%-25%  9.6G</span><br><span class="line">- 剩余：80%  38.4G</span><br><span class="line"></span><br><span class="line">生产情况，NN和RM是部署在一台机器上的，一般分配8个G的内存，看情况适当调大</span><br><span class="line">- NN：8G</span><br><span class="line">- RM：8G</span><br><span class="line"></span><br><span class="line">生产情况，DN和NM也是部署在一台机器上的</span><br><span class="line">数据本地化：减少网络IO</span><br><span class="line">- DN：4G</span><br><span class="line">- NM：4G</span><br><span class="line"></span><br><span class="line">剩余资源内存=30.4G，运行container容器（每一个container容器都是一个单独的进程）</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>hdfs:NN和DN进程配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hadoop-env.sh（参数需要自己添加）</span><br><span class="line"># NN内存</span><br><span class="line">HADOOP_NAMENODE_OPTS=-Xmx1000m（默认）</span><br><span class="line">HADOOP_NAMENODE_OPTS=-Xmx8192m（建议8G）</span><br><span class="line"># DN内存</span><br><span class="line">HADOOP_DATANODE_OPTS=-Xmx1000m（默认）</span><br><span class="line">HADOOP_DATANODE_OPTS=-Xmx4096m（建议4G）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yarn:RM和NM进程配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">默认1000M</span><br><span class="line">  yarn-env.sh</span><br><span class="line">  # RM内存</span><br><span class="line">  export YARN_RESOURCEMANAGER_HEAPSIZE=1000（默认）</span><br><span class="line">  export YARN_RESOURCEMANAGER_HEAPSIZE=8192（建议8G）</span><br><span class="line">  # NM内存</span><br><span class="line">  export YARN_NODEMANAGER_HEAPSIZE=1000（默认）</span><br><span class="line">  export YARN_NODEMANAGER_HEAPSIZE=4096（建议4G）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>container容器进程配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">yarn-site.xml</span><br><span class="line"></span><br><span class="line">  # container总内存</span><br><span class="line">  yarn.nodemanager.resource.memory-mb   -1（默认8G）</span><br><span class="line">  yarn.nodemanager.resource.memory-mb   30*1024（总内存-【系统+空留内存】-【NN内存】-【NM内存】）</span><br><span class="line">  # 单个container最小内存</span><br><span class="line">  yarn.scheduler.minimum-allocation-mb  1024（默认）</span><br><span class="line">  yarn.scheduler.minimum-allocation-mb  2048（建议2G）</span><br><span class="line">  # 单个container最大内存</span><br><span class="line">  yarn.scheduler.maximum-allocation-mb  8192 （默认8G）</span><br><span class="line">  yarn.scheduler.maximum-allocation-mb  8192 （建议和yarn.nodemanager.resource.memory-mb配置成一样的大小）</span><br><span class="line"></span><br><span class="line">如果单个container任务需要到9G的内存，但是我们最大内存仅配置了8G，那么将会抛出InvalidResourceRequestException错误</span><br><span class="line"></span><br><span class="line">yarn.scheduler.maximum-allocation-mb的配置同时也需要参考生产的任务，如果没有特别大的任务，可以适量减少，这里配置和yarn.nodemanager.resource.memory-mb一样大小不是固定调优手段</span><br><span class="line">适当减少的时候需要注意，一定要yarn.nodemanager.resource.memory-mb/yarn.scheduler.maximum-allocation-mb是一个整数，否则会有剩余内存空出</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>container OOM是否主动kill配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- 保持默认，不要动这三个参数</span><br><span class="line"># 物理内存不足时是否主动kill掉contailer进程</span><br><span class="line">yarn.nodemanager.pmem-check-enabled	true</span><br><span class="line"># 虚拟内存不足时是否主动kill掉contailer进程</span><br><span class="line">yarn.nodemanager.vmem-check-enabled	true</span><br><span class="line"># 允许使用的物理内存和虚拟内存比率</span><br><span class="line">yarn.nodemanager.vmem-pmem-ratio	2.1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="CPU资源规划与配置"><a href="#CPU资源规划与配置" class="headerlink" title="CPU资源规划与配置"></a>CPU资源规划与配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 物理core和vcore的比率</span><br><span class="line">yarn.nodemanager.resource.pcores-vcores-multiplier  1.0（最新版本改为1.0了，之前是2.0，所以我们在修改下面可以使用的vcore时，先计算一下当前的总vcore是多少）</span><br><span class="line"></span><br><span class="line"># NM可以使用的所有的vcore</span><br><span class="line">yarn.nodemanager.resource.cpu-vcores  8（默认）</span><br><span class="line">yarn.nodemanager.resource.cpu-vcores  X（按照当前总vcore*80%，不要把所有的vcore拿过来用）</span><br><span class="line"></span><br><span class="line"># 每个容器可以使用的最小vcore</span><br><span class="line">yarn.scheduler.minimum-allocation-vcores  1（默认）</span><br><span class="line">yarn.scheduler.minimum-allocation-vcores  1</span><br><span class="line"># 每个contailer可以使用的最大vcore</span><br><span class="line">yarn.scheduler.maximum-allocation-vcores  4（默认）</span><br><span class="line">yarn.scheduler.maximum-allocation-vcores  4</span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yarn的在调优时候要综合考虑CPU和内存的分配，尽量保证不要空出多余的资源</span><br><span class="line">假如container总内存30，container最小2G，总vcore 8 container最小1c</span><br><span class="line">那么我们内存可以启动最多15个container，cpu最多启动8个container</span><br><span class="line">最终可以启动的最多container就是8个，会有相当多的内存没有使用到</span><br><span class="line">所以生产上的调优配置需要综合考量内存和cpu的配比</span><br><span class="line"></span><br><span class="line">同时如果机器上也部署了其他服务，hbase,kafka我们就要考虑空出其他的内存给对应的部分</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参考博客<a href="http://blog.itpub.net/30089851/viewspace-2127851/" target="_blank" rel="noopener">http://blog.itpub.net/30089851/viewspace-2127851/</a></p>
+</blockquote>
+
+      
+
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/python 12异常/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:02:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/python 12异常/">python 12异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -222,465 +253,119 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2019/02/28/YARN资源调优指南/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/python 11网络编程request模块/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:02:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/28/MapReduce编程模型简述/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MapReduce编程模型简述</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/python 11网络编程request模块/">python 11网络编程request模块</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存资源规划与配置"><span class="toc-number">1.</span> <span class="toc-text">内存资源规划与配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU资源规划与配置"><span class="toc-number">2.</span> <span class="toc-text">CPU资源规划与配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/网络安全之加盐/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:01:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/网络安全之加盐/">网络安全之加盐</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/python 10flask接口开发案例/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:01:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/python 10flask接口开发案例/">python 10flask接口开发案例</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/python 09flask接口开发细项/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:01:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/python 09flask接口开发细项/">python 09flask接口开发细项</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/ajax+jquery/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/ajax+jquery/">ajax+jquery</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ajax</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/python 08模块/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:00:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/python 08模块/">python 08模块</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/三行代码发送带附件邮件/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:00:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/三行代码发送带附件邮件/">三行代码发送带附件邮件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/python 07内置函数/" class="archive-article-date">
-  	<time datetime="2018-09-27T06:59:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/python 07内置函数/">python 07内置函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/27/python 06变量/" class="archive-article-date">
-  	<time datetime="2018-09-27T06:59:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/python 06变量/">python 06变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/4/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/">12</a><a class="extend next" rel="next" href="/archives/page/6/">Next &raquo;</a>
-    </nav>
+  
+
+  
+<script type="text/javascript">
+document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
+</script>
+
   
 
 
@@ -705,8 +390,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

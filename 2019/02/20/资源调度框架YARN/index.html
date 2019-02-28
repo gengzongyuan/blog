@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
   <title>资源调度框架YARN | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="YARN产生背景 MapReduce1.x存在的问题（JobTracker是单节点）">
+  <meta name="description" content="YARN :Yet Another Resource Negotiator(另外一种资源管理器)  YARN产生背景 MapReduce1.x存在的问题（JobTracker是单节点）">
 <meta name="keywords" content="hadoop,yarn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="资源调度框架YARN">
 <meta property="og:url" content="http://gengzongyuan.github.io/2019/02/20/资源调度框架YARN/index.html">
 <meta property="og:site_name" content="大树的博客">
-<meta property="og:description" content="YARN产生背景 MapReduce1.x存在的问题（JobTracker是单节点）">
+<meta property="og:description" content="YARN :Yet Another Resource Negotiator(另外一种资源管理器)  YARN产生背景 MapReduce1.x存在的问题（JobTracker是单节点）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-6e101a140e53cf77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-6fcabdedd2559f08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-84c748c6bb866415.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-28T03:37:56.000Z">
+<meta property="og:updated_time" content="2019-02-28T03:45:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="资源调度框架YARN">
-<meta name="twitter:description" content="YARN产生背景 MapReduce1.x存在的问题（JobTracker是单节点）">
+<meta name="twitter:description" content="YARN :Yet Another Resource Negotiator(另外一种资源管理器)  YARN产生背景 MapReduce1.x存在的问题（JobTracker是单节点）">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-6e101a140e53cf77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
@@ -203,7 +203,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="YARN产生背景"><a href="#YARN产生背景" class="headerlink" title="YARN产生背景"></a>YARN产生背景</h4><ul>
+        <blockquote>
+<p>YARN :Yet Another Resource Negotiator(另外一种资源管理器)</p>
+</blockquote>
+<h4 id="YARN产生背景"><a href="#YARN产生背景" class="headerlink" title="YARN产生背景"></a>YARN产生背景</h4><ul>
 <li>MapReduce1.x存在的问题（JobTracker是单节点）<br><img src="https://upload-images.jianshu.io/upload_images/2572206-6e101a140e53cf77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
 </ul>
 <a id="more"></a>
@@ -211,6 +214,9 @@
 <li>资源利用率&amp;运维成本（一种类型一个集群）</li>
 </ul>
 <h4 id="YARN架构"><a href="#YARN架构" class="headerlink" title="YARN架构"></a>YARN架构</h4><ul>
+<li><p>yarn架构设计</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mr job执行流程</span><br><span class="line">mr on yarn架构</span><br><span class="line">yarn架构设计</span><br><span class="line"></span><br><span class="line">&gt; 三个问题全部对应一个问题</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>1 RM(ResourceManager) + N NM(NodeManager)  一主多被<br><img src="https://upload-images.jianshu.io/upload_images/2572206-6fcabdedd2559f08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 </li>
 <li><p>ResourceManager</p>
