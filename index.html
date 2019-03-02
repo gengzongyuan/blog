@@ -196,51 +196,16 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="Hive体系架构"><a href="#Hive体系架构" class="headerlink" title="Hive体系架构"></a>Hive体系架构</h4><p><img src="https://upload-images.jianshu.io/upload_images/2572206-a7ea81c63873b894.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+        <h4 id="前置环境准备"><a href="#前置环境准备" class="headerlink" title="前置环境准备"></a>前置环境准备</h4><blockquote>
+<p>hadoop:hdfs、yarn，参考<code>https://gengzongyuan.github.io/2019/02/15/Hadoop伪分布式部署/</code><br>jdk</p>
+</blockquote>
 <ul>
-<li>Command-line shell-shell客户端访问方式</li>
-<li>Thrift/JDBC-JDBC客户端访问方式</li>
-<li>Driver</li>
-<li>SQL Parser-解析SQL </li>
-<li>Query Optimizer-查询优化</li>
-<li>Physical Plan-物理执行计划</li>
-<li>SerDes,UDFs</li>
-<li>Execution-执行引擎</li>
-<li>MapReduce-生成MR作业</li>
-<li>Hadoop  storeage(HDFS,HBase)-输入输出 </li>
-<li>Metastore-元数据管理</li>
-<li>RDBMS(MySql)-数据可以存放在mysql中</li>
-</ul>
-<h4 id="Hive部署架构–测试环境"><a href="#Hive部署架构–测试环境" class="headerlink" title="Hive部署架构–测试环境"></a>Hive部署架构–测试环境</h4><p><img src="https://upload-images.jianshu.io/upload_images/2572206-edbde0d94b1d9d2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<ul>
-<li>3C</li>
-<li>1hive</li>
-<li>元数据存放器（mysql or derby:支持支1c,不建议）</li>
-</ul>
-<h4 id="Hive部署架构–生产环境"><a href="#Hive部署架构–生产环境" class="headerlink" title="Hive部署架构–生产环境"></a>Hive部署架构–生产环境</h4><p><img src="https://upload-images.jianshu.io/upload_images/2572206-80927670bf4eef4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<ul>
-<li>hive后端连接了hadoop集群</li>
-<li>主备MySQL</li>
-</ul>
-<h4 id="Hive环境搭建"><a href="#Hive环境搭建" class="headerlink" title="Hive环境搭建"></a>Hive环境搭建</h4><ul>
-<li>CDH版本<br>下载网站：<code>http://archive.cloudera.com/cdh5/cdh/5/</code><br>下载地址：<code>wget http://archive.cloudera.com/cdh5/cdh/5/hive-1.1.0-cdh5.7.0.tar.gz</code></li>
-<li>解压<code>tar -zxf hive-1.1.0-cdh5.7.0.tar.gz -C ~/app/</code></li>
-<li><p>配置环境变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bash_profile</span><br><span class="line"></span><br><span class="line">export HIVE_HOME=/root/app/hive-1.1.0-cdh5.7.0</span><br><span class="line">export PATH=$HIVE_HOME/bin:$PATH</span><br><span class="line"></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将mysql驱动上传到<code>/root/app/hive-1.1.0-cdh5.7.0/lib</code>目录中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.27</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装mysql,配置mysql（用于存放元数据信息）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">- /root/app/hive-1.1.0-cdh5.7.0/conf</span><br><span class="line">- 建一个hive-site.xml文件</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">  		&lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;</span><br><span class="line">	    	&lt;value&gt;jdbc:mysql://11.11.11.11:3306/hiveDB?createDatabaseIfNotExist=true&lt;/v</span><br><span class="line">    	&lt;/property&gt;</span><br><span class="line">    </span><br><span class="line">	&lt;property&gt;</span><br><span class="line">    		&lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;</span><br><span class="line">        	&lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;</span><br><span class="line">   	&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">	&lt;property&gt;</span><br><span class="line">  		&lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;</span><br><span class="line">    		&lt;value&gt;ro121212ot&lt;/value&gt;</span><br><span class="line">    	&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">	&lt;property&gt;</span><br><span class="line">  		&lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;</span><br><span class="line">    		&lt;value&gt;21212&lt;/value&gt;</span><br><span class="line">    	&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>hive启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hive-1.1.0-cdh5.7.0/bin/hive</span><br><span class="line"></span><br><span class="line">which: no hbase in (/root/app/hive-1.1.0-cdh5.7.0/bin:/root/app/hadoop-2.6.0-cdh5.7.0/bin:/root/app/hadoop-2.6.0-cdh5.7.0/sbin:/root/app/jdk1.8.0_171/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin)</span><br><span class="line"></span><br><span class="line">Logging initialized using configuration in file:/root/app/hive-1.1.0-cdh5.7.0/conf/hive-log4j.properties</span><br><span class="line">WARNING: Hive CLI is deprecated and migration to Beeline is recommended.</span><br><span class="line">hive&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>此时到我们的mysql库中看下，hive已经在我们的库了建 了许多表了<br><img src="https://upload-images.jianshu.io/upload_images/2572206-3b69ea544e4c3c36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li>CDH版本软件下载<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">下载网站：`http://archive.cloudera.com/cdh5/cdh/5/`</span><br><span class="line">下载地址：`wget http://archive.cloudera.com/cdh5/cdh/5/hive-1.1.0-cdh5.7.0.tar.gz`</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-
+        
+          <a class="article-more-a" href="/2019/03/02/Hive安装部署/#more">more >></a>
+        
       
 
     <div class="article-info article-info-index">
