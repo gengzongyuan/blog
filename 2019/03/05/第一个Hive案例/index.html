@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>Archives | 大树的博客</title>
+  <title>第一个Hive案例 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大树的博客">
-<meta property="og:url" content="http://gengzongyuan.github.io/archives/page/12/index.html">
+  <meta name="description" content="数据准备 创建一个log文件 123456vim test.logwelcome	bigdata	test	hellobigdata	test	hellohello	welcometab键分隔  上传数据到hdfs 12345678910# 创建测试数据文件夹hadoop fs -mkdir /testData# 将我们创建的log文件上传到hdfs上hadoop fs -put test.log">
+<meta name="keywords" content="hive">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一个Hive案例">
+<meta property="og:url" content="http://gengzongyuan.github.io/2019/03/05/第一个Hive案例/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="数据准备 创建一个log文件 123456vim test.logwelcome	bigdata	test	hellobigdata	test	hellohello	welcometab键分隔  上传数据到hdfs 12345678910# 创建测试数据文件夹hadoop fs -mkdir /testData# 将我们创建的log文件上传到hdfs上hadoop fs -put test.log">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-9336f8ce6947c423.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-05T05:31:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大树的博客">
+<meta name="twitter:title" content="第一个Hive案例">
+<meta name="twitter:description" content="数据准备 创建一个log文件 123456vim test.logwelcome	bigdata	test	hellobigdata	test	hellohello	welcometab键分隔  上传数据到hdfs 12345678910# 创建测试数据文件夹hadoop fs -mkdir /testData# 将我们创建的log文件上传到hdfs上hadoop fs -put test.log">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-9336f8ce6947c423.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -168,52 +175,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-第一个Hive案例" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq01-简单的hello-world！/" class="archive-article-date">
-  	<time datetime="2018-09-20T05:19:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq01-简单的hello-world！/">rabbitmq01 简单的hello world！</a>
+    <h1 class="article-title" itemprop="name">
+      第一个Hive案例
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/03/05/第一个Hive案例/" class="archive-article-date">
+  	<time datetime="2019-03-04T21:31:10.904Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-05</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h4><ul>
+<li><p>创建一个log文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim test.log</span><br><span class="line">welcome	bigdata	test	hello</span><br><span class="line">bigdata	test	hello</span><br><span class="line">hello	welcome</span><br><span class="line"></span><br><span class="line">tab键分隔</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传数据到hdfs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 创建测试数据文件夹</span><br><span class="line">hadoop fs -mkdir /testData</span><br><span class="line"># 将我们创建的log文件上传到hdfs上</span><br><span class="line">hadoop fs -put test.log /testData/</span><br><span class="line"># 检查一下上传成功了没</span><br><span class="line">hadoop fs -text /testData/test.log</span><br><span class="line">19/03/04 21:09:59 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable</span><br><span class="line">welcome	bigdata	test	hello</span><br><span class="line">bigdata	test	hello</span><br><span class="line">hello	welcome</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<h4 id="Hive操作"><a href="#Hive操作" class="headerlink" title="Hive操作"></a>Hive操作</h4><ul>
+<li><p>启动hive并加载数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">- 创建表test_wc</span><br><span class="line">create table test_wc(sentence string);</span><br><span class="line"></span><br><span class="line">- 加载数据</span><br><span class="line">load data inpath &apos;hdfs://hadoop001:8020/testData/test.log&apos; into table test_wc;</span><br><span class="line"></span><br><span class="line">Loading data to table default.test_wc</span><br><span class="line">Table default.test_wc stats: [numFiles=1, totalSize=60]</span><br><span class="line">OK</span><br><span class="line">Time taken: 1.892 seconds</span><br><span class="line"></span><br><span class="line">- 检查数据有没有加载到hive中</span><br><span class="line">select * from test_wc;</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line">welcome	bigdata	test	hello</span><br><span class="line">bigdata	test	hello</span><br><span class="line">hello	welcome</span><br><span class="line">Time taken: 1.165 seconds, Fetched: 3 row(s)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行SQL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select word, count(1) c</span><br><span class="line">from	</span><br><span class="line">(select explode(split(sentence,&apos;\t&apos;)) as word from test_wc) t</span><br><span class="line">group by word </span><br><span class="line">order by c desc;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看执行过程<br><img src="https://upload-images.jianshu.io/upload_images/2572206-9336f8ce6947c423.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>日志也显示了整个sql的执行过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Query ID = hadoop_20190304211515_2a6673b2-f612-408d-abb4-70d6e8bb8263</span><br><span class="line">Total jobs = 2</span><br><span class="line">Launching Job 1 out of 2</span><br><span class="line">Number of reduce tasks not specified. Estimated from input data size: 1</span><br><span class="line">In order to change the average load for a reducer (in bytes):</span><br><span class="line">  set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;</span><br><span class="line">In order to limit the maximum number of reducers:</span><br><span class="line">  set hive.exec.reducers.max=&lt;number&gt;</span><br><span class="line">In order to set a constant number of reducers:</span><br><span class="line">  set mapreduce.job.reduces=&lt;number&gt;</span><br><span class="line">Starting Job = job_1551550063156_0001, Tracking URL = http://hadoop001:8088/proxy/application_1551550063156_0001/</span><br><span class="line">Kill Command = /home/hadoop/app/hadoop/bin/hadoop job  -kill job_1551550063156_0001</span><br><span class="line">Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1</span><br><span class="line">2019-03-04 21:22:15,821 Stage-1 map = 0%,  reduce = 0%</span><br><span class="line">2019-03-04 21:22:37,684 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 19.85 sec</span><br><span class="line">2019-03-04 21:22:47,412 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 25.57 sec</span><br><span class="line">MapReduce Total cumulative CPU time: 25 seconds 570 msec</span><br><span class="line">Ended Job = job_1551550063156_0001</span><br><span class="line">Launching Job 2 out of 2</span><br><span class="line">Number of reduce tasks determined at compile time: 1</span><br><span class="line">In order to change the average load for a reducer (in bytes):</span><br><span class="line">  set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;</span><br><span class="line">In order to limit the maximum number of reducers:</span><br><span class="line">  set hive.exec.reducers.max=&lt;number&gt;</span><br><span class="line">In order to set a constant number of reducers:</span><br><span class="line">  set mapreduce.job.reduces=&lt;number&gt;</span><br><span class="line">Starting Job = job_1551550063156_0002, Tracking URL = http://hadoop001:8088/proxy/application_1551550063156_0002/</span><br><span class="line">Kill Command = /home/hadoop/app/hadoop/bin/hadoop job  -kill job_1551550063156_0002</span><br><span class="line">Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1</span><br><span class="line">2019-03-04 21:23:03,025 Stage-2 map = 0%,  reduce = 0%</span><br><span class="line">2019-03-04 21:23:09,833 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 1.22 sec</span><br><span class="line">2019-03-04 21:23:17,328 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 4.54 sec</span><br><span class="line">MapReduce Total cumulative CPU time: 4 seconds 540 msec</span><br><span class="line">Ended Job = job_1551550063156_0002</span><br><span class="line">MapReduce Jobs Launched: </span><br><span class="line">Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 25.57 sec   HDFS Read: 6787 HDFS Write: 195 SUCCESS</span><br><span class="line">Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 4.54 sec   HDFS Read: 4679 HDFS Write: 35 SUCCESS</span><br><span class="line">Total MapReduce CPU Time Spent: 30 seconds 110 msec</span><br><span class="line">OK</span><br><span class="line">hello	3</span><br><span class="line">welcome	2</span><br><span class="line">test	2</span><br><span class="line">bigdata	2</span><br><span class="line">Time taken: 146.683 seconds, Fetched: 4 row(s)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="执行浅析"><a href="#执行浅析" class="headerlink" title="执行浅析"></a>执行浅析</h4><ul>
+<li><p>先来看一下sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select word, count(1) c</span><br><span class="line">from    </span><br><span class="line">(select explode(split(sentence,&apos;\t&apos;)) as word from test_wc) t</span><br><span class="line">group by word </span><br><span class="line">order by c desc;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">先单独执行一下子查询</span><br><span class="line">select explode(split(sentence,&apos;\t&apos;)) as word from test_wc</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line">welcome</span><br><span class="line">bigdata</span><br><span class="line">test</span><br><span class="line">hello</span><br><span class="line">bigdata</span><br><span class="line">test</span><br><span class="line">hello</span><br><span class="line">hello</span><br><span class="line">welcome</span><br><span class="line">Time taken: 0.194 seconds, Fetched: 9 row(s)</span><br><span class="line">这里我们调用explode对每一行进行了展开，同时调用了split按照tab进行数据分隔</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分类聚合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select word, count(1) c</span><br><span class="line">from t</span><br><span class="line">group by word </span><br><span class="line">order by c desc;</span><br><span class="line"></span><br><span class="line">子查询搞清楚之后，这里就是按照SQL的写法，调用了group对单词进行了一个分类</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 看日志可以看到，整个过程是经过两个mapreduce才完成了整个步骤</span><br><span class="line">- 但是我们单独执行select explode(split(sentence,&apos;\t&apos;)) as word from test_wc的时候却一次mapreduce过程都没有</span><br><span class="line"></span><br><span class="line">- 待解答</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -226,481 +266,119 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2019/03/05/第一个Hive案例/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/rabbitmq安装/" class="archive-article-date">
-  	<time datetime="2018-09-20T05:19:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/02/Hive安装部署/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hive安装部署</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/rabbitmq安装/">rabbitmq安装</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据准备"><span class="toc-number">1.</span> <span class="toc-text">数据准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hive操作"><span class="toc-number">2.</span> <span class="toc-text">Hive操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行浅析"><span class="toc-number">3.</span> <span class="toc-text">执行浅析</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/Nginx负载调优总结/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:58:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/Nginx负载调优总结/">Nginx负载调优总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">调优</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/Tomcat监控之probe3-0的安装与使用/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:56:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/Tomcat监控之probe3-0的安装与使用/">Tomcat监控之probe3.0的安装与使用</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">监控</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/MySQL之提示mysql-deamon-failed-to-start错误的解决方法/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:53:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/MySQL之提示mysql-deamon-failed-to-start错误的解决方法/">MySQL之提示mysql deamon failed to start错误的解决方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/centos-安装mysql5-7/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:48:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/centos-安装mysql5-7/">centos 安装mysql5.7</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/centos-memcache安装/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:46:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/centos-memcache安装/">centos memcache安装</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">memcache</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/linux配置免密登录/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:40:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/linux配置免密登录/">linux配置免密登录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/vim操作技巧/" class="archive-article-date">
-  	<time datetime="2018-09-20T04:37:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/vim操作技巧/">vim操作技巧</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/HEXO博客搭建（含免密传输）-md/" class="archive-article-date">
-  	<time datetime="2018-09-20T03:41:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/HEXO博客搭建（含免密传输）-md/">HEXO博客搭建（含免密传输）.md</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/11/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><span class="page-number current">12</span>
-    </nav>
+  
+
+  
+<script type="text/javascript">
+document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
+</script>
+
   
 
 
@@ -725,8 +403,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
