@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>大树的博客</title>
+  <title>Python实现markdown转html | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大树的博客">
-<meta property="og:url" content="http://gengzongyuan.github.io/page/11/index.html">
+  <meta name="description" content="安装 pip install markdown2   这里使用了markdown2没有使用markdown，因为实验后发现markdown不支持代码块的转换，下面我们也会提到一个注意点。  使用 原md文档&amp;gt;test.md123456789#### 安装django-cors-headers模块- 方法1:：`pip install django-cors-headers`- 方法2：下载w">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python实现markdown转html">
+<meta property="og:url" content="http://gengzongyuan.github.io/2019/03/15/Python实现markdown转html/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="安装 pip install markdown2   这里使用了markdown2没有使用markdown，因为实验后发现markdown不支持代码块的转换，下面我们也会提到一个注意点。  使用 原md文档&amp;gt;test.md123456789#### 安装django-cors-headers模块- 方法1:：`pip install django-cors-headers`- 方法2：下载w">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-f93ef46a91c654d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-15T10:28:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大树的博客">
+<meta name="twitter:title" content="Python实现markdown转html">
+<meta name="twitter:description" content="安装 pip install markdown2   这里使用了markdown2没有使用markdown，因为实验后发现markdown不支持代码块的转换，下面我们也会提到一个注意点。  使用 原md文档&amp;gt;test.md123456789#### 安装django-cors-headers模块- 方法1:：`pip install django-cors-headers`- 方法2：下载w">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-f93ef46a91c654d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -168,22 +175,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-kafka08-消费指定offset的消息" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Python实现markdown转html" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka08-消费指定offset的消息/">kafka08 消费指定offset的消息</a>
+    <h1 class="article-title" itemprop="name">
+      Python实现markdown转html
     </h1>
   
 
         
-        <a href="/2018/09/20/kafka08-消费指定offset的消息/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+        <a href="/2019/03/15/Python实现markdown转html/" class="archive-article-date">
+  	<time datetime="2019-03-15T10:28:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
 </a>
         
       </header>
@@ -196,887 +201,31 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="从头开始消费消息seekToBeginning"><a href="#从头开始消费消息seekToBeginning" class="headerlink" title="从头开始消费消息seekToBeginning()"></a>从头开始消费消息<code>seekToBeginning()</code></h4><ul>
-<li>配置信息</li>
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ul>
+<li><code>pip install markdown2</code></li>
 </ul>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka08-消费指定offset的消息/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka08-消费指定offset的消息/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka07-多线程consumer开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka07-多线程consumer开发/">kafka07 多线程consumer开发</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/kafka07-多线程consumer开发/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="多线程consumer开发"><a href="#多线程consumer开发" class="headerlink" title="多线程consumer开发"></a>多线程consumer开发</h4><p>之前写的comsumer是非线程安全的，在多线程环境中，需要使用不同的kafkaConsumer对象</p>
-<ul>
-<li>MyMultiThreadComsumer </li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka07-多线程consumer开发/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka07-多线程consumer开发/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka06-简单的consumer开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka06-简单的consumer开发/">kafka06 简单的consumer开发</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/kafka06-简单的consumer开发/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="简单的consumer开发"><a href="#简单的consumer开发" class="headerlink" title="简单的consumer开发"></a>简单的consumer开发</h4><h5 id="简单的consumer"><a href="#简单的consumer" class="headerlink" title="简单的consumer"></a>简单的consumer</h5>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka06-简单的consumer开发/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka06-简单的consumer开发/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka05-开发自定义分区器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka05-开发自定义分区器/">kafka05 开发自定义分区器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/kafka05-开发自定义分区器/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="开发自定义分区器"><a href="#开发自定义分区器" class="headerlink" title="开发自定义分区器"></a>开发自定义分区器</h4><p>上一节我们看到，如果在发送消息的时候没有指定对应的分区，会使用默认分区器对消息进行分区，这一节我们试着写一个自己的分区器</p>
-<h5 id="默认分区器源码阅读"><a href="#默认分区器源码阅读" class="headerlink" title="默认分区器源码阅读"></a>默认分区器源码阅读</h5><ul>
-<li>进入默认分区器</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka05-开发自定义分区器/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka05-开发自定义分区器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka04-producer详解及源码解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka04-producer详解及源码解析/">kafka04 producer详解及源码解析</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/kafka04-producer详解及源码解析/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="producer详解及源码解析"><a href="#producer详解及源码解析" class="headerlink" title="producer详解及源码解析"></a>producer详解及源码解析</h4><h5 id="1、Producer消息发送的基本步骤"><a href="#1、Producer消息发送的基本步骤" class="headerlink" title="1、Producer消息发送的基本步骤"></a>1、Producer消息发送的基本步骤</h5><ul>
-<li>(0) 创建 KafkaProducer 对象，此对象接收 Properties 类型的参数，我们配置了 bootstrap.servers、key.serializer、value.serializer 三个参数。</li>
-<li>(1) 接着创建了一个 ProducerRecord 对象，创建此对象时，我们传入了 topic、消息的 key 和消息的 value 等参数。然后我们使用(0)步骤中创建的 KafkaProducer 对象的 send 方法将消息发送了出去。上面两个步骤是我们开发的 Producer 程序所完成的工作。消息发送出去之后，接下来发生了什么呢？</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka04-producer详解及源码解析/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka04-producer详解及源码解析/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka03-三种消息发送方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka03-三种消息发送方式/">kafka03 三种消息发送方式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/kafka03-三种消息发送方式/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="发送即忘记"><a href="#发送即忘记" class="headerlink" title="发送即忘记"></a>发送即忘记</h5><p>发送即忘记：<strong>不关注</strong>消息是否成功到达，大部分情况下，消息会成功送达至broker。但是还是会存在消息丢失的情况。</p>
-<ul>
-<li>创建一个Properties对象，用于存储连接kafka所需的配置信息</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka03-三种消息发送方式/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka03-三种消息发送方式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka02-详解topic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka02-详解topic/">kafka02 详解topic</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/kafka02-详解topic/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="详解topic"><a href="#详解topic" class="headerlink" title="详解topic"></a>详解topic</h4><h5 id="1-参数说明"><a href="#1-参数说明" class="headerlink" title="1.参数说明"></a>1.参数说明</h5><ul>
-<li>我们创建了两个 topic：myFirstTopic、mySecondTopic。创建 topic 的 shell 命令中用到了 partitions 和 replication-factor 等参数，在这里对 topic 的作用和参数含义再次说明：</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka02-详解topic/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka02-详解topic/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka01-创建集群topic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka01-创建集群topic/">kafka01 创建集群topic</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/kafka01-创建集群topic/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h4 id="创建集群topic"><a href="#创建集群topic" class="headerlink" title="创建集群topic"></a>创建集群topic</h4><h5 id="1-创建topic"><a href="#1-创建topic" class="headerlink" title="1.创建topic"></a>1.创建topic</h5>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka01-创建集群topic/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka01-创建集群topic/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-kafka集群安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/kafka集群安装/">kafka集群安装</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/kafka集群安装/" class="archive-article-date">
-  	<time datetime="2018-09-20T07:10:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>下载安装</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br><span class="line">mkdir kafka</span><br><span class="line">cd kafka</span><br><span class="line">#下载 Kafka 软件包到当前目录中</span><br><span class="line">wget http://labfile.oss.aliyuncs.com/courses/859/kafka_2.10-0.10.2.1.tgz  </span><br><span class="line">tar -zxf kafka_2.10-0.10.2.1.tgz</span><br><span class="line">mv kafka_2.10-0.10.2.1 kafka</span><br><span class="line"># 后台启动zookepper</span><br><span class="line">./zookeeper-server-start.sh ../config/zookeeper.properties &amp;</span><br><span class="line">jps查看是否启动成功</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/09/20/kafka集群安装/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/kafka集群安装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-rabbitmq07-RPC服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/rabbitmq07-RPC服务/">rabbitmq07 RPC服务</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/20/rabbitmq07-RPC服务/" class="archive-article-date">
-  	<time datetime="2018-09-20T06:58:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="RPC服务"><a href="#RPC服务" class="headerlink" title="RPC服务"></a>RPC服务</h4><blockquote>
-<p>RPC（Remote Procedure Call）远程服务调用，区别在于worker处理完成之后，会将处理的结果通过队列传递给client端。</p>
+<blockquote>
+<p>这里使用了markdown2没有使用markdown，因为实验后发现markdown不支持代码块的转换，下面我们也会提到一个注意点。</p>
 </blockquote>
-        
-          <a class="article-more-a" href="/2018/09/20/rabbitmq07-RPC服务/#more">more >></a>
-        
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ul>
+<li>原md文档&gt;test.md<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#### 安装django-cors-headers模块</span><br><span class="line">- 方法1:：`pip install django-cors-headers`</span><br><span class="line">- 方法2：下载whl文件</span><br><span class="line"></span><br><span class="line">`` `</span><br><span class="line">https://files.pythonhosted.org/packages/1b/fb/dcf38c17126eaeb926f4febb7b6eba0754eb841b1efd62949dde471498c3/django_cors_headers-2.5.1-py2.py3-none-any.whl</span><br><span class="line"></span><br><span class="line">pip install django_cors_headers-2.5.1-py2.py3-none-any.whl</span><br><span class="line">`` `</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>生成html文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">css = &apos;&apos;&apos;</span><br><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">&lt;!-- 此处省略掉markdown的css样式，因为太长了 --&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">input_file = open(&quot;test.md&quot;, mode=&quot;r&quot;, encoding=&quot;utf-8&quot;)</span><br><span class="line">text = input_file.read()</span><br><span class="line">html = markdown2.markdown(text,extras=[&apos;fenced-code-blocks&apos;])</span><br><span class="line"></span><br><span class="line">print(css+html)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成的html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">&lt;!-- 此处省略掉markdown的css样式，因为太长了 --&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;h4&gt;安装django-cors-headers模块&lt;/h4&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">&lt;li&gt;方法1:：&lt;code&gt;pip install django-cors-headers&lt;/code&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;方法2：下载whl文件&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;&lt;code&gt;https://files.pythonhosted.org/packages/1b/fb/dcf38c17126eaeb926f4febb7b6eba0754eb841b1efd62949dde471498c3/django_cors_headers-2.5.1-py2.py3-none-any.whl</span><br><span class="line"></span><br><span class="line">pip install django_cors_headers-2.5.1-py2.py3-none-any.whl</span><br><span class="line">&lt;/code&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-f93ef46a91c654d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li>补充<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这里我们直接调用markdown2.markdown</span><br><span class="line">text里传入需要转换的md，`这里需要注意的是，需要通过extras参数指定[&apos;fenced-code-blocks&apos;]才能够转换代码块`</span><br><span class="line"></span><br><span class="line">- 同时，由于生成的html没有任何的css，这块读者可以选择自己喜欢的markdown css样式使用，笔者就不提供了</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
 
     <div class="article-info article-info-index">
@@ -1089,10 +238,6 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -1111,16 +256,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/rabbitmq07-RPC服务/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2019/03/15/Python实现markdown转html/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/15/HTML基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTML基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -1135,17 +339,35 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
 
 
+  
+  
+  
 
   
+
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
-    </nav>
+<script type="text/javascript">
+document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
+</script>
+
   
 
 
@@ -1169,8 +391,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
