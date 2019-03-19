@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://gengzongyuan.github.io">
-  <title>Archives | 大树的博客</title>
+  <title>Hive复杂数据类型 | 大树的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大树的博客">
-<meta property="og:url" content="http://gengzongyuan.github.io/archives/page/2/index.html">
+  <meta name="description" content="几种复杂数据类型123array_typemap_typestruct_type array_type：数组 特性：有序、数组内数据类型一样 基础数据hive_array.txt12dashu  beijing,shanghai,tianjin,hangzhouxiaohua  chongqing,chengdu,wuhan,beijing">
+<meta name="keywords" content="hive">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hive复杂数据类型">
+<meta property="og:url" content="http://gengzongyuan.github.io/2019/03/19/Hive复杂数据类型/index.html">
 <meta property="og:site_name" content="大树的博客">
+<meta property="og:description" content="几种复杂数据类型123array_typemap_typestruct_type array_type：数组 特性：有序、数组内数据类型一样 基础数据hive_array.txt12dashu  beijing,shanghai,tianjin,hangzhouxiaohua  chongqing,chengdu,wuhan,beijing">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-19T12:36:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大树的博客">
+<meta name="twitter:title" content="Hive复杂数据类型">
+<meta name="twitter:description" content="几种复杂数据类型123array_typemap_typestruct_type array_type：数组 特性：有序、数组内数据类型一样 基础数据hive_array.txt12dashu  beijing,shanghai,tianjin,hangzhouxiaohua  chongqing,chengdu,wuhan,beijing">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -168,36 +173,88 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Hive复杂数据类型" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hive复杂数据类型
+    </h1>
+  
+
+        
+        <a href="/2019/03/19/Hive复杂数据类型/" class="archive-article-date">
+  	<time datetime="2019-03-19T12:36:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
+</a>
+        
+      </header>
     
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="几种复杂数据类型"><a href="#几种复杂数据类型" class="headerlink" title="几种复杂数据类型"></a>几种复杂数据类型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array_type</span><br><span class="line">map_type</span><br><span class="line">struct_type</span><br></pre></td></tr></table></figure>
+<h4 id="array-type：数组"><a href="#array-type：数组" class="headerlink" title="array_type：数组"></a>array_type：数组</h4><ul>
+<li>特性：<code>有序、数组内数据类型一样</code></li>
+<li>基础数据<code>hive_array.txt</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dashu  beijing,shanghai,tianjin,hangzhou</span><br><span class="line">xiaohua  chongqing,chengdu,wuhan,beijing</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>建表语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create table hive_array(</span><br><span class="line">name string,</span><br><span class="line">work_locations array&lt;string&gt;</span><br><span class="line">)</span><br><span class="line">ROW FORMAT DELIMITED FIELDS TERMINATED BY &apos;\t&apos;</span><br><span class="line">COLLECTION ITEMS TERMINATED BY &apos;,&apos;;</span><br><span class="line"></span><br><span class="line">- 这里使用COLLECTION ITEMS TERMINATED指定数组之间的分隔符是&apos;,&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data local inpath &apos;/home/hadoop/data/hive_array.txt&apos; overwrite into table hive_array;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select * from hive_array;</span><br><span class="line">OK</span><br><span class="line">hive_array.name	hive_array.work_locations</span><br><span class="line">dashu	[&quot;beijing&quot;,&quot;shanghai&quot;,&quot;tianjin&quot;,&quot;hangzhou&quot;]</span><br><span class="line">xiaohua	[&quot;chongqing&quot;,&quot;chengdu&quot;,&quot;wuhan&quot;,&quot;beijing&quot;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">- 取数组中的第0个元素：直接[坐标]取值</span><br><span class="line">hive&gt; select name,work_locations[0] from hive_array;</span><br><span class="line">OK</span><br><span class="line">name	_c1</span><br><span class="line">dashu	beijing</span><br><span class="line">xiaohua	chongqing</span><br><span class="line"></span><br><span class="line">- 求每个人上班的地方有几个：借助size函数</span><br><span class="line">hive&gt; select name,size(work_locations) from hive_array;</span><br><span class="line">OK</span><br><span class="line">name	_c1</span><br><span class="line">dashu	4</span><br><span class="line">xiaohua	4</span><br><span class="line"></span><br><span class="line">- 求在tianjin上班的人：借助array_contains函数</span><br><span class="line">hive&gt; select name from hive_array where array_contains(work_locations,&apos;tianjin&apos;);</span><br><span class="line">OK</span><br><span class="line">name</span><br><span class="line">dashu</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="map-type：字典"><a href="#map-type：字典" class="headerlink" title="map_type：字典"></a>map_type：字典</h4><ul>
+<li>特点：<code>key-value一一对应</code></li>
+<li><p>基础数据<code>hive_map.txt</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,zhangsan,father:xiaoming#mother:xiaohong,18</span><br><span class="line">2,lisi,father:xiaoli#mother:xiaohua,23</span><br><span class="line">3,wangwu,father:xiaowang#mother:xiaobai,46</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建表语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table hive_map(</span><br><span class="line">id int,</span><br><span class="line">name string,</span><br><span class="line">members map&lt;string,string&gt;,</span><br><span class="line">age int</span><br><span class="line">)</span><br><span class="line">ROW FORMAT DELIMITED FIELDS TERMINATED BY &apos;,&apos;</span><br><span class="line">COLLECTION ITEMS TERMINATED BY &apos;#&apos;</span><br><span class="line">MAP KEYS TERMINATED BY &apos;:&apos;;</span><br><span class="line"></span><br><span class="line">- 使用COLLECTION ITEMS TERMINATED BY定义数组之间使用&apos;#分隔&apos;</span><br><span class="line">- 使用MAP KEYS TERMINATED BY定义对象之间使用&apos;:&apos;分隔</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select * from hive_map;</span><br><span class="line">OK</span><br><span class="line">hive_map.id	hive_map.name	hive_map.members	hive_map.age</span><br><span class="line">1	zhangsan	&#123;&quot;father&quot;:&quot;xiaoming&quot;,&quot;mother&quot;:&quot;xiaohong&quot;&#125;	18</span><br><span class="line">2	lisi	&#123;&quot;father&quot;:&quot;xiaoli&quot;,&quot;mother&quot;:&quot;xiaohua&quot;&#125;	23</span><br><span class="line">3	wangwu	&#123;&quot;father&quot;:&quot;xiaowang&quot;,&quot;mother&quot;:&quot;xiaobai&quot;&#125;	46</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">- 查询每个人的父亲：使用字段名[&apos;字段值&apos;]</span><br><span class="line">hive&gt; select id,name,age,members[&apos;father&apos;] from hive_map;</span><br><span class="line">OK</span><br><span class="line">id	name	age	_c3</span><br><span class="line">1	zhangsan	18	xiaoming</span><br><span class="line">2	lisi	23	xiaoli</span><br><span class="line">3	wangwu	46	xiaowang</span><br><span class="line"></span><br><span class="line">- 查询所有的keys：使用map_keys</span><br><span class="line">hive&gt; select map_keys(members) from hive_map;</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">[&quot;father&quot;,&quot;mother&quot;]</span><br><span class="line">[&quot;father&quot;,&quot;mother&quot;]</span><br><span class="line">[&quot;father&quot;,&quot;mother&quot;]</span><br><span class="line"></span><br><span class="line">- 查询所有的values：使用map_values</span><br><span class="line">hive&gt; select map_values(members) from hive_map;</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">[&quot;xiaoming&quot;,&quot;xiaohong&quot;]</span><br><span class="line">[&quot;xiaoli&quot;,&quot;xiaohua&quot;]</span><br><span class="line">[&quot;xiaowang&quot;,&quot;xiaobai&quot;]</span><br><span class="line"></span><br><span class="line">- 对象中值的数量</span><br><span class="line">hive&gt; select size(members) from hive_map;</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="struct-type：结构体"><a href="#struct-type：结构体" class="headerlink" title="struct_type：结构体"></a>struct_type：结构体</h4><ul>
+<li>特性：<code>既可以放map也可以放list</code></li>
+<li><p>基础数据<code>hive_struct.txt</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.1#zhangsan:40</span><br><span class="line">192.168.1.2#lisi:50</span><br><span class="line">192.168.1.3#wangwu:60</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建表语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table hive_struct(</span><br><span class="line">ip string,</span><br><span class="line">userinfo struct&lt;name:string,age:int&gt;</span><br><span class="line">)</span><br><span class="line">ROW FORMAT DELIMITED FIELDS TERMINATED BY &apos;#&apos;</span><br><span class="line">COLLECTION ITEMS TERMINATED BY &apos;:&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data local inpath &apos;/home/hadoop/data/hive_struct.txt&apos; into table hive_struct;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询数据：使用.进行取值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select userinfo.name from hive_struct;</span><br><span class="line">OK</span><br><span class="line">name</span><br><span class="line">zhangsan</span><br><span class="line">lisi</span><br><span class="line">wangwu</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/07/Hive DDL/" class="archive-article-date">
-  	<time datetime="2019-03-07T04:01:42.405Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/07/Hive DDL/">Hive DDL</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -209,7 +266,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -222,461 +279,119 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://gengzongyuan.github.io/2019/03/19/Hive复杂数据类型/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/05/第一个Hive案例/" class="archive-article-date">
-  	<time datetime="2019-03-04T21:31:10.904Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/19/Hive DML/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hive DML</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/05/第一个Hive案例/">第一个Hive案例</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#几种复杂数据类型"><span class="toc-number">1.</span> <span class="toc-text">几种复杂数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#array-type：数组"><span class="toc-number">2.</span> <span class="toc-text">array_type：数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#map-type：字典"><span class="toc-number">3.</span> <span class="toc-text">map_type：字典</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struct-type：结构体"><span class="toc-number">4.</span> <span class="toc-text">struct_type：结构体</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/02/Hive安装部署/" class="archive-article-date">
-  	<time datetime="2019-03-02T01:49:24.658Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/02/Hive安装部署/">Hive安装部署</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/28/YARN调度器/" class="archive-article-date">
-  	<time datetime="2019-02-28T08:46:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/28/YARN调度器/">YARN调度器</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/28/YARN资源调优指南/" class="archive-article-date">
-  	<time datetime="2019-02-28T08:07:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/28/YARN资源调优指南/">YARN资源调优指南</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/28/MapReduce编程模型简述/" class="archive-article-date">
-  	<time datetime="2019-02-28T08:06:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/28/MapReduce编程模型简述/">MapReduce编程模型简述</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/26/BeautifulReport自定义类和方法/" class="archive-article-date">
-  	<time datetime="2019-02-26T00:03:44.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/26/BeautifulReport自定义类和方法/">BeautifulReport自定义类和方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">自动化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/22/Hadoop安全模式Safemode/" class="archive-article-date">
-  	<time datetime="2019-02-22T11:57:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/22/Hadoop安全模式Safemode/">Hadoop安全模式Safemode</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/22/HDFS读写流程/" class="archive-article-date">
-  	<time datetime="2019-02-21T21:31:52.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/22/HDFS读写流程/">HDFS读写流程及副本放置机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/20/深度剖析Hadoop的SNN工作机制/" class="archive-article-date">
-  	<time datetime="2019-02-20T11:39:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/20/深度剖析Hadoop的SNN工作机制/">深度剖析Hadoop的SNN工作机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/14/">14</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+<script type="text/javascript">
+document.getElementsByClassName("toc-container tooltip-left")[0].style.display="none";
+</script>
+
   
 
 
@@ -701,8 +416,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
