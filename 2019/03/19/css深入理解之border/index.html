@@ -16,12 +16,15 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="border-width的一些知识点 1、border-width不支持百分比  123&amp;lt;div style=&amp;quot;border: #FF0000 solid; border-width: thin;&amp;quot;&amp;gt;	border-width不支持百分比&amp;lt;/div&amp;gt;  2、 border-width支持关键字（默认）  123&amp;lt;div style=&amp;quot;bo">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-1fbe5ad8af3daba5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-703bb605427c39ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-9dc460bbdba60326.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-fa4d4c98d60cd9ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-19T08:30:55.000Z">
+<meta property="og:updated_time" content="2019-03-20T08:14:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css深入理解之border">
 <meta name="twitter:description" content="border-width的一些知识点 1、border-width不支持百分比  123&amp;lt;div style=&amp;quot;border: #FF0000 solid; border-width: thin;&amp;quot;&amp;gt;	border-width不支持百分比&amp;lt;/div&amp;gt;  2、 border-width支持关键字（默认）  123&amp;lt;div style=&amp;quot;bo">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-fa4d4c98d60cd9ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-1fbe5ad8af3daba5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -221,55 +224,30 @@
 <ul>
 <li>2、 dashed虚线</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;border-style: dashed; border-width: 100px; border-</span><br></pre></td></tr></table></figure>
-<p>image: url(<a href="http://www.w3school.com.cn/i/border.png);&quot;&gt;divdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdiv" target="_blank" rel="noopener">http://www.w3school.com.cn/i/border.png);&quot;&gt;divdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdiv</a></p>
-<pre><code>这里由于兼容性，虚线快的长宽比是不一样的
-如果一定想处理的话，我们可以使用border-image: url()的方式，自定义边框图片
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/2572206-1fbe5ad8af3daba5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 3、 dotted点线</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;div style=&quot;border-style: dotted;&quot;&gt;div&lt;/div&gt;
-
-- 兼容性问题
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/2572206-703bb605427c39ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br></pre></td></tr></table></figure>
-<pre><code>- 我们可以利用ie的圆自己搞一些事情,绘制一个正方体或者一个圆
-&lt;div style=&quot;width: 150px; height: 150px; overflow: hidden;&quot;&gt;
-    &lt;div style=&quot;border:149px dotted;width: 100%; height: 100%;&quot;&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 4、 double双线</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;div style=&quot;border-style: double;&quot;&gt;
-    double双线
-&lt;/div&gt;
-
-计算规则：双线宽度永远相等，中间间隔±1
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/2572206-9dc460bbdba60326.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br></pre></td></tr></table></figure>
-<pre><code>.doubleImage{
-    width: 120px;
-    height: 20px;
-    border-top: 60px double;
-    border-bottom: 20px solid;
-}
-- 图形绘制
-&lt;div class=&quot;doubleImage&quot;&gt;&lt;/div&gt;
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### border-color和color</span><br></pre></td></tr></table></figure>
-<pre><code>- 有border-color时使用，没有时使用color
-    &lt;div style=&quot;color: #FF0000;border: solid&quot;&gt;大树&lt;/div&gt;
-    &lt;div style=&quot;color: #FF0000;border: solid #0000FF&quot;&gt;大树&lt;/div&gt;
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">		</span><br><span class="line">#### border和background定位</span><br></pre></td></tr></table></figure>
-<pre><code>- background定位的局限
-    - 只能相对左上角定位，不能相对于右下角，想实现距离右侧50px就没办法实现了
-    .p{
-            background-position: 100% 40px;
-            border-right: 50px transparent;
-    }
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">		</span><br><span class="line">#### border三角形的绘制</span><br><span class="line"></span><br><span class="line">- 三角图形的绘制</span><br></pre></td></tr></table></figure>
-<pre><code>.triangle{
-    width: 0px;height: 0px;
-    border-width: 12px 20px;
-    border-style: solid;
-    border-color: red red transparent transparent; 
-}
-&lt;div class=&quot;triangle&quot;&gt;&lt;/div&gt;
-</code></pre><p><code>`</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;border-style: dashed; border-width: 100px; border-image: url(http://www.w3school.com.cn/i/border.png);&quot;&gt;divdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdiv&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">这里由于兼容性，虚线快的长宽比是不一样的</span><br><span class="line">   如果一定想处理的话，我们可以使用border-image: url()的方式，自定义边框图片</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-1fbe5ad8af3daba5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li>3、 dotted点线</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;border-style: dotted;&quot;&gt;div&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>兼容性问题<br><img src="https://upload-images.jianshu.io/upload_images/2572206-703bb605427c39ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>我们可以利用ie的圆自己搞一些事情,绘制一个正方体或者一个圆</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;width: 150px; height: 150px; overflow: hidden;&quot;&gt;</span><br><span class="line">	&lt;div style=&quot;border:149px dotted;width: 100%; height: 100%;&quot;&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4、 double双线</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;border-style: double;&quot;&gt;</span><br><span class="line">	double双线</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">计算规则：双线宽度永远相等，中间间隔±1</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/2572206-9dc460bbdba60326.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.doubleImage&#123;</span><br><span class="line">	width: 120px;</span><br><span class="line">	height: 20px;</span><br><span class="line">	border-top: 60px double;</span><br><span class="line">	border-bottom: 20px solid;</span><br><span class="line">&#125;</span><br><span class="line">- 图形绘制</span><br><span class="line">&lt;div class=&quot;doubleImage&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="border-color和color"><a href="#border-color和color" class="headerlink" title="border-color和color"></a>border-color和color</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 有border-color时使用，没有时使用color</span><br><span class="line">	&lt;div style=&quot;color: #FF0000;border: solid&quot;&gt;大树&lt;/div&gt;</span><br><span class="line">	&lt;div style=&quot;color: #FF0000;border: solid #0000FF&quot;&gt;大树&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="border和background定位"><a href="#border和background定位" class="headerlink" title="border和background定位"></a>border和background定位</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- background定位的局限</span><br><span class="line">	- 只能相对左上角定位，不能相对于右下角，想实现距离右侧50px就没办法实现了</span><br><span class="line">	.p&#123;</span><br><span class="line">			background-position: 100% 40px;</span><br><span class="line">			border-right: 50px transparent;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="border三角形的绘制"><a href="#border三角形的绘制" class="headerlink" title="border三角形的绘制"></a>border三角形的绘制</h4><ul>
+<li>三角图形的绘制</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.triangle&#123;</span><br><span class="line">	width: 0px;height: 0px;</span><br><span class="line">	border-width: 12px 20px;</span><br><span class="line">	border-style: solid;</span><br><span class="line">	border-color: red red transparent transparent; </span><br><span class="line">&#125;</span><br><span class="line">&lt;div class=&quot;triangle&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p><img src="https://upload-images.jianshu.io/upload_images/2572206-fa4d4c98d60cd9ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <blockquote>
 <p>参考视频：<a href="https://www.imooc.com/video/13376" target="_blank" rel="noopener">https://www.imooc.com/video/13376</a></p>
@@ -408,7 +386,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#border-width的一些知识点"><span class="toc-number">1.</span> <span class="toc-text">border-width的一些知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#各种border-style类型"><span class="toc-number">2.</span> <span class="toc-text">各种border-style类型</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#border-width的一些知识点"><span class="toc-number">1.</span> <span class="toc-text">border-width的一些知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#各种border-style类型"><span class="toc-number">2.</span> <span class="toc-text">各种border-style类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#border-color和color"><span class="toc-number">3.</span> <span class="toc-text">border-color和color</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#border和background定位"><span class="toc-number">4.</span> <span class="toc-text">border和background定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#border三角形的绘制"><span class="toc-number">5.</span> <span class="toc-text">border三角形的绘制</span></a></li></ol>
                     </div>
                 </span>
             </div>
