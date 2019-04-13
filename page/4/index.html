@@ -170,6 +170,290 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-HDFS架构设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/20/HDFS架构设计/">HDFS架构设计</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/20/HDFS架构设计/" class="archive-article-date">
+  	<time datetime="2019-02-20T11:38:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="块剖析"><a href="#块剖析" class="headerlink" title="块剖析"></a>块剖析</h4><ul>
+<li>配置信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">块的大小128M </span><br><span class="line">块的副本数3 </span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.blocksize&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;134217728&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;3&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">blocksize和replication参数解读</span><br><span class="line"></span><br><span class="line">一个文件260M会按照128M的规格切分成:128+128+4的三块</span><br><span class="line">这三块数据，每块数据都有3份，分布在不同的dn上</span><br><span class="line"></span><br><span class="line">共计：9块数据，总大小260*3大小</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/02/20/HDFS架构设计/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/20/HDFS架构设计/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Hadoop web界面解读" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/20/Hadoop web界面解读/">Hadoop web界面解读</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/20/Hadoop web界面解读/" class="archive-article-date">
+  	<time datetime="2019-02-20T11:38:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="http-hadoop001-50070-hdfs界面"><a href="#http-hadoop001-50070-hdfs界面" class="headerlink" title="http://hadoop001:50070/ hdfs界面"></a><code>http://hadoop001:50070/</code> hdfs界面</h4><ul>
+<li>Table Bar<br><img src="https://upload-images.jianshu.io/upload_images/2572206-91cd5353aa688ae5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/02/20/Hadoop web界面解读/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/20/Hadoop web界面解读/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Hadoop案例wordcount实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/20/Hadoop案例wordcount实践/">Hadoop案例wordcount实践</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/20/Hadoop案例wordcount实践/" class="archive-article-date">
+  	<time datetime="2019-02-20T05:41:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="提交MR作业到yarn上运行：wc"><a href="#提交MR作业到yarn上运行：wc" class="headerlink" title="提交MR作业到yarn上运行：wc"></a>提交MR作业到yarn上运行：wc</h4><blockquote>
+<p>官方代码:<code>/app/hadoop-2.6.0-cdh5.7.0/share/hadoop/mapreduce</code></p>
+</blockquote>
+<ul>
+<li>启动jar包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cd /home/hadoop/app/hadoop-2.6.0-cdh5.7.0/bin</span><br><span class="line"></span><br><span class="line">./hadoop jar /home/hadoop/app/hadoop-2.6.0-cdh5.7.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0-cdh5.7.0.jar</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">直接启动启动不起来，提示我们需要输入参数wordcount</span><br><span class="line">**************</span><br><span class="line">  wordcount: A map/reduce program that counts the words in the input files.</span><br><span class="line">  wordmean: A map/reduce program that counts the average length of the words in the input files.</span><br><span class="line">  wordmedian: A map/reduce program that counts the median length of the words in the input files.</span><br><span class="line">  wordstandarddeviation: A map/reduce program that counts the standard deviation of the length of the words in the input files.</span><br><span class="line">***************</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/02/20/Hadoop案例wordcount实践/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/20/Hadoop案例wordcount实践/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-资源调度框架YARN" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -854,288 +1138,6 @@
 
 
   
-    <article id="post-记一次跳过oom的内存泄漏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/14/记一次跳过oom的内存泄漏/">记一次跳过oom的内存泄漏</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/14/记一次跳过oom的内存泄漏/" class="archive-article-date">
-  	<time datetime="2019-02-14T02:48:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="整体复盘"><a href="#整体复盘" class="headerlink" title="整体复盘"></a>整体复盘</h4><ul>
-<li>18:23：数据同学告知图片拼接服务404</li>
-<li>第一时间去瞄了日志，发现宕机前落了如下日志<br><img src="https://upload-images.jianshu.io/upload_images/2572206-f8dd910e4afda90e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00007fb0eaa1b000, 12288, 0) failed; error=&apos;Cannot allocate memory&apos; (errno=12)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/02/14/记一次跳过oom的内存泄漏/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/14/记一次跳过oom的内存泄漏/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-依赖扫描工具DependencyCheck" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/14/依赖扫描工具DependencyCheck/">依赖扫描工具DependencyCheck</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/14/依赖扫描工具DependencyCheck/" class="archive-article-date">
-  	<time datetime="2019-02-13T18:41:36.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>先上github地址：<a href="https://github.com/jeremylong/DependencyCheck" target="_blank" rel="noopener">https://github.com/jeremylong/DependencyCheck</a><br>DependencyCheck是一款可以扫描依赖工具的软件，使用起来很方便，但是报告比较难读</p>
-</blockquote>
-<ul>
-<li>到<code>https://bintray.com/jeremy-long/owasp/dependency-check</code>下载最新的安装包<br><img src="https://upload-images.jianshu.io/upload_images/2572206-b6ecc7a312da4bfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/02/14/依赖扫描工具DependencyCheck/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/14/依赖扫描工具DependencyCheck/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/13/MySQL语法/">MySQL语法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/13/MySQL语法/" class="archive-article-date">
-  	<time datetime="2019-02-13T10:24:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-13</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SQL语言：Structured Query Language：结构化查询语言</span><br><span class="line">DDL：数据定义语言</span><br><span class="line">DML：数据操作语言</span><br><span class="line">DQL：数据查询语言</span><br><span class="line">DCL：数据控制语言</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/02/13/MySQL语法/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/13/MySQL语法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1472,6 +1474,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">etl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
             
             <div class="clearfix"></div>

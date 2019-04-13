@@ -170,6 +170,285 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Shell发送邮件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/13/Shell发送邮件/">Shell发送邮件</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/13/Shell发送邮件/" class="archive-article-date">
+  	<time datetime="2019-04-13T10:19:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#下载安装包</span><br><span class="line">wget http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz</span><br><span class="line">#创建目录</span><br><span class="line">mkdir -p /usr/local/bin</span><br><span class="line">#解压</span><br><span class="line">tar zxf sendEmail-v1.56.tar.gz -C /usr/src/</span><br><span class="line">#进入解压目录</span><br><span class="line">cd /usr/src/sendEmail-v1.56/</span><br><span class="line">#复制程序到指定目录</span><br><span class="line">cp -a sendEmail /usr/local/bin/</span><br><span class="line">#给执行权限</span><br><span class="line">chmod +x /usr/local/bin/sendEmail</span><br><span class="line">#安装组件</span><br><span class="line">yum install perl-Net-SSLeay perl-IO-Socket-SSL -y</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/04/13/Shell发送邮件/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/13/Shell发送邮件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Shell编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/12/Shell编程/">Shell编程</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/12/Shell编程/" class="archive-article-date">
+  	<time datetime="2019-04-12T10:53:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>基础<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- shell一般以sh结尾</span><br><span class="line">- 执行方式check.sh</span><br><span class="line">  - ./check.sh（这种方式需要有x权限）</span><br><span class="line">  - sh check.sh</span><br><span class="line">- 第一行一般以#!/bin/bash开头</span><br><span class="line">  - sh执行方式不需要</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/04/12/Shell编程/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/12/Shell编程/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Hadoop编译-支持五种压缩格式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/06/Hadoop编译-支持五种压缩格式/">Hadoop编译-支持五种压缩格式</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/06/Hadoop编译-支持五种压缩格式/" class="archive-article-date">
+  	<time datetime="2019-04-06T02:18:40.145Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-06</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h4><ul>
+<li>安装bzip2和依赖<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -Lks http://www.hop5.in/yum/el6/hop5.repo &gt; /etc/yum.repos.d/hop5.repo</span><br><span class="line">yum -y install wget gcc gcc-c++ bzip2 bzip2-devel zlib zlib-devel openssl-devel curl curl-devel</span><br><span class="line">yum install -y openssl openssl-devel svn ncurses-devel zlib-devel libtool</span><br><span class="line">yum install -y svn ncurses-devel gcc*</span><br><span class="line">yum install -y snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop autoconf automake cmake</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/04/06/Hadoop编译-支持五种压缩格式/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/06/Hadoop编译-支持五种压缩格式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Yarn HA" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -828,292 +1107,6 @@
 
 
   
-    <article id="post-Hive DML" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/19/Hive DML/">Hive DML</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/19/Hive DML/" class="archive-article-date">
-  	<time datetime="2019-03-19T08:30:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-Loadingfilesintotables" target="_blank" rel="noopener">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-Loadingfilesintotables</a></p>
-</blockquote>
-<h4 id="LOAD：导入数据"><a href="#LOAD：导入数据" class="headerlink" title="LOAD：导入数据"></a>LOAD：导入数据</h4><ul>
-<li>wiki语法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOAD DATA [LOCAL] INPATH &apos;filepath&apos; [OVERWRITE] INTO TABLE tablename [PARTITION (partcol1=val1, partcol2=val2 [...)]](https://cwiki.apache.org/confluence/display/Hive/...)])</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/03/19/Hive DML/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/19/Hive DML/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hiveserver2(HS2)的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/19/hiveserver2(HS2)的使用/">hiveserver2(HS2)的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/19/hiveserver2(HS2)的使用/" class="archive-article-date">
-  	<time datetime="2019-03-19T04:36:20.768Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="hiveserver2"><a href="#hiveserver2" class="headerlink" title="hiveserver2"></a>hiveserver2</h4><ul>
-<li><p>简述</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hiveserver2 + client</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- 启动hiveserver2，这里我们没有使用后台启动，所以在另一个窗口进行操作</span><br><span class="line">[hadoop@hadoop001 app]$ hiveserver2</span><br><span class="line">which: no hbase in (/home/hadoop/app/sqoop/bin:/home/hadoop/app/hive/bin:/home/hadoop/app/hadoop/bin:/home/hadoop/app/hadoop/sbin:/home/hadoop/app/jdk1.8/bin:/home/hadoop/app/hive/bin:/home/hadoop/app/hadoop/bin:/home/hadoop/app/hadoop/sbin:/home/hadoop/app/jdk1.8/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/hadoop/bin:/home/hadoop/bin)</span><br><span class="line">19/03/19 03:58:14 WARN conf.HiveConf: HiveConf of name hive.cli.prient.current.db does not exist</span><br><span class="line"></span><br><span class="line">- 在另一个窗口连接，默认端口10000</span><br><span class="line">beeline -u jdbc:hive2://hadoop001:10000/myhive -n hadoop</span><br><span class="line"></span><br><span class="line">- 端口修改hive-site.xml</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hive.server2.thrift.port&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;16666&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/19/hiveserver2(HS2)的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hive分区表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/19/Hive分区表/">Hive分区表</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/19/Hive分区表/" class="archive-article-date">
-  	<time datetime="2019-03-19T01:50:35.029Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h4><ul>
-<li>介绍<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在Hive中处理数据时，当处理的一张表的数据量过大的时候，每次查询都是遍</span><br><span class="line">历整张表，显然对于计算机来说，是负担比较重的。所以我们可不可以针对数</span><br><span class="line">据进行分类，查询时只遍历该分类中的数据，这样就能有效的解决问题。所以</span><br><span class="line">就会Hive在表的架构下，就会有分区的这个概念，就是为了满足此需求。</span><br><span class="line"></span><br><span class="line">- 分区表的一个分区对应hdfs上的一个目录</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/03/19/Hive分区表/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/19/Hive分区表/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1450,6 +1443,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">etl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
             
             <div class="clearfix"></div>
