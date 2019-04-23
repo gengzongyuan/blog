@@ -170,6 +170,200 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Hadoop伪分布式部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/15/Hadoop伪分布式部署/">Hadoop伪分布式部署</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/15/Hadoop伪分布式部署/" class="archive-article-date">
+  	<time datetime="2019-02-15T10:20:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-15</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>环境准备</li>
+<li>Hadoop下载、配置、启动</li>
+<li>参考链接<code>http://archive.cloudera.com/cdh5/cdh/5/hadoop-2.6.0-cdh5.7.0/hadoop-project-dist/hadoop-common/SingleCluster.html</code></li>
+</ul>
+<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
+<li>文件夹创建<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir software  # 存放所使用的软件安装包</span><br><span class="line">mkdir app  # 存放课程中所有软件的安装目录</span><br><span class="line">mkdir data  # 存放课程中使用的数据</span><br><span class="line">mkdir lib  # 存放课程中开发过的作业jar存放的目录</span><br><span class="line">mkdir shell  # 存放课程中相关的脚本（提交MapReduce和hive作业）</span><br><span class="line">mkdir maven_resp  # 存放课程中使用到的maven文件目录</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/02/15/Hadoop伪分布式部署/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/15/Hadoop伪分布式部署/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Hadoop入门介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/15/Hadoop入门介绍/">Hadoop入门介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/15/Hadoop入门介绍/" class="archive-article-date">
+  	<time datetime="2019-02-15T02:19:44.346Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-15</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Hadoop概述"><a href="#Hadoop概述" class="headerlink" title="Hadoop概述"></a>Hadoop概述</h4><ul>
+<li>Hadoop名字的由来<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 作者：Nutch、Doug Cutting</span><br><span class="line">- 是一个虚构的名词</span><br><span class="line">- 项目作者的孩子给一个棕色的大象样子的填充玩具的命名</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">学习一个新的框架，直接查看该项目的官网地址</span><br><span class="line">Hadoop</span><br><span class="line">Hive</span><br><span class="line"></span><br><span class="line">Apache社区</span><br><span class="line">hadoop.apache.org</span><br><span class="line">hive.apache.org</span><br><span class="line">spark.apache.org</span><br><span class="line">flink.apache.org</span><br><span class="line"></span><br><span class="line">官网释义：</span><br><span class="line">reliable, scalable, distributed computing.</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/02/15/Hadoop入门介绍/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/15/Hadoop入门介绍/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-loadrunner+java怎么玩？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -899,200 +1093,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/01/24/linux基础快问快答/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux基础攻略大全" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/24/linux基础攻略大全/">linux基础攻略大全</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/24/linux基础攻略大全/" class="archive-article-date">
-  	<time datetime="2019-01-24T04:57:20.122Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-24</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">用户名@机器名  所在目录</span><br><span class="line">[root@hadoop001 ~]#</span><br><span class="line"></span><br><span class="line">1.  pwd  查看当前光标所在路径</span><br><span class="line"></span><br><span class="line">2.  用户目录</span><br><span class="line">root  超级管理员  /root</span><br><span class="line">jepson  普通用户的  /home/jepson</span><br><span class="line">linux系统  目录开始多是以根目录/  开始</span><br><span class="line"></span><br><span class="line">家目录：~</span><br><span class="line"></span><br><span class="line">3.  cd 切换目录</span><br><span class="line">cd /home/jepson</span><br><span class="line"></span><br><span class="line">cd [空格 or ~]都可以切换到家目录</span><br><span class="line">cd -  回退到上一次路径</span><br><span class="line">cd ..  切换到上一层目录</span><br><span class="line">cd ../../  切换到上2层目录</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/01/24/linux基础攻略大全/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/24/linux基础攻略大全/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-删库跑路之真香.bash_history" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/22/删库跑路之真香.bash_history/">删库跑路之真香.bash_history</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/22/删库跑路之真香.bash_history/" class="archive-article-date">
-  	<time datetime="2019-01-22T03:50:17.644Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-22</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>删库之后的精髓就在于，把.bash_history里的记录清理干净</p>
-<ul>
-<li><p>实验一：删除.bash_history</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 ~]# rm -rf .bash_history </span><br><span class="line">[root@tencent1 ~]# cat .bash_history </span><br><span class="line">#1548157074</span><br><span class="line">rm -rf .bash_history</span><br><span class="line"></span><br><span class="line">可以看到删除.bash_history的记录还是会存进去</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实验二：重写.bash_history</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 ~]# echo &apos;&apos;&gt;.bash_history </span><br><span class="line">[root@tencent1 ~]# cat .bash_history </span><br><span class="line"></span><br><span class="line">#1548157381</span><br><span class="line">echo &apos;&apos;&gt;.bash_history </span><br><span class="line"></span><br><span class="line">仍然不好使</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实验三：终极手段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">[root@tencent1 ~]# mkdir data</span><br><span class="line">[root@tencent1 ~]# rm -rf data</span><br><span class="line">[root@tencent1 ~]# cat .bash_history </span><br><span class="line"></span><br><span class="line">#1548157655</span><br><span class="line">echo &apos;&apos;&gt;.bash_history </span><br><span class="line">#1548157662</span><br><span class="line">mkdir data</span><br><span class="line">#1548157664</span><br><span class="line">rm -rf data</span><br><span class="line"></span><br><span class="line">我们先模拟一下删库，可以看到.bash_history里已经有记录了</span><br><span class="line"></span><br><span class="line">编辑一个shell</span><br><span class="line">[root@tencent1 ~]# cat mytest.sh </span><br><span class="line">sed -i &apos;s/rm -rf data/ls/&apos; .bash_history</span><br><span class="line"></span><br><span class="line">执行shell</span><br><span class="line">[root@tencent1 ~]# sh mytest.sh </span><br><span class="line">[root@tencent1 ~]# cat .bash_history </span><br><span class="line"></span><br><span class="line">#1548157655</span><br><span class="line">echo &apos;&apos;&gt;.bash_history </span><br><span class="line">#1548157662</span><br><span class="line">mkdir data</span><br><span class="line">#1548157664</span><br><span class="line">ls</span><br><span class="line">#1548157671</span><br><span class="line">cat .bash_history </span><br><span class="line">#1548157721</span><br><span class="line">cat mytest.sh </span><br><span class="line">#1548157765</span><br><span class="line">sh mytest.sh </span><br><span class="line"></span><br><span class="line">可以看到我们的删库指令已经神不知鬼不觉的被替换掉了</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>后记：这种情况仅限没有经过堡垒机跳转登录服务器的情况，咂摸一下，要是公司有堡垒机赶紧想办法补救和认错，实在不行，收拾东西赶紧跑</p>
-</blockquote>
-
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/22/删库跑路之真香.bash_history/">展开全文 >></a>
         </p>
       
 
