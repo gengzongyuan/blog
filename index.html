@@ -170,6 +170,385 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Scala04-JDBC编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/25/Scala04-JDBC编程/">Scala04-JDBC编程</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/25/Scala04-JDBC编程/" class="archive-article-date">
+  	<time datetime="2019-04-25T12:51:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="思路整理"><a href="#思路整理" class="headerlink" title="思路整理"></a>思路整理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- MySQL驱动</span><br><span class="line">- Connection  通过连接池的方式</span><br><span class="line">- Statement  SQL执行器</span><br><span class="line">- ResultSet  获取结果集</span><br><span class="line">- Close  释放资源</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/04/25/Scala04-JDBC编程/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">scala</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/25/Scala04-JDBC编程/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Scala03-面向对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/25/Scala03-面向对象/">Scala03-面向对象</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/25/Scala03-面向对象/" class="archive-article-date">
+  	<time datetime="2019-04-25T12:51:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><ul>
+<li><p>类是某一种或者某一类东西的抽象（人、猫、狗–&gt;生物）</p>
+</li>
+<li><p>class</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class People()&#123;</span><br><span class="line">  var name:String = &quot;&quot;</span><br><span class="line">  var city:String = &quot;&quot;</span><br><span class="line"></span><br><span class="line">  def eat(): Unit =&#123;</span><br><span class="line">    println(this.name + &quot;eat ....&quot;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  def py(pyName:String): Unit =&#123;</span><br><span class="line">    println(this.name + &quot;正在跟&quot; + pyName + &quot;xxxx...&quot;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">----------</span><br><span class="line">- 通过class关键字进行类的定义</span><br><span class="line">- 属性：name、city</span><br><span class="line">- 方法：eat、py</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/04/25/Scala03-面向对象/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">scala</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/25/Scala03-面向对象/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Scala02-简单类型、循环和方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/25/Scala02-简单类型、循环和方法/">Scala02-简单类型、循环和方法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/25/Scala02-简单类型、循环和方法/" class="archive-article-date">
+  	<time datetime="2019-04-25T04:50:40.028Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><ul>
+<li>val和var<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val name:String = &quot;17&quot;  值  val修饰就是不可变</span><br><span class="line">var money:Int = 10000  变量  var修改的是可变的</span><br><span class="line">money = 20000   修改工资</span><br><span class="line"></span><br><span class="line">val 修饰的变量如果被修改了会报：error: reassignment to val</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/04/25/Scala02-简单类型、循环和方法/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">scala</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/25/Scala02-简单类型、循环和方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Scala01-介绍及安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/24/Scala01-介绍及安装/">Scala01-介绍及安装</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/24/Scala01-介绍及安装/" class="archive-article-date">
+  	<time datetime="2019-04-23T20:50:01.375Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-24</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>官网：<code>https://www.scala-lang.org/</code><br>Scala是一个</p>
+<ul>
+<li><strong>面向对象</strong></li>
+<li><strong>函数式编程</strong></li>
+<li>静态语言</li>
+<li>基于JVM（可以调用java的类）</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/04/24/Scala01-介绍及安装/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">scala</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/24/Scala01-介绍及安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Hive编译并添加UDF函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -735,379 +1114,6 @@
 
 
   
-    <article id="post-Yarn HA" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/02/Yarn HA/">Yarn HA</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/02/Yarn HA/" class="archive-article-date">
-  	<time datetime="2019-04-02T11:38:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-02</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Yarn-HA"><a href="#Yarn-HA" class="headerlink" title="Yarn HA"></a>Yarn HA</h4><h5 id="机器图"><a href="#机器图" class="headerlink" title="机器图"></a>机器图</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hadoop001:zk  rm(zkfc)  nm</span><br><span class="line">hadoop002:zk  rm(zkfc)  nm</span><br><span class="line">hadoop003:zk            nm</span><br><span class="line"></span><br><span class="line">- 在yarn中zkfc是线程的形式</span><br><span class="line">- rm状态存储在zk的/rmstore目录，我们称为RMStateStore</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/04/02/Yarn HA/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">yarn</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/02/Yarn HA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hadoop HA" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/02/Hadoop HA/">Hadoop HA</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/02/Hadoop HA/" class="archive-article-date">
-  	<time datetime="2019-04-02T03:38:06.263Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-02</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="为什么要HA部署"><a href="#为什么要HA部署" class="headerlink" title="为什么要HA部署"></a>为什么要HA部署</h4><ul>
-<li>如果HDFS和YARN的master宕机，整个服务就挂掉了<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">HDFS:</span><br><span class="line">NN  master</span><br><span class="line">SNN </span><br><span class="line">DN</span><br><span class="line"></span><br><span class="line">YARN:</span><br><span class="line">RM  master</span><br><span class="line">NM</span><br><span class="line"></span><br><span class="line">- 小拓展</span><br><span class="line">hbase的读写是不需要经过master的，只有建表删表才会走master</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/04/02/Hadoop HA/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/02/Hadoop HA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MapReduce ETL开发案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/29/MapReduce ETL开发案例/">MapReduce ETL开发案例</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/29/MapReduce ETL开发案例/" class="archive-article-date">
-  	<time datetime="2019-03-29T04:19:28.050Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-29</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="基础数据"><a href="#基础数据" class="headerlink" title="基础数据"></a>基础数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">baidu	CN	A	E	[17/Jul/2018:17:07:50 +0800]	2	223.104.18.110	-	112.29.213.35:80	0	v2.go2yd.com	GET	http://v1.go2yd.com/user_upload/1531633977627104fdecdc68fe7a2c4b96b2226fd3f4c.mp4_bd.mp4	HTTP/1.1	-	bytes 13869056-13885439/25136186	TCP_HIT/206	112.29.213.35	video/mp4	17168	16384	-:0	0	0	-	-	-	11451601	-	&quot;JSP3/2.0.14&quot;	&quot;-&quot;	&quot;-&quot;	&quot;-&quot;	http	-	2	v1.go2yd.com	0.002	25136186	16384	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	1531818470104-11451601-112.29.213.66#2705261172	644514568</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/03/29/MapReduce ETL开发案例/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">mapreduce</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">etl</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/29/MapReduce ETL开发案例/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo博客的搭建和使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/21/Hexo博客的搭建和使用/">Hexo博客的搭建和使用</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/21/Hexo博客的搭建和使用/" class="archive-article-date">
-  	<time datetime="2019-03-20T23:15:53.421Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-21</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="github注册与项目新建"><a href="#github注册与项目新建" class="headerlink" title="github注册与项目新建"></a>github注册与项目新建</h4><ul>
-<li>访问<code>https://github.com/join?source=header-home</code>注册github账号</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/03/21/Hexo博客的搭建和使用/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/21/Hexo博客的搭建和使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1452,6 +1458,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">hue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">scala</a>
               </li>
             
             <div class="clearfix"></div>
