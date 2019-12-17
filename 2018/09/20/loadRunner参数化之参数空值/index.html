@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="如何参数化空值 在一些情况下（搜索时参数为空则全部搜索），我们需要设置搜索值为空值，那么我们又该如何设置呢  实验步骤">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-4d6479090b007edd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-e64d31bccf7bc1ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-08d1d6e66f23729d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-27T04:36:56.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-4d6479090b007edd.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-e64d31bccf7bc1ed.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-08d1d6e66f23729d.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="loadRunner参数化之参数空值">
 <meta name="twitter:description" content="如何参数化空值 在一些情况下（搜索时参数为空则全部搜索），我们需要设置搜索值为空值，那么我们又该如何设置呢  实验步骤">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2572206-4d6479090b007edd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-4d6479090b007edd.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -209,9 +209,9 @@
 <h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><a id="more"></a>
 <hr>
 <h4 id="1-Action-demo"><a href="#1-Action-demo" class="headerlink" title="1.Action demo"></a>1.Action demo</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Action()</span><br><span class="line">&#123;</span><br><span class="line">	lr_error_message(&quot;param1 is:-%s-&quot;,lr_eval_string(&quot;&#123;param1&#125;&quot;));</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="2-设置Run-Times-Settings"><a href="#2-设置Run-Times-Settings" class="headerlink" title="2.设置Run-Times Settings"></a>2.设置Run-Times Settings</h4><p><img src="http://upload-images.jianshu.io/upload_images/2572206-4d6479090b007edd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h4 id="3-设置参数化"><a href="#3-设置参数化" class="headerlink" title="3.设置参数化"></a>3.设置参数化</h4><p>设置参数param1，对data file编辑如图（第二行直接回车，第四行为空格）设置<br><img src="http://upload-images.jianshu.io/upload_images/2572206-e64d31bccf7bc1ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>我们可以观察到，第二行的数据在参数化视图中并没有显示，那么运行时loadrunner是否也不使用第二行的数据呢？</p>
-<h4 id="4-执行结果"><a href="#4-执行结果" class="headerlink" title="4.执行结果"></a>4.执行结果</h4><p><img src="http://upload-images.jianshu.io/upload_images/2572206-08d1d6e66f23729d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="2-设置Run-Times-Settings"><a href="#2-设置Run-Times-Settings" class="headerlink" title="2.设置Run-Times Settings"></a>2.设置Run-Times Settings</h4><p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-4d6479090b007edd.png" alt=""></p>
+<h4 id="3-设置参数化"><a href="#3-设置参数化" class="headerlink" title="3.设置参数化"></a>3.设置参数化</h4><p>设置参数param1，对data file编辑如图（第二行直接回车，第四行为空格）设置<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-e64d31bccf7bc1ed.png" alt=""><br>我们可以观察到，第二行的数据在参数化视图中并没有显示，那么运行时loadrunner是否也不使用第二行的数据呢？</p>
+<h4 id="4-执行结果"><a href="#4-执行结果" class="headerlink" title="4.执行结果"></a>4.执行结果</h4><p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-08d1d6e66f23729d.png" alt=""></p>
 <blockquote>
 <p>通过执行结果，我们可以看到，loadrunner在第二次迭代时，仍然使用了第二行的空值，但是由于loadrunner参数化的设置中却并不显示</p>
 </blockquote>

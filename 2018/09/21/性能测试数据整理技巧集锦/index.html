@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="前言：性能测试的过程少不了测试数据的整理，有时需要我们自己构建测试数据，有时配合开发人员提供测试数据即可，本文记录了笔者在工作时遇到的情景及数据解决的方式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-1954d92bee18316b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-e263631303f07585.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-27T03:24:44.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-1954d92bee18316b.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-e263631303f07585.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="性能测试数据整理技巧集锦">
 <meta name="twitter:description" content="前言：性能测试的过程少不了测试数据的整理，有时需要我们自己构建测试数据，有时配合开发人员提供测试数据即可，本文记录了笔者在工作时遇到的情景及数据解决的方式。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-1954d92bee18316b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-1954d92bee18316b.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -216,7 +216,7 @@
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image, ImageDraw, ImageFont</span><br><span class="line"></span><br><span class="line">def add_num(img,number):</span><br><span class="line">    draw = ImageDraw.Draw(img)</span><br><span class="line">    myfont = ImageFont.truetype(&apos;arial.ttf&apos;, size=40)</span><br><span class="line">    fillcolor = &quot;#ff0000&quot;</span><br><span class="line">    width, height = img.size</span><br><span class="line">    draw.text((width-50, 5), number, font=myfont, fill=fillcolor)</span><br><span class="line">    img.save(&apos;result&apos;+number+&apos;.jpg&apos;,&apos;jpeg&apos;)</span><br><span class="line">    return 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for i in range(1,10):</span><br><span class="line">    image = Image.open(&apos;FINISH.jpg&apos;)</span><br><span class="line">    add_num(image,str(i))</span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li><p>图片准备好之后，录制下来的图片上传脚本如下：<br><img src="https://upload-images.jianshu.io/upload_images/2572206-1954d92bee18316b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>除了常见的fileName，还需要图片的md5码，原来每次上传图片前，前端js会获取文件的Md5码，我们在上传文件的同时也要对文件的md5码做一个参数化</p>
+<li><p>图片准备好之后，录制下来的图片上传脚本如下：<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-1954d92bee18316b.png" alt=""><br>除了常见的fileName，还需要图片的md5码，原来每次上传图片前，前端js会获取文件的Md5码，我们在上传文件的同时也要对文件的md5码做一个参数化</p>
 </li>
 <li><p>图片md5码的获取</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">#3000张图片所在文件夹</span><br><span class="line">filePath = r&apos;&apos;</span><br><span class="line">file_name = os.listdir(filePath)</span><br><span class="line"></span><br><span class="line">fp = open(&apos;md5.txt&apos;,&apos;bw&apos;)</span><br><span class="line">for temp in file_name:</span><br><span class="line">    fp.write(getFileMD5(filePath+&apos;/&apos;+temp).encode(&apos;utf-8&apos;))</span><br><span class="line">    fp.write(&apos;\n&apos;.encode(&apos;utf-8&apos;))</span><br></pre></td></tr></table></figure>
@@ -227,7 +227,7 @@
 </ol>
 <h5 id="2、XX系统文件sourceID的提取"><a href="#2、XX系统文件sourceID的提取" class="headerlink" title="2、XX系统文件sourceID的提取"></a>2、XX系统文件sourceID的提取</h5><p>项目中需要做一个从资源库里勾选部分图片来创建新的图集，分析请求之后发现资源库里的每张图片都会有自己的sourceID，测试需求20并发，每个虚拟用户勾选100张图片，那就需要2w个souceID。当时的情况是，从数据库里导出这些数据，要<strong>打审批-&gt;传审批-&gt;审批通过</strong>，一套流程下来三天就过去了，想了想还是自己手动提取吧。</p>
 <ol>
-<li><p>分析了分析请求之后发现系统在访问资源库的时候会将资源库的数据陆续返回，我们对这些数据做进一步处理就能提取出来souceID了<br><img src="https://upload-images.jianshu.io/upload_images/2572206-e263631303f07585.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>分析了分析请求之后发现系统在访问资源库的时候会将资源库的数据陆续返回，我们对这些数据做进一步处理就能提取出来souceID了<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-e263631303f07585.png" alt=""></p>
 </li>
 <li><p>使用Python正则提取对应的souceID</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">soucefp = open(&quot;sourceFile.txt&quot;,&apos;r&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">FileString = soucefp.read()</span><br><span class="line">reg = r&apos;&amp;attachment=(.*?)&amp;itemId=&apos;</span><br><span class="line">result = re.findall(reg,FileString)</span><br><span class="line"></span><br><span class="line">outfp = open(&apos;outFile.txt&apos;,&apos;bw&apos;)</span><br><span class="line">for string in result:</span><br><span class="line">    string = string.encode(&apos;utf-8&apos;)</span><br><span class="line">    outfp.write(string)</span><br><span class="line">    outfp.write(&apos;\n&apos;.encode(&apos;utf-8&apos;))</span><br><span class="line"></span><br><span class="line">soucefp.close()</span><br><span class="line">outfp.close()</span><br></pre></td></tr></table></figure>

@@ -170,6 +170,109 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-手机自动化02 adb指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/28/手机自动化02 adb指令/">手机自动化02 adb指令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/28/手机自动化02 adb指令/" class="archive-article-date">
+  	<time datetime="2018-09-28T12:09:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-28</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="adb与appium"><a href="#adb与appium" class="headerlink" title="adb与appium"></a>adb与appium</h4><p>adb 的运行原理是 PC 端的 adb server 与手机端的守护进程 adbd 建立连接，然后 PC 端的 adb client 通过 adb server 转发命令，adbd 接收命令后解析运行。</p>
+<h4 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h4><ul>
+<li>查看当前已连接设备<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">------------</span><br><span class="line">List of devices attached</span><br><span class="line">CQQCJJFMTWJV8HW4        device</span><br><span class="line">emulator-5554   device</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/09/28/手机自动化02 adb指令/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">手机自动化</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">adb</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试//" class="article-tag-list-link color3">测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/28/手机自动化02 adb指令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-手机自动化01 环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -206,42 +309,42 @@
 <h4 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h4><ul>
 <li><p>下载安装<br><code>https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</code></p>
 </li>
-<li><p>根据对应目录配置好环境变量<br><img src="https://upload-images.jianshu.io/upload_images/2572206-1840c60f347927c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>根据对应目录配置好环境变量<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-1840c60f347927c7.png" alt=""></p>
 </li>
-<li><p>cmd下输入<code>java -version</code>查看是否配置成功<br><img src="https://upload-images.jianshu.io/upload_images/2572206-e479355efb2d217d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>cmd下输入<code>java -version</code>查看是否配置成功<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-e479355efb2d217d.png" alt=""></p>
 </li>
 </ul>
 <h4 id="安装Android-SDK"><a href="#安装Android-SDK" class="headerlink" title="安装Android SDK"></a>安装Android SDK</h4><ul>
-<li><p>下载最新版本的zip<br><img src="https://upload-images.jianshu.io/upload_images/2572206-4d198e9aafecd480.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>下载最新版本的zip<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-4d198e9aafecd480.png" alt=""></p>
 </li>
-<li><p>解压到任意文件夹，并将文件夹添加到环境变量，变量名:<code>ANDROID_HOME</code><br><img src="https://upload-images.jianshu.io/upload_images/2572206-db12c72f14ad46ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>解压到任意文件夹，并将文件夹添加到环境变量，变量名:<code>ANDROID_HOME</code><br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-db12c72f14ad46ef.png" alt=""></p>
 </li>
 <li><p>打开SDK Manager.exe</p>
 </li>
 <li><p>选择Tools下的<code>Android SDK Tools,Android SDK Platform-tools,Android SDK Build-tools</code></p>
 </li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/2572206-51c23e4dfbfb9f93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-51c23e4dfbfb9f93.png" alt=""></p>
 <ul>
-<li><p>任选一个大于Android 5.0.1的安卓镜像<br><img src="https://upload-images.jianshu.io/upload_images/2572206-840ec34877403b79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>任选一个大于Android 5.0.1的安卓镜像<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-840ec34877403b79.png" alt=""></p>
 </li>
-<li><p>选择Extras下的所有文件<br><img src="https://upload-images.jianshu.io/upload_images/2572206-39017ad0fa3dfd65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>选择Extras下的所有文件<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-39017ad0fa3dfd65.png" alt=""></p>
 </li>
-<li><p>安装<br><img src="https://upload-images.jianshu.io/upload_images/2572206-918e24e9d66b2bb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>安装<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-918e24e9d66b2bb5.png" alt=""></p>
 </li>
 <li><p>后面的步骤会比较慢，而且需要翻墙才能够进行。翻墙参考<code>https://gengzongyuan.github.io/2018/09/28/%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90/</code></p>
 </li>
 <li><p>添加环境变量到path</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%ANDROID_HOME%;%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\build-tools</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在cmd中执行<code>adb devices</code>，能找到UDID确保成功<br><img src="https://upload-images.jianshu.io/upload_images/2572206-337feb697a75fbaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>在cmd中执行<code>adb devices</code>，能找到UDID确保成功<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-337feb697a75fbaa.png" alt=""></p>
 </li>
 </ul>
 <h4 id="node-js安装"><a href="#node-js安装" class="headerlink" title="node.js安装"></a>node.js安装</h4><ul>
 <li>官网下载地址:<code>https://nodejs.org/en/download/</code></li>
-<li>根据操作系统下载最新版本即可<br><img src="https://upload-images.jianshu.io/upload_images/2572206-29627d87566f46a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>根据操作系统下载最新版本即可<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-29627d87566f46a5.png" alt="image.png"></li>
 <li>一路下一步进行安装</li>
-<li><p>cmd执行npm查看结果<br><img src="https://upload-images.jianshu.io/upload_images/2572206-a8c3f52e607bf536.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>cmd执行npm查看结果<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-a8c3f52e607bf536.png" alt=""></p>
 </li>
 <li><p>安装cnpm</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=[https://registry.npm.taobao.org](https://registry.npm.taobao.org/)</span><br></pre></td></tr></table></figure>
@@ -252,7 +355,7 @@
 </li>
 </ul>
 <h4 id="安装appium客户端，用于抓取app上定位信息"><a href="#安装appium客户端，用于抓取app上定位信息" class="headerlink" title="安装appium客户端，用于抓取app上定位信息"></a>安装appium客户端，用于抓取app上定位信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/appium/appium-desktop/releases/tag/v1.2.1</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/2572206-c9c0627303ee57cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-c9c0627303ee57cb.png" alt=""></p>
 <ul>
 <li>到此appium的环境就安装成功了</li>
 </ul>
@@ -442,7 +545,7 @@
 <ul>
 <li>下载并安装chrome浏览器</li>
 <li>访问谷歌拓展商店<code>https://chrome.google.com/webstore/category/extensions?hl=zh-CN</code></li>
-<li>搜索<strong>谷歌访问助手</strong><br><img src="https://upload-images.jianshu.io/upload_images/2572206-d4779625da905d81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>搜索<strong>谷歌访问助手</strong><br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-d4779625da905d81.png" alt=""></li>
 </ul>
         
           <a class="article-more-a" href="/2018/09/27/谷歌账号注册-解决此电话号码无法用于进行验证/#more">more >></a>
@@ -635,7 +738,7 @@
 <p>软件下载地址：<a href="https://pan.baidu.com/s/1c1UVFXI" target="_blank" rel="noopener">https://pan.baidu.com/s/1c1UVFXI</a></p>
 </blockquote>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ol>
-<li>解压FastStone Capture.zip并打开FSCapture.exe<br><img src="http://upload-images.jianshu.io/upload_images/2572206-3cb6504171b2f6f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>解压FastStone Capture.zip并打开FSCapture.exe<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-3cb6504171b2f6f1.png" alt=""></li>
 </ol>
         
           <a class="article-more-a" href="/2018/09/27/FastStone实现电脑滚动截屏（安装、破解及使用指南）/#more">more >></a>
@@ -820,7 +923,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>HEAD方法不会请求body中的内容<br><img src="https://upload-images.jianshu.io/upload_images/2572206-6e9ec2bfdf68214f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="get方法"><br><img src="https://upload-images.jianshu.io/upload_images/2572206-3767d95d6029be09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="head方法"></p>
+        <p>HEAD方法不会请求body中的内容<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-6e9ec2bfdf68214f.png" alt="get方法"><br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-3767d95d6029be09.png" alt="head方法"></p>
 
       
 
@@ -913,17 +1016,17 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>看下面这段链接，常规的链接内容我们都清楚，但是#后面的内容又是什么呢？<br><img src="https://upload-images.jianshu.io/upload_images/2572206-40e69c45969a5b22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+        <p>看下面这段链接，常规的链接内容我们都清楚，但是#后面的内容又是什么呢？<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-40e69c45969a5b22.png" alt=""></p>
 <p><strong>01定位（锚点） – 跳转到页面指定位置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">创建html文件</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;script src=&quot;jquery/jquery.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">		&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">			$(document).ready(function()&#123;</span><br><span class="line">				// 在这里写你的代码...</span><br><span class="line">				for(var i=0;i&lt;10;i++)&#123;</span><br><span class="line">				$(&quot;ol&quot;).append(&quot;&lt;li&gt;大树&lt;li&gt;&quot;)					</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;ol&gt;&lt;/ol&gt;</span><br><span class="line">		&lt;button id=&quot;btn1&quot;&gt;id=&quot;btn1&quot;&lt;/button&gt;</span><br><span class="line">		&lt;a name=&quot;a1&quot;&gt;name:a1&lt;/a&gt;</span><br><span class="line">		&lt;ol&gt;&lt;/ol&gt;</span><br><span class="line">		&lt;button name=&quot;btn2&quot;&gt;name=&quot;btn2&quot;&lt;/button&gt;</span><br><span class="line">		&lt;a name=&quot;a2&quot;&gt;name:a2&lt;/a&gt;</span><br><span class="line">		&lt;ol&gt;&lt;/ol&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">分别访问</span><br><span class="line">http://127.0.0.1:8848/w3schoolJquery1/nihao.html#a1</span><br><span class="line">http://127.0.0.1:8848/w3schoolJquery1/nihao.html#a2</span><br><span class="line">http://127.0.0.1:8848/w3schoolJquery1/nihao.html#btn1</span><br><span class="line">http://127.0.0.1:8848/w3schoolJquery1/nihao.html#btn2</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>浏览器加载页面时，如果附带#string参数，将会对页面所有标签的id进行搜索，当id=string时，跳转到string对应的位置<strong>（也可以使用name进行指定，但name仅使用于<a><a>）</a></a></strong></p>
 </blockquote>
-<p><strong>02 – 会传递参数给服务器吗</strong><br><img src="https://upload-images.jianshu.io/upload_images/2572206-527ff4b7eb668ac8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>02 – 会传递参数给服务器吗</strong><br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-527ff4b7eb668ac8.png" alt=""></p>
 <blockquote>
 <p>浏览器访问并进行抓包后发现，并不会将#后的参数传递给服务器</p>
 </blockquote>
-<p><strong>03 – 如果浏览器重新访问含#string的链接会向服务器发送请求吗？</strong><br><img src="https://upload-images.jianshu.io/upload_images/2572206-c7ef39e192effee2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器访问"><br><img src="https://upload-images.jianshu.io/upload_images/2572206-10a4886b2e670a25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="抓包结果"></p>
+<p><strong>03 – 如果浏览器重新访问含#string的链接会向服务器发送请求吗？</strong><br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-c7ef39e192effee2.png" alt="浏览器访问"><br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-10a4886b2e670a25.png" alt="抓包结果"></p>
 <blockquote>
 <p>在浏览器访问了三条记录，发现仅请求了服务器两次<br><strong>答案：不会</strong></p>
 </blockquote>
@@ -1044,97 +1147,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/09/27/python 14装饰器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python 13面向对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/27/python 13面向对象/">python 13面向对象</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/27/python 13面向对象/" class="archive-article-date">
-  	<time datetime="2018-09-27T07:03:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>构造函数</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def __init__(self):</span><br><span class="line">    # 构造函数，实例在被创建的时候执行</span><br><span class="line">    print(&quot;构造函数，类在实例化的时候，会自动执行它&quot;)</span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2018/09/27/python 13面向对象/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/开发//" class="article-tag-list-link color3">开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/27/python 13面向对象/">展开全文 >></a>
         </p>
       
 

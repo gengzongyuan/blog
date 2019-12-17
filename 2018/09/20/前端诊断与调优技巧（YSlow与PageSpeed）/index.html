@@ -16,19 +16,19 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="工具  YSlow PageSpeed[^-^]:- dynaTrace Ajax">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-9497f6429bcb331b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-baa47f1382da49aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-4364d507d40299af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-98cf92d455950bef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-1079188004a8e484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-3f1490368e1ad7d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-4ec61d19b1c0649d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-b3eb22ee930ec582.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-27T04:36:11.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-9497f6429bcb331b.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-baa47f1382da49aa.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-4364d507d40299af.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-98cf92d455950bef.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-1079188004a8e484.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-3f1490368e1ad7d3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-4ec61d19b1c0649d.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-b3eb22ee930ec582.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端诊断与调优技巧（YSlow与PageSpeed）">
 <meta name="twitter:description" content="工具  YSlow PageSpeed[^-^]:- dynaTrace Ajax">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2572206-9497f6429bcb331b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-9497f6429bcb331b.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -243,12 +243,12 @@
 </tbody>
 </table>
 <h3 id="二、工具使用与分析"><a href="#二、工具使用与分析" class="headerlink" title="二、工具使用与分析"></a>二、工具使用与分析</h3><h4 id="1-YSlow"><a href="#1-YSlow" class="headerlink" title="1.YSlow"></a>1.YSlow</h4><p>YSlow是比较常见的性能监控插件，依赖于Firebug，是依托于yahoo的23条准则进行判断的。</p>
-<p><strong>1.1安装</strong><br>安装firebug<br><img src="http://upload-images.jianshu.io/upload_images/2572206-9497f6429bcb331b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="firebug"><br>安装Yslow<br><img src="http://upload-images.jianshu.io/upload_images/2572206-baa47f1382da49aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Yslow"></p>
-<p><strong>1.2</strong>使用<br>1.打开firebug<br><img src="http://upload-images.jianshu.io/upload_images/2572206-4364d507d40299af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打开firebug"><br>2.查看YSlow，可以看到当前页面的整体评分，以及23条原则对应的打分<br><img src="http://upload-images.jianshu.io/upload_images/2572206-98cf92d455950bef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="YSlow"><br>3.每条打分对应的原因可以点击查看（可以看到当前gzip打分为F，具体原因及解释都有相应解释）<br><img src="http://upload-images.jianshu.io/upload_images/2572206-1079188004a8e484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>4.statistics界面提供了界面的缓存信息（左为无缓存时的大小，右为做缓存后页面的大小），便于分析有哪些内容可以使用本地缓存来降低对服务器的压力。<br><img src="http://upload-images.jianshu.io/upload_images/2572206-3f1490368e1ad7d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>1.1安装</strong><br>安装firebug<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-9497f6429bcb331b.png" alt="firebug"><br>安装Yslow<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-baa47f1382da49aa.png" alt="Yslow"></p>
+<p><strong>1.2</strong>使用<br>1.打开firebug<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-4364d507d40299af.png" alt="打开firebug"><br>2.查看YSlow，可以看到当前页面的整体评分，以及23条原则对应的打分<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-98cf92d455950bef.png" alt="YSlow"><br>3.每条打分对应的原因可以点击查看（可以看到当前gzip打分为F，具体原因及解释都有相应解释）<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-1079188004a8e484.png" alt=""><br>4.statistics界面提供了界面的缓存信息（左为无缓存时的大小，右为做缓存后页面的大小），便于分析有哪些内容可以使用本地缓存来降低对服务器的压力。<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-3f1490368e1ad7d3.png" alt=""></p>
 <p><strong>2.3分析</strong><br>对页面的分析,YSlow已经给出相应建议</p>
 <h4 id="2-PageSpeed"><a href="#2-PageSpeed" class="headerlink" title="2.PageSpeed"></a>2.PageSpeed</h4><p>PageSpeed是Google开发的前端分析工具，使用简单，分析明确，<strong>但是不支持内网页面</strong></p>
-<p><strong>2.1 安装</strong><br>通过谷歌浏览器拓展程序下载对应插件即可<br><img src="http://upload-images.jianshu.io/upload_images/2572206-4ec61d19b1c0649d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装"></p>
-<p><strong>2.2使用</strong><br>使用简单，直接把需要分析的页面链接放到数据框即可，下图为分析<a href="https://www.processon.com/的结果" target="_blank" rel="noopener">https://www.processon.com/的结果</a><br><img src="http://upload-images.jianshu.io/upload_images/2572206-b3eb22ee930ec582.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="processon分析"></p>
+<p><strong>2.1 安装</strong><br>通过谷歌浏览器拓展程序下载对应插件即可<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-4ec61d19b1c0649d.png" alt="安装"></p>
+<p><strong>2.2使用</strong><br>使用简单，直接把需要分析的页面链接放到数据框即可，下图为分析<a href="https://www.processon.com/的结果" target="_blank" rel="noopener">https://www.processon.com/的结果</a><br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-b3eb22ee930ec582.png" alt="processon分析"></p>
 <p><strong>2.3分析</strong><br>需要调优的内容已经很贴心的都进行了提示</p>
 <blockquote>
 <p>参考<br><a href="http://www.cnblogs.com/lori/archive/2013/03/19/2969510.html" target="_blank" rel="noopener">Yslow-23条规则</a><br><a href="https://www.ibm.com/developerworks/cn/web/1205_xieju_dtraceajax/#artrelatedtopics" target="_blank" rel="noopener">dynaTrace Ajax：前端性能分析利器</a></p>

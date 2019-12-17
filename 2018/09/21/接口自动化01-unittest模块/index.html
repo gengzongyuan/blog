@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="unittest是一个具有查找用例、执行用例、校验结果、产生用例的模块，能够极大的方便我们的自动化测试">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-cef34d1413c77122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-bb044061cd7014ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-27T04:35:06.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-cef34d1413c77122.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-bb044061cd7014ce.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口自动化01 unittest模块">
 <meta name="twitter:description" content="unittest是一个具有查找用例、执行用例、校验结果、产生用例的模块，能够极大的方便我们的自动化测试">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-cef34d1413c77122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-cef34d1413c77122.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -231,14 +231,14 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">re = open(&apos;report.html&apos;,&apos;wb&apos;)</span><br><span class="line">runner = HTMLTestRunner.HTMLTestRunner(stream=re,</span><br><span class="line">                                       title=&quot;测试标题&quot;,</span><br><span class="line">                                       description=&quot;大树的测试报告描述&quot;)</span><br><span class="line">runner.run(test_suite)</span><br><span class="line">re.close()</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/2572206-cef34d1413c77122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="report.html"></p>
+<p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-cef34d1413c77122.png" alt="report.html"></p>
 <ul>
 <li>BeautifulReport–好看的HTML测试执行器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">链接：https://pan.baidu.com/s/1W04YSu7FgoaoTDlIe-tgAw 密码：tgln</span><br><span class="line">解压后将BeautifulReport拖到自己的环境变量中</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">report = BeautifulReport.BeautifulReport(test_suite)</span><br><span class="line">report.report(description=&quot;大树的测试报告&quot;,filename=&apos;report3.html&apos;)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">如果想要在报告中显示每条用例的注释</span><br><span class="line">    def test_case2(self):</span><br><span class="line">        &apos;&apos;&apos;这是一个测试用例描述&apos;&apos;&apos; # 添加这一行</span><br><span class="line">        print(&quot;test_cast2&quot;)</span><br><span class="line">        res = calc(5,1)</span><br><span class="line">        self.assertIn(res,[5,2],msg=&apos;expect is not equal 5 or 2&apos;)# res in [5,2]</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/2572206-bb044061cd7014ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="report3"></p>
+<p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-bb044061cd7014ce.png" alt="report3"></p>
 
       
 

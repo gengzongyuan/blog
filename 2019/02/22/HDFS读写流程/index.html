@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="写流程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-7ef8c4814106b564.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-c2173a6eebe7f157.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-22T11:39:26.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-7ef8c4814106b564.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-c2173a6eebe7f157.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDFS读写流程及副本放置机制">
 <meta name="twitter:description" content="写流程">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-7ef8c4814106b564.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-7ef8c4814106b564.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -202,10 +202,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="写流程"><a href="#写流程" class="headerlink" title="写流程"></a>写流程</h4><p><img src="https://upload-images.jianshu.io/upload_images/2572206-7ef8c4814106b564.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+        <h4 id="写流程"><a href="#写流程" class="headerlink" title="写流程"></a>写流程</h4><p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-7ef8c4814106b564.png" alt=""></p>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">client端执行hadoop fs -put jdk.tar.gz /jdk.tar.gz          2block，3副本</span><br><span class="line"></span><br><span class="line">1、  向NN发送写数据请求，NN判断*NN是否启动，jdk.tar.gz文件是否已经存在*</span><br><span class="line">2、  OK，可以写</span><br><span class="line">3、  请求写BLK1</span><br><span class="line">4、  告知BLK1写入哪几个DN：DN1、DN2、DN3</span><br><span class="line">5、  找到DN1，建立数据传输的连接</span><br><span class="line">6、  DN1和DN2建立连接</span><br><span class="line">7、  DN2和DN3建立连接</span><br><span class="line">8、  步骤7成功</span><br><span class="line">9、  步骤6成功</span><br><span class="line">10、 步骤5成功</span><br><span class="line">11、 传输BLK1写到DN1.... DN1传输数据到DN2.....DN2传输数据到DN3</span><br><span class="line">12、BLK2的传输过程和BLK1的过程一样，重复3-11</span><br><span class="line">13、待所有数据写完之后，将数据同步给NN，记录下mate信息</span><br><span class="line">NN里存储下：</span><br><span class="line">元数据信息：</span><br><span class="line">jdk.tar.gz</span><br><span class="line">BLK1: 3 DN1 DN2 DN3</span><br><span class="line">BLK2: 3 DN2 DN3 DN4</span><br></pre></td></tr></table></figure>
-<h4 id="读流程"><a href="#读流程" class="headerlink" title="读流程"></a>读流程</h4><p><img src="https://upload-images.jianshu.io/upload_images/2572206-c2173a6eebe7f157.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="读流程"><a href="#读流程" class="headerlink" title="读流程"></a>读流程</h4><p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-c2173a6eebe7f157.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、  读数据请求</span><br><span class="line">2、  OK，同时返回元数据信息</span><br><span class="line">元数据信息：</span><br><span class="line">jdk.tar.gz</span><br><span class="line">BLK1: 3 DN1 DN2 DN3</span><br><span class="line">BLK2: 3 DN2 DN3 DN4</span><br><span class="line"></span><br><span class="line">3、  发送读取BLK1的请求</span><br><span class="line">4、 数据流返回</span><br><span class="line">5、 发送读取BLK2的请求</span><br><span class="line">6、 数据流返回</span><br></pre></td></tr></table></figure>
 <h4 id="多副本放置顺序"><a href="#多副本放置顺序" class="headerlink" title="多副本放置顺序"></a>多副本放置顺序</h4><ul>
 <li><p>副本顺序</p>

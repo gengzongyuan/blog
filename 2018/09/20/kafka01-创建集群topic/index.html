@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="创建集群topic1.创建topic">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-b655bf212fedd885.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-27T07:21:13.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-b655bf212fedd885.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka01 创建集群topic">
 <meta name="twitter:description" content="创建集群topic1.创建topic">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-b655bf212fedd885.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-b655bf212fedd885.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -223,7 +223,7 @@
 <li>在生产者终端输入一条消息，看看消费者终端是不是收到消息了</li>
 </ul>
 <h5 id="2-详解kafka"><a href="#2-详解kafka" class="headerlink" title="2.详解kafka"></a>2.详解kafka</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- Kafka 的基本架构：一个 producer(生产者)发送消息到 Kafka 集群的某个 topic 中。consumer(消费者)可以消费某个(某几个) topic 中的消息。 Kafka 集群由多个 broker 组成。</span><br><span class="line">- 什么是 broker？生产环境中，一台服务器上只会安装一个 Kafka 软件，这台服务器就是一个 Kafka Server，此时 Kafka Server 称为 broker；在我们的实验环境中，一个一台服务器上安装了三个 broker。</span><br><span class="line">- 什么是 topic？发布到 Kafka 集群上的消息都属于某一个分类，这个分类称为 topic。topic 存储在 broker 中;</span><br><span class="line">- 什么是 partition？一个 topic 包括多个 partition(分区)，partition 是物理上的概念。producer 发送的消息存储在 partition 中，每个 partition 可以有多个 replica(副本);</span><br><span class="line">- 什么是 producer？producer 是用来产生消息的，负责将消息发送到 Kafka broker 的 topic 上;</span><br><span class="line">- 什么是 consumer？consumer 是用来消费消息的，用于从 Kafka broker 上的 topic 中读取消息;</span><br><span class="line">- broker 和 consumer 使用 Zookeeper 管理状态信息，如 offset 信息。</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/2572206-b655bf212fedd885.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-b655bf212fedd885.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">上图中展示了 Kafka 相关的5个组件：producer、consumer、broker、topic、Zookeeper。</span><br><span class="line">上图中展示了一个 broker，broker 中有一个名称为 KafkaTopic 的 Topic，KafkaTopic 中有3个 partition ，分别为 partition1 、partition2 、partition3 ；</span><br><span class="line">消息生产者 producer 将消息发送到 topic 的 partition 中;</span><br><span class="line">消息消费者 consumer 从 topic 的 partition 中读取消息；</span><br><span class="line">consumer 和 broker 的元数据信息保存在 Zookeeper 中;</span><br><span class="line">在 topic 中，每一个 partition 对应一个日志文件，partition 是一个有序的、不可变的消息序列；一个消息只能发送到一个 partition 上。</span><br></pre></td></tr></table></figure>
 <h5 id="3-建立第二个topic"><a href="#3-建立第二个topic" class="headerlink" title="3.建立第二个topic"></a>3.建立第二个topic</h5><ul>
 <li>创建topic，指定partitions:3,replication-fact:2</li>

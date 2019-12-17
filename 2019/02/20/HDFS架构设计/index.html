@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="块剖析 配置信息1234567891011121314151617块的大小128M 块的副本数3 &amp;lt;property&amp;gt;        &amp;lt;name&amp;gt;dfs.blocksize&amp;lt;/name&amp;gt;        &amp;lt;value&amp;gt;134217728&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;property&amp;gt;        &amp;lt;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2572206-fdee0ba4c84ff580.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-20T11:38:54.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-fdee0ba4c84ff580.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDFS架构设计">
 <meta name="twitter:description" content="块剖析 配置信息1234567891011121314151617块的大小128M 块的副本数3 &amp;lt;property&amp;gt;        &amp;lt;name&amp;gt;dfs.blocksize&amp;lt;/name&amp;gt;        &amp;lt;value&amp;gt;134217728&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;property&amp;gt;        &amp;lt;">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2572206-fdee0ba4c84ff580.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-fdee0ba4c84ff580.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -207,7 +207,7 @@
 </ul>
 <a id="more"></a>
 <h4 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h4><ul>
-<li>架构图<br><img src="http://upload-images.jianshu.io/upload_images/2572206-fdee0ba4c84ff580.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>架构图<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-fdee0ba4c84ff580.png" alt=""></li>
 <li><p>nn</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">nn: 文件系统的命名空间</span><br><span class="line">文件名称</span><br><span class="line">文件目录结构</span><br><span class="line">文件属性 创建时间 权限 副本数</span><br><span class="line">文件对应哪些数据块</span><br><span class="line">--&gt;数据块对应哪些datanode节点上</span><br><span class="line"></span><br><span class="line">- nn维护的blockmap:</span><br><span class="line">nn节点不会持久化存储这种映射关系</span><br><span class="line">dn定期发送blockreport 给nn,</span><br><span class="line">以此nn在【内存】中动态维护这种映射关系！</span><br><span class="line"></span><br><span class="line">- 持久化数据</span><br><span class="line">作用:</span><br><span class="line">管理文件系统的命名空间，</span><br><span class="line">维护文件系统树，以两种文件永久保存在磁盘上</span><br><span class="line">命名空间镜像文件 fsimage</span><br><span class="line">编辑日志  editlog</span><br><span class="line">[root@hadoop001 current]# pwd</span><br><span class="line">/tmp/hadoop-root/dfs/name/current</span><br><span class="line">[root@hadoop001 current]# ll</span><br><span class="line">total 1040</span><br><span class="line">-rw-r--r--. 1 root root 1048576 Feb 17 20:23 edits_inprogress_0000000000000000001</span><br><span class="line">-rw-r--r--. 1 root root     321 Feb 17 19:23 fsimage_0000000000000000000</span><br><span class="line">-rw-r--r--. 1 root root      62 Feb 17 19:23 fsimage_0000000000000000000.md5</span><br><span class="line">-rw-r--r--. 1 root root       2 Feb 17 19:23 seen_txid</span><br><span class="line">-rw-r--r--. 1 root root     219 Feb 17 19:23 VERSION</span><br></pre></td></tr></table></figure>
 </li>

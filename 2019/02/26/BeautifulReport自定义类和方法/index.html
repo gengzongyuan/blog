@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="前言：自动化测试的报告里，一直都是用的BeautifulReport，但是测试类和测试方法没办法自己定义是硬伤，但是又想使用BeautifulReport，笔者读了BeautifulReport的源码后进行了改动  效果 没经过改造前的BeautifulReport报告">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-f09542f9fcce852e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-810217008cc5be49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-26T08:04:08.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-f09542f9fcce852e.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-810217008cc5be49.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BeautifulReport自定义类和方法">
 <meta name="twitter:description" content="前言：自动化测试的报告里，一直都是用的BeautifulReport，但是测试类和测试方法没办法自己定义是硬伤，但是又想使用BeautifulReport，笔者读了BeautifulReport的源码后进行了改动  效果 没经过改造前的BeautifulReport报告">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-f09542f9fcce852e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-f09542f9fcce852e.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -206,11 +206,11 @@
 <p>前言：自动化测试的报告里，一直都是用的BeautifulReport，但是测试类和测试方法没办法自己定义是硬伤，但是又想使用BeautifulReport，笔者读了BeautifulReport的源码后进行了改动</p>
 </blockquote>
 <h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><ul>
-<li>没经过改造前的BeautifulReport报告<br><img src="https://upload-images.jianshu.io/upload_images/2572206-f09542f9fcce852e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>没经过改造前的BeautifulReport报告<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-f09542f9fcce852e.png" alt=""></li>
 </ul>
 <a id="more"></a>
 <ul>
-<li>改造后的BeautifulReport报告（可以自己定义）<br><img src="https://upload-images.jianshu.io/upload_images/2572206-810217008cc5be49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>改造后的BeautifulReport报告（可以自己定义）<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-810217008cc5be49.png" alt=""></li>
 </ul>
 <h4 id="改造方式"><a href="#改造方式" class="headerlink" title="改造方式"></a>改造方式</h4><ul>
 <li>修改代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">BeautifulReport.py文件</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    def get_testcase_property(test) -&gt; tuple:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">            接受一个test, 并返回一个test的class_name, method_name, method_doc属性</span><br><span class="line">        :param test:</span><br><span class="line">        :return: (class_name, method_name, method_doc) -&gt; tuple</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # 原代码</span><br><span class="line">        # class_name = test.__class__.__qualname__</span><br><span class="line"></span><br><span class="line">        # 为了做自动化修改了代码</span><br><span class="line">        interfaceName = test.__dict__[&apos;_testMethodInterface&apos;]</span><br><span class="line">        method_name = test.__dict__[&apos;_testMethodName&apos;]</span><br><span class="line"></span><br><span class="line">        method_doc = test.__dict__[&apos;_testMethodDoc&apos;]</span><br><span class="line">        return interfaceName, method_name, method_doc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">用过BeautifulReport的朋友应该知道可以通过_testMethodDoc传递一个测试描述进去</span><br><span class="line">这里我们将原来的类名和方法变为也可以自己指定的方式，来替换原来的方式</span><br></pre></td></tr></table></figure>

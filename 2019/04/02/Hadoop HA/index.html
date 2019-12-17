@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="为什么要HA部署 如果HDFS和YARN的master宕机，整个服务就挂掉了1234567891011HDFS:NN  masterSNN DNYARN:RM  masterNM- 小拓展hbase的读写是不需要经过master的，只有建表删表才会走master">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-55a7e10a5f781186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-f4b8747108bd9d9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-02T11:38:44.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-55a7e10a5f781186.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-f4b8747108bd9d9f.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop HA">
 <meta name="twitter:description" content="为什么要HA部署 如果HDFS和YARN的master宕机，整个服务就挂掉了1234567891011HDFS:NN  masterSNN DNYARN:RM  masterNM- 小拓展hbase的读写是不需要经过master的，只有建表删表才会走master">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-55a7e10a5f781186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-55a7e10a5f781186.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -216,12 +216,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">由于部署了两台NN的原因，但是我们的shell脚本和程序是需要填入对应的NN的ip的，所以就有了命名空间的概念</span><br><span class="line"></span><br><span class="line">我们可以通过命名空间连接NN，但是我们不知道是哪台NN给我们提供的服务</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/2572206-55a7e10a5f781186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 当我们发起hdfs://bigdata/user/请求时</span><br><span class="line">- 会按照配置文件(这里假设NN2配置在先)先请求NN2</span><br><span class="line">- 发现NN2是standy进程，会再去请求NN1进程</span><br><span class="line">- 发现NN1是active节点，接收请求并执行</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-55a7e10a5f781186.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 当我们发起hdfs://bigdata/user/请求时</span><br><span class="line">- 会按照配置文件(这里假设NN2配置在先)先请求NN2</span><br><span class="line">- 发现NN2是standy进程，会再去请求NN1进程</span><br><span class="line">- 发现NN1是active节点，接收请求并执行</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><p>HA进程</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">3台机器</span><br><span class="line">hadoop001:ZK    ZKFC    NN    JN    DN</span><br><span class="line">hadoop002:ZK    ZKFC    NN    JN    DN</span><br><span class="line">hadoop003:ZK    ZKFC          JN    DN</span><br><span class="line"></span><br><span class="line">NN:fsimage editlog（读写请求记录）</span><br><span class="line">ZK(2n+1  奇数台):负责选举，决定active和standby在哪台节点</span><br><span class="line">ZKFC(zookeeperFailOverControl):节点真正挂掉，负责将standy状态的节点激活的进程</span><br><span class="line">JN:同步editlog的进程</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zk节点可以参照下面的数量</span><br><span class="line">20台节点：5台</span><br><span class="line">20~100台节点：7/9/11台</span><br><span class="line">&gt;100台：11台</span><br><span class="line"></span><br><span class="line">由于active节点挂掉时其他节点要进行选举，所以并不是节点越多越好</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>部署架构图<br><img src="https://upload-images.jianshu.io/upload_images/2572206-f4b8747108bd9d9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>部署架构图<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-f4b8747108bd9d9f.png" alt=""></p>
 </li>
 <li><p>解释及重点</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- 流程</span><br><span class="line">  - 1、客户端根据命名空间发起请求</span><br><span class="line">  - 2、命名空间按照配置顺序寻找active节点</span><br><span class="line">  - 3、NN1记录editlog并写入JN集群</span><br><span class="line">  - 4、NN2节点实时读取JN集群的数据，并进行重演</span><br><span class="line"></span><br><span class="line">- 重点</span><br><span class="line">  - 1、DN节点会向所有的NN节点汇报心跳状况</span><br><span class="line">  - 2、ZKFC是单独的进程</span><br></pre></td></tr></table></figure>

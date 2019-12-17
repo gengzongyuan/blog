@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="YARN :Yet Another Resource Negotiator(另外一种资源管理器)  YARN产生背景 MapReduce1.x存在的问题（JobTracker是单节点）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-6e101a140e53cf77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-6fcabdedd2559f08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-84c748c6bb866415.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-28T03:45:31.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-6e101a140e53cf77.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-6fcabdedd2559f08.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-84c748c6bb866415.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="资源调度框架YARN">
 <meta name="twitter:description" content="YARN :Yet Another Resource Negotiator(另外一种资源管理器)  YARN产生背景 MapReduce1.x存在的问题（JobTracker是单节点）">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-6e101a140e53cf77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-6e101a140e53cf77.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -207,7 +207,7 @@
 <p>YARN :Yet Another Resource Negotiator(另外一种资源管理器)</p>
 </blockquote>
 <h4 id="YARN产生背景"><a href="#YARN产生背景" class="headerlink" title="YARN产生背景"></a>YARN产生背景</h4><ul>
-<li>MapReduce1.x存在的问题（JobTracker是单节点）<br><img src="https://upload-images.jianshu.io/upload_images/2572206-6e101a140e53cf77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>MapReduce1.x存在的问题（JobTracker是单节点）<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-6e101a140e53cf77.png" alt=""></li>
 </ul>
 <a id="more"></a>
 <ul>
@@ -217,7 +217,7 @@
 <li><p>yarn架构设计</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mr job执行流程</span><br><span class="line">mr on yarn架构</span><br><span class="line">yarn架构设计</span><br><span class="line"></span><br><span class="line">&gt; 三个问题全部对应一个问题</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>1 RM(ResourceManager) + N NM(NodeManager)  一主多被<br><img src="https://upload-images.jianshu.io/upload_images/2572206-6fcabdedd2559f08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>1 RM(ResourceManager) + N NM(NodeManager)  一主多被<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-6fcabdedd2559f08.png" alt=""></p>
 </li>
 <li><p>ResourceManager</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 一个集群avtive状态的RM只有一个，负责整个集群的资源管理和调度</span><br><span class="line">- 处理客户端请求（启动/杀死）</span><br><span class="line">- 启动/监控ApplicationMaster（一个作业对应一个AM）</span><br><span class="line">- 监控NodeManager， 如果NM挂掉，告诉对应的ApplicationMaster（非次NM的AM）如果处理</span><br><span class="line">- 系统的资源分配和调度</span><br></pre></td></tr></table></figure>
@@ -237,7 +237,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">YARN中目前的</span><br><span class="line"></span><br><span class="line">- Container是运行在nodemanager节点机器上，虚拟的概念</span><br><span class="line">- 将一定大小的内存和cpu vcore组成的最小单元</span><br><span class="line">- 运行计算的任务task，每1个container都是1个单独的进程</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="YARN的执行流程"><a href="#YARN的执行流程" class="headerlink" title="YARN的执行流程"></a>YARN的执行流程</h4><p><img src="https://upload-images.jianshu.io/upload_images/2572206-84c748c6bb866415.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="YARN的执行流程"><a href="#YARN的执行流程" class="headerlink" title="YARN的执行流程"></a>YARN的执行流程</h4><p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-84c748c6bb866415.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ResourceManager 资源作业管理者  </span><br><span class="line">	Applications Manager 作业管理</span><br><span class="line">	Resource Scheduler 资源调度</span><br><span class="line"></span><br><span class="line">NodeManager   节点者</span><br><span class="line"></span><br><span class="line">- 1. client向RM提交作业（job），其中包括applicationsMaster程序、启动applicationMaster命令等</span><br><span class="line">- 2. RM为该job分配第一个容器，并与对应的NM通信，要求它在这个容器中启动MR applicationMaster程序</span><br><span class="line">- 3. applicationMaster首先向application Manager注册，此时用户就可以在web界面查看job的整个运行状态</span><br><span class="line">- 4. applicationMaster和Resource Scheduler通信，采用轮询的方式通过RPC协议去申请和领取资源列表</span><br><span class="line">- 5. applicationMaster申请到资源后，便于对应的NM通过RPC通信，要求启动任务</span><br><span class="line">- 6. NodeManager为任务设置好运行环境（包括环境变量、 JAR包、二进制程序等）后，将任务启动命令写到一个脚本中，并通</span><br><span class="line">过运行该脚本启动任务</span><br><span class="line">- 7. 各个任务通过某个RPC协议向ApplicationMaster汇报自己的状态和进度，以让ApplicationMaster随时掌握各个任务的运行</span><br><span class="line">状态，从而可以在任务失败时重新启动任务。在应用程序运行过程中，用户可随时通过RPC向ApplicationMaster查询应用程序</span><br><span class="line">的当前运行状态</span><br><span class="line">- 8. 应用程序运行完成后， ApplicationMaster向ResourceManager注销并关闭自己</span><br><span class="line"></span><br><span class="line">简述：</span><br><span class="line">a. 第一个阶段是启动ApplicationMaster；</span><br><span class="line">b. 第二个阶段是由ApplicationMaster创建应用程序，为它申请资源，并监控它的整个运行过程，直到运行完成。</span><br></pre></td></tr></table></figure>
 
       

@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="大树的博客">
 <meta property="og:description" content="整体复盘 18:23：数据同学告知图片拼接服务404 第一时间去瞄了日志，发现宕机前落了如下日志1Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00007fb0eaa1b000, 12288, 0) failed; error=&amp;apos;Cannot allocate memory&amp;apos; (errn">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-f8dd910e4afda90e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-cf8d43d1893b7b2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-d0f983c388b24285.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-837eaee4b87ad9e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-7fff81a75194dbf5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-14T02:49:28.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-f8dd910e4afda90e.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-cf8d43d1893b7b2e.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-d0f983c388b24285.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-837eaee4b87ad9e9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-7fff81a75194dbf5.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一次跳过oom的内存泄漏">
 <meta name="twitter:description" content="整体复盘 18:23：数据同学告知图片拼接服务404 第一时间去瞄了日志，发现宕机前落了如下日志1Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00007fb0eaa1b000, 12288, 0) failed; error=&amp;apos;Cannot allocate memory&amp;apos; (errn">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2572206-f8dd910e4afda90e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-f8dd910e4afda90e.png">
   
     <link rel="alternative" href="/atom.xml" title="大树的博客" type="application/atom+xml">
   
@@ -207,7 +207,7 @@
       
         <h4 id="整体复盘"><a href="#整体复盘" class="headerlink" title="整体复盘"></a>整体复盘</h4><ul>
 <li>18:23：数据同学告知图片拼接服务404</li>
-<li>第一时间去瞄了日志，发现宕机前落了如下日志<br><img src="https://upload-images.jianshu.io/upload_images/2572206-f8dd910e4afda90e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00007fb0eaa1b000, 12288, 0) failed; error=&apos;Cannot allocate memory&apos; (errno=12)</span><br></pre></td></tr></table></figure>
+<li>第一时间去瞄了日志，发现宕机前落了如下日志<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-f8dd910e4afda90e.png" alt=""><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x00007fb0eaa1b000, 12288, 0) failed; error=&apos;Cannot allocate memory&apos; (errno=12)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <a id="more"></a>
@@ -219,17 +219,17 @@
 </li>
 <li><p>查看服务器内存，剩余<strong>7G</strong>，到这里笔者就奇怪了，正常服务启动之后会剩余4G内存，看来服务彻底宕了</p>
 </li>
-<li><p>从运维平台的监控系统检查过去这段时间的内存分布，看到内存慢慢趋近于0，最后宕机<br><img src="https://upload-images.jianshu.io/upload_images/2572206-cf8d43d1893b7b2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>从运维平台的监控系统检查过去这段时间的内存分布，看到内存慢慢趋近于0，最后宕机<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-cf8d43d1893b7b2e.png" alt=""></p>
 </li>
 <li><p><strong>重新拉起服务，开始压测</strong></p>
 </li>
-<li><p>内存跟之前一样<br><img src="https://upload-images.jianshu.io/upload_images/2572206-d0f983c388b24285.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内存情况"></p>
+<li><p>内存跟之前一样<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-d0f983c388b24285.png" alt="内存情况"></p>
 </li>
 <li><p>压测过程中使用<code>jstack -pid</code>查看了线程栈状况</p>
 </li>
-<li><p>发现状况，线程栈堆积了大量线程，到这里思路清晰了，服务启动了太多线程，问了开发同学由于开启线程的时候调用的java native方法，线程使用的是操作系统内存，随着线程的增长，逐渐服务器内存不足，跳过OOM直接从操作系统层面报出了内存不足<br><img src="https://upload-images.jianshu.io/upload_images/2572206-837eaee4b87ad9e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>发现状况，线程栈堆积了大量线程，到这里思路清晰了，服务启动了太多线程，问了开发同学由于开启线程的时候调用的java native方法，线程使用的是操作系统内存，随着线程的增长，逐渐服务器内存不足，跳过OOM直接从操作系统层面报出了内存不足<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-837eaee4b87ad9e9.png" alt=""></p>
 </li>
-<li><p>重启服务后简单压测之后使用jmap dump下来堆信息，进行了分析，交给开发同学<br><img src="https://upload-images.jianshu.io/upload_images/2572206-7fff81a75194dbf5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>重启服务后简单压测之后使用jmap dump下来堆信息，进行了分析，交给开发同学<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-7fff81a75194dbf5.png" alt=""></p>
 </li>
 <li><p>后续定位结果是图片对象没有及时回收导致持续堆积</p>
 </li>

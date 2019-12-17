@@ -17,9 +17,9 @@
 <meta property="og:description" content="producer详解及源码解析1、Producer消息发送的基本步骤 (0) 创建 KafkaProducer 对象，此对象接收 Properties 类型的参数，我们配置了 bootstrap.servers、key.serializer、value.serializer 三个参数。 (1) 接着创建了一个 ProducerRecord 对象，创建此对象时，我们传入了 topic、消息的 key">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload-images.jinshu.io/upload_images/2572206-bbde190cf45a4b93.png?imageMogr2/auuto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-b0dee111186ec4d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2572206-9ced7a5e067fdf05.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-27T07:25:10.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-b0dee111186ec4d5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-9ced7a5e067fdf05.png">
+<meta property="og:updated_time" content="2019-12-17T08:09:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka04 producer详解及源码解析">
 <meta name="twitter:description" content="producer详解及源码解析1、Producer消息发送的基本步骤 (0) 创建 KafkaProducer 对象，此对象接收 Properties 类型的参数，我们配置了 bootstrap.servers、key.serializer、value.serializer 三个参数。 (1) 接着创建了一个 ProducerRecord 对象，创建此对象时，我们传入了 topic、消息的 key">
@@ -241,8 +241,8 @@
 <li>序列化key和value<br><img src="https://upload-images.jinshu.io/upload_images/2572206-bbde190cf45a4b93.png?imageMogr2/auuto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
 </ul>
 </li>
-<li>构建partition并且添加到batch中<code>此时使用的分区器是默认的分区器</code><br><img src="https://upload-images.jianshu.io/upload_images/2572206-b0dee111186ec4d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
-<li>发送消息到kafka<br><img src="https://upload-images.jianshu.io/upload_images/2572206-9ced7a5e067fdf05.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>构建partition并且添加到batch中<code>此时使用的分区器是默认的分区器</code><br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-b0dee111186ec4d5.png" alt=""></li>
+<li>发送消息到kafka<br><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-9ced7a5e067fdf05.png" alt=""></li>
 </ul>
 
       
