@@ -170,20 +170,20 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-图床测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-redis数据迁移" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/17/图床测试/">图床测试</a>
+      <a class="article-title" href="/2019/12/17/redis数据迁移/">redis数据迁移</a>
     </h1>
   
 
         
-        <a href="/2019/12/17/图床测试/" class="archive-article-date">
-  	<time datetime="2019-12-17T05:32:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-17</time>
+        <a href="/2019/12/17/redis数据迁移/" class="archive-article-date">
+  	<time datetime="2019-12-17T11:28:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-17</time>
 </a>
         
       </header>
@@ -196,19 +196,150 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code效果</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/1576559599807.png" alt=""></p>
-
+        <h4 id="阿里工具redis-shaockhttps-github-com-alibaba-RedisShake-releases"><a href="#阿里工具redis-shaockhttps-github-com-alibaba-RedisShake-releases" class="headerlink" title="阿里工具redis-shaockhttps://github.com/alibaba/RedisShake/releases"></a>阿里工具redis-shaock<code>https://github.com/alibaba/RedisShake/releases</code></h4><ul>
+<li>tar包下载下来之后直接解压，重点在于修改配置文件，注意行号<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">43 source.address = 10.189.64.45:7001</span><br><span class="line">44 # password of db/proxy. even if type is sentinel.</span><br><span class="line">45 source.password_raw = 123456</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">87 target.address = 10.189.64.45:7033</span><br><span class="line">88 # password of db/proxy. even if type is sentinel.</span><br><span class="line">89 target.password_raw = 123456</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/12/17/redis数据迁移/#more">more >></a>
+        
       
 
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/17/图床测试/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/12/17/redis数据迁移/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-简书图床迁移至github" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/17/简书图床迁移至github/">简书图床迁移至github</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/17/简书图床迁移至github/" class="archive-article-date">
+  	<time datetime="2019-12-17T03:27:34.003Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-17</time>
+</a>
+        
+      </header>
+    
+
+        <!-- 目录内容 -->
+        
+        <!-- 目录内容结束 -->
+   
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="简书图床迁移至github"><a href="#简书图床迁移至github" class="headerlink" title="简书图床迁移至github"></a>简书图床迁移至github</h4><blockquote>
+<p>发现hexo博客的图片全部不能访问了，笔者当时使用的是简书的图床（直接在简书编辑完成拷贝过来就可以了），折腾了一下图床的迁移</p>
+</blockquote>
+<ul>
+<li><p>获取所有原链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /dscoder/source/_posts # dscoder是笔者的hexo根目录</span><br><span class="line">cat ./* |grep upload-images.jianshu.io &gt; image.txt # 将所有的图片放到Image.txt目录中</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把image.txt文件从服务器上拿下来，大部分跟下面类似，我们对数据进行一个清洗</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">![](https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-2c0492626bb40e4a.png)</span><br><span class="line">![](https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-13cf083995cfc052.png)</span><br><span class="line">![](https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-204450779e6b9334.png)</span><br><span class="line">![](https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-6e101a140e53cf77.png)</span><br><span class="line">![](https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-6fcabdedd2559f08.png)</span><br><span class="line">![](https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-84c748c6bb866415.png)</span><br><span class="line"></span><br><span class="line">================</span><br><span class="line"></span><br><span class="line">这里直接用替换工具替换就可以，最终拿到所有图片的url</span><br><span class="line">https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-2c0492626bb40e4a.png</span><br><span class="line">https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-13cf083995cfc052.png</span><br><span class="line">https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-204450779e6b9334.png</span><br><span class="line">https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-6e101a140e53cf77.png</span><br><span class="line">https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-6fcabdedd2559f08.png</span><br><span class="line">https://raw.githubusercontent.com/gengzongyuan/imagePackage/master/imagePackage/2572206-84c748c6bb866415.png</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/12/17/简书图床迁移至github/#more">more >></a>
+        
+      
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图床</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/17/简书图床迁移至github/">展开全文 >></a>
         </p>
       
 
@@ -994,100 +1125,6 @@
 
 
   
-    <article id="post-Shell编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/12/Shell编程/">Shell编程</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/12/Shell编程/" class="archive-article-date">
-  	<time datetime="2019-04-12T10:53:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        
-      </header>
-    
-
-        <!-- 目录内容 -->
-        
-        <!-- 目录内容结束 -->
-   
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>基础<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- shell一般以sh结尾</span><br><span class="line">- 执行方式check.sh</span><br><span class="line">  - ./check.sh（这种方式需要有x权限）</span><br><span class="line">  - sh check.sh</span><br><span class="line">- 第一行一般以#!/bin/bash开头</span><br><span class="line">  - sh执行方式不需要</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/04/12/Shell编程/#more">more >></a>
-        
-      
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/运维//" class="article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/12/Shell编程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1436,6 +1473,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">scala</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图床</a>
               </li>
             
             <div class="clearfix"></div>
